@@ -1,0 +1,18 @@
+format: jb-book
+root: index
+parts:
+  - caption: Diffusion Equation Simulation
+    chapters:
+    - file: Task 1 - Diffusion Equation/z_approximation/Diffusion_Equation
+      sections:
+      - file: Task 1 - Diffusion Equation/z_approximation/Diffusion_Equation_Dirchilet
+      - file: Task 1 - Diffusion Equation/z_approximation/Diffusion_Equation_Neumann    
+      sections:
+        - file: Task 1 - Diffusion Equation/r_no_z_approximation/Diffusion_Equation_Dirchilet
+        - file: Task 1 - Diffusion Equation/r_no_z_approximation/Diffusion_Equation_Neumann
+  
+
+
+      
+
+       
