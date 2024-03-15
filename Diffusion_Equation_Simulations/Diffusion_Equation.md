@@ -101,6 +101,54 @@ $$
 \frac{\partial B_\phi} {\partial \tilde{t}} = \left( \frac{\partial^2 B_\phi}{\partial \tilde{z}^2} \right)
 $$
 
+To solve the equations for $B_r$ and $B_\phi$ in the axial direction $\tilde{z}$ under the thin disk approximation.
+We seek solutions of the form $B(z,t) = B_0(z) \exp(-\gamma t)$ where $B_0(z)$ represents the spatial variation of the magnetic field and $\gamma$ is a decay constant.
+
+Substituting this form into the differential equations, we obtain:
+
+1. For $B_r$:
+
+$$
+-\gamma B_r = \frac{d^2 B_r}{d \tilde{z}^2}
+$$
+
+2. For $B_\phi$:
+
+$$
+-\gamma B_\phi = \frac{d^2 B_\phi}{d \tilde{z}^2}
+$$
+
+These are second-order ordinary differential equations (ODEs) with constant coefficients. The general solution for each equation can be written as a linear combination of sine and cosine functions due to the homogeneity and isotropy of the problem. Thus, the general form of $B_r$ and $B_\phi$ would be:
+
+$$
+B_r(z) = A_r \cos(\sqrt{\gamma} \tilde{z}) + B_r \sin(\sqrt{\gamma} \tilde{z})
+$$
+
+$$
+B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \tilde{z})
+$$
+
+where $A_r$, $B_r$, $A_\phi$, and $B_\phi$ are constants to be determined based on initial or boundary conditions.
+
+The parameter $\gamma$ determines the decay rate of the magnetic field in time. Its value depends on the physical properties of the system and the boundary conditions.
+
+#### Eigenmodes with Boundary Condtions
+
+1. **Vacuum Boundary condtion**:
+
+For this boundary condition the analytical solution will be the following:
+   
+$$B_r(z) = B_r cos((m + \frac{1}{2})\pi z)$$
+
+$$B_{\phi}(z) = B_{\phi} cos((n + \frac{1}{2})\pi z)$$
+
+2. **Neumann Boundary condtion**:
+
+For this boundary condition where at boundary the spatial derivative is $0$, then the analytical solution will be the following:
+   
+$$B_r(z) = B_r sin((m)\pi z)$$
+
+$$B_{\phi}(z) = B_{\phi} cos((n)\pi z)$$
 
 ### Approximation 2: Approximating the Axial Derivative
 
@@ -119,4 +167,35 @@ $$
 \frac{\partial \bar{B}_\phi}{\partial \tilde{t}} = \left( \epsilon^2 \left(\frac{1}{\tilde{r}} \frac{\partial}{\partial \tilde{r}} \left( \tilde{r} \frac{\partial \bar{B}_r}{\partial \tilde{r}} \right) - \frac{\bar{B}_r}{\tilde{r}^2} \right)  + (\frac{\pi}{2h})^2 B_\phi \right)
 $$
 
+
+## Results
+We have solved the diffusion equation z with the original eigenmodes as the initial condition. We have have generated $Br_o$ and $Br_\phi$ using three seeds and also have exerpimented with six different eigenmodes in between $B_o$ and $B_\phi$.
+
+### Neglecting Radial Derivatives (z approximation)
+
+#### Dirchilet Boundary Condition
+
+1. Seed = 10 with eigenmodes $m=5$ and $n=3$. 
+   ![seed_10](/Diffusion_Equation_Simulations/z_approximation/seed_10/Br_Bphi_Norm_Pitch_evolution.gif)
+
+2. Seed = 25 with eigenmodes $m=25$ and $n=25$.
+   ![seed_25](/Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif)
+
+3. Seed = 100 with eigenmodes $m=100$ and $n=75$.
+   ![seed_25](/Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif)
+
+For detailed analysis of the results check the simulation file [here](/Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet.ipynb).
+
+#### Neumann Boundary Condition
+
+1. Seed = 10 with eigenmodes $m=5$ and $n=3$. 
+   ![seed_10](/Diffusion_Equation_Simulations/z_approximation/seed_10/Br_Bphi_Norm_Pitch_evolution.gif)
+
+2. Seed = 25 with eigenmodes $m=25$ and $n=25$.
+   ![seed_25](/Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif)
+
+3. Seed = 100 with eigenmodes $m=100$ and $n=75$.
+   ![seed_25](/Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif)
+
+For detailed analysis of the results check the simulation file [here](/Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_neumann.ipynb).
 
