@@ -22,7 +22,7 @@
 
 [4] Atkinson, Han Elementary Numerical Analysis
 
-[4] Richard L. Burden, J. Douglas Faires, Numerical Analysis, Brooks/Cole 1997
+[5] Richard L. Burden, J. Douglas Faires, Numerical Analysis, Brooks/Cole 1997
 
 ------
 ## Popular Videos 
