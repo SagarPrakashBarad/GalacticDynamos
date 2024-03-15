@@ -10,7 +10,7 @@
    - Setting up the Diffusion Equation [setup](/Task%2001%20-%20Diffusion%20Equation%20Simulations/Diffusion_Equation.md)
 
    - Solving Diffusion Equation using Crank Nicholson Dirchilet Boundary Condition [simulation](/Task%2001%20-%20Diffusion%20Equation%20Simulations/z_approximation/Diffusion_Equation_Dirchilet.ipynb)
-   - Solving Diffusion Equation using Crank Nicholson Dirchilet Boundary Condition [simulation](/Task%2001%20-%20Diffusion%20Equation%20Simulations/z_approximation/Diffusion_Equation_Neumann.ipynb)
+   - Solving Diffusion Equation using Crank Nicholson Neumann Boundary Condition [simulation](/Task%2001%20-%20Diffusion%20Equation%20Simulations/z_approximation/Diffusion_Equation_Neumann.ipynb)
 
 ## References
 
