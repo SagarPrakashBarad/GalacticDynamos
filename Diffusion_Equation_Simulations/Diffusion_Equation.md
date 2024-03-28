@@ -178,6 +178,8 @@ We have solved the diffusion equation z with the original eigenmodes as the init
 1. Seed = 10 with eigenmodes $m=5$ and $n=3$. 
    ![seed_10](/Diffusion_Equation_Simulations/z_approximation/seed_10/Br_Bphi_Norm_Pitch_evolution.gif)
 
+   ![seed_10](/Diffusion_Equation_Simulations/z_approximation/seed_10/log_Br_Bphi_vs_time.png)
+
 2. Seed = 25 with eigenmodes $m=25$ and $n=25$.
    ![seed_25](/Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif)
 
@@ -190,6 +192,8 @@ For detailed analysis of the results check the simulation file [here](/Diffusion
 
 1. Seed = 10 with eigenmodes $m=5$ and $n=3$. 
    ![seed_10](/Diffusion_Equation_Simulations/z_approximation/seed_10/Br_Bphi_Norm_Pitch_evolution.gif)
+
+   ![seed_10](/Diffusion_Equation_Simulations/z_approximation/seed_10/log_Br_Bphi_vs_time_neu.png)
 
 2. Seed = 25 with eigenmodes $m=25$ and $n=25$.
    ![seed_25](/Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif)
