@@ -1,15 +1,17 @@
 format: jb-book
-root: README
+root: index
 parts:
   - caption: Diffusion Equation Simulation
     chapters:
-    - file: Task 1 - Diffusion Equation/z_approximation/Diffusion_Equation
-      sections:
-      - file: Task 1 - Diffusion Equation/z_approximation/Diffusion_Equation_Dirchilet
-      - file: Task 1 - Diffusion Equation/z_approximation/Diffusion_Equation_Neumann    
-      sections:
-        - file: Task 1 - Diffusion Equation/r_no_z_approximation/Diffusion_Equation_Dirchilet
-        - file: Task 1 - Diffusion Equation/r_no_z_approximation/Diffusion_Equation_Neumann
+    - file: Diffusion_Equation_Simulations/Diffusion_Equation
+    - file: Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet
+    - file: Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann   
+  - caption: Alpha Omega Dynamo Simulation
+    chapters:
+    - file: Diffusion_Equation_Simulations/Diffusion_Equation
+    - file: Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet
+    - file: Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann 
+
   
 
 
