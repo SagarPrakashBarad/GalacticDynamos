@@ -140,7 +140,7 @@
 
   
 
-<a class="navbar-brand logo" href="../../README.html">
+<a class="navbar-brand logo" href="../../index.html">
   
   
   
@@ -166,12 +166,27 @@
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
-                <a class="reference internal" href="../../README.html">
+                <a class="reference internal" href="../../index.html">
                     Galactic Dynamo and MHD Simulations
                 </a>
             </li>
         </ul>
-        
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Diffusion Equation Simulation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Diffusion_Equation.html">Mean Field Dynamos</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="Diffusion_Equation_Dirchilet.html">Galactic Dynamo Diffusion Equation using Crank Nicholson without Ghost Zones</a></li>
+
+
+
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Galactic Dynamo Diffusion Equation using Crank Nicholson with Ghost Zones</a></li>
+
+
+
+
+</ul>
+
     </div>
 </nav></div>
     </div>
@@ -362,16 +377,16 @@ document.write(`
 <h1>Crank-Nicolson Difference method<a class="headerlink" href="#crank-nicolson-difference-method" title="Link to this heading">#</a></h1>
 <p>The implicit Crank-Nicolson difference equation of the Heat Equation
 is derived by discretising the</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3e90af81-abe5-4919-a90e-3bc14ce5b4ef">
-<span class="eqno">()<a class="headerlink" href="#equation-3e90af81-abe5-4919-a90e-3bc14ce5b4ef" title="Permalink to this equation">#</a></span>\[\begin{equation}  \frac{\partial u_{ij+\frac{1}{2}}}{\partial t} = \frac{\partial^2 u_{ij+\frac{1}{2}}}{\partial x^2},\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-e0e9943c-a85d-4e0a-a9bd-c26687eeea93">
+<span class="eqno">()<a class="headerlink" href="#equation-e0e9943c-a85d-4e0a-a9bd-c26687eeea93" title="Permalink to this equation">#</a></span>\[\begin{equation}  \frac{\partial u_{ij+\frac{1}{2}}}{\partial t} = \frac{\partial^2 u_{ij+\frac{1}{2}}}{\partial x^2},\end{equation}\]</div>
 <p>around <span class="math notranslate nohighlight">\((x_i,t_{j+\frac{1}{2}})\)</span> giving the difference equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-99660d3f-7563-4b05-93ca-d4be8f1f8ccb">
-<span class="eqno">()<a class="headerlink" href="#equation-99660d3f-7563-4b05-93ca-d4be8f1f8ccb" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-247883b4-f73c-431a-9410-1050e7ec6ea1">
+<span class="eqno">()<a class="headerlink" href="#equation-247883b4-f73c-431a-9410-1050e7ec6ea1" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{w_{ij+1}-w_{ij}}{k}=\frac{1}{2}\left(\frac{w_{i+1j+1}-2w_{ij+1}+w_{i-1j+1}}{h^2}+\frac{w_{i+1j}-2w_{ij}+w_{i-1j}}{h^2}\right).
 \end{equation}\]</div>
 <p>Rearranging give the difference equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-36706ddc-69ce-42f3-acb6-efc69509e0af">
-<span class="eqno">()<a class="headerlink" href="#equation-36706ddc-69ce-42f3-acb6-efc69509e0af" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9b085716-265e-4a5f-bd00-77e9d71d749a">
+<span class="eqno">()<a class="headerlink" href="#equation-9b085716-265e-4a5f-bd00-77e9d71d749a" title="Permalink to this equation">#</a></span>\[\begin{equation}
 -rw_{i-1j+1}+(2+2r)w_{ij+1}-rw_{i+1j+1}=rw_{i-1j}+(2-2r)w_{ij}+rw_{i+1j}
 \end{equation}\]</div>
 <p>for <span class="math notranslate nohighlight">\(i=1,...N-1\)</span> where <span class="math notranslate nohighlight">\(r=\frac{k}{h^2}\)</span>.</p>
@@ -405,23 +420,23 @@ is derived by discretising the</p>
 <section id="discete-grid">
 <h1>Discete Grid<a class="headerlink" href="#discete-grid" title="Link to this heading">#</a></h1>
 <p>The region <span class="math notranslate nohighlight">\(\Omega\)</span> is discretized into a uniform mesh <span class="math notranslate nohighlight">\(\Omega_h\)</span>. In the spatial direction (<span class="math notranslate nohighlight">\(x\)</span>), it is divided into <span class="math notranslate nohighlight">\(N\)</span> steps, yielding a step size of:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3a65315e-0c34-4e16-8c34-35a2dd4af218">
-<span class="eqno">()<a class="headerlink" href="#equation-3a65315e-0c34-4e16-8c34-35a2dd4af218" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-823f8174-e2f3-4fe2-a383-1769d810faad">
+<span class="eqno">()<a class="headerlink" href="#equation-823f8174-e2f3-4fe2-a383-1769d810faad" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h=\frac{1-0}{N},
 \end{equation}\]</div>
 <p>resulting in discrete spatial points:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7814a9a0-253f-4438-804b-baf701a8cf6a">
-<span class="eqno">()<a class="headerlink" href="#equation-7814a9a0-253f-4438-804b-baf701a8cf6a" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-7310a378-bf08-4617-861b-6427f5f0a517">
+<span class="eqno">()<a class="headerlink" href="#equation-7310a378-bf08-4617-861b-6427f5f0a517" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x[i]=0+ih, \quad i=0,1,...,N.
 \end{equation}\]</div>
 <p>In the temporal direction (<span class="math notranslate nohighlight">\(t\)</span>), it is divided into <span class="math notranslate nohighlight">\(N_t\)</span> steps, giving a step size of:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-aef74d1e-3958-4ce1-8114-ddf47236620f">
-<span class="eqno">()<a class="headerlink" href="#equation-aef74d1e-3958-4ce1-8114-ddf47236620f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-809db23e-1a7c-48fb-8c7e-edb1b4cb1666">
+<span class="eqno">()<a class="headerlink" href="#equation-809db23e-1a7c-48fb-8c7e-edb1b4cb1666" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k=\frac{1-0}{N_t},
 \end{equation}\]</div>
 <p>resulting in discrete temporal points:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ab6b7dec-4701-4030-be05-48be9c239a56">
-<span class="eqno">()<a class="headerlink" href="#equation-ab6b7dec-4701-4030-be05-48be9c239a56" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-22f3185d-991a-4c92-acfe-b37d7229fd59">
+<span class="eqno">()<a class="headerlink" href="#equation-22f3185d-991a-4c92-acfe-b37d7229fd59" title="Permalink to this equation">#</a></span>\[\begin{equation}
 t[i]=0+ik, \quad k=0,...,K.
 \end{equation}\]</div>
 <p>In this discretization scheme, the red dots represent unknown values, the green dots denote known boundary conditions, and the blue dots indicate known initial conditions of the Heat Equation. Additionally, ghost zones are included at the first and last indices. These ghost zones are crucial for defining derivatives at the boundary.</p>
