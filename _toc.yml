@@ -8,9 +8,9 @@ parts:
     - file: Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann   
   - caption: Alpha Omega Dynamo Simulation
     chapters:
-    - file: Diffusion_Equation_Simulations/Diffusion_Equation
-    - file: Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet
-    - file: Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann 
+    - file: Alpha_Omega_Dynamos/alpha_omega_dynamo
+    - file: Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo_Dirichlet
+    - file: Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo_Neumann
 
   
 

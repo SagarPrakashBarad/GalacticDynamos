@@ -169,7 +169,7 @@ $$
 
 
 ## Results
-We have solved the diffusion equation z with the original eigenmodes as the initial condition. We have have generated $Br_o$ and $Br_\phi$ using three seeds and also have exerpimented with six different eigenmodes in between $B_o$ and $B_\phi$.
+We have solved the diffusion equation z with the original eigenmodes as the initial condition. We have have generated $Br_o$ and $Br_\phi$ using three seeds and also have exerpimented with six different eigenmodes in between $B_r$ and $B_\phi$.
 
 ### Neglecting Radial Derivatives (z approximation)
 
