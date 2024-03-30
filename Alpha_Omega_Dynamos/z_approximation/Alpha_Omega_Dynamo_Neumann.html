@@ -59,11 +59,10 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo_Neumann';</script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="\(\alpha \Omega\) Dynamo Simulation" href="../../Alpha_Omega_Dynamos/alpha_omega_dynamo.html" />
-    <link rel="prev" title="Galactic Dynamo Diffusion Equation using Crank Nicholson without Ghost Zones" href="Diffusion_Equation_Dirchilet.html" />
+    <link rel="prev" title="\(\alpha \Omega\) Dynamo Simulation" href="../alpha_omega_dynamo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -173,15 +172,15 @@
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Diffusion Equation Simulation</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Diffusion_Equation.html">Mean Field Dynamos</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../Diffusion_Equation_Simulations/Diffusion_Equation.html">Mean Field Dynamos</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Diffusion_Equation_Dirchilet.html">Galactic Dynamo Diffusion Equation using Crank Nicholson without Ghost Zones</a></li>
-
-
+<li class="toctree-l1"><a class="reference internal" href="../../Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet.html">Galactic Dynamo Diffusion Equation using Crank Nicholson without Ghost Zones</a></li>
 
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Galactic Dynamo Diffusion Equation using Crank Nicholson with Ghost Zones</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann.html">Galactic Dynamo Diffusion Equation using Crank Nicholson with Ghost Zones</a></li>
 
 
 
@@ -255,7 +254,7 @@
       
       
       
-      <li><a href="../../_sources/Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann.ipynb" target="_blank"
+      <li><a href="../../_sources/Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo_Neumann.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -378,16 +377,16 @@ document.write(`
 <h1>Crank-Nicolson Difference method<a class="headerlink" href="#crank-nicolson-difference-method" title="Link to this heading">#</a></h1>
 <p>The implicit Crank-Nicolson difference equation of the Heat Equation
 is derived by discretising the</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f81e9d9d-0885-4591-b960-7e17ad63150c">
-<span class="eqno">()<a class="headerlink" href="#equation-f81e9d9d-0885-4591-b960-7e17ad63150c" title="Permalink to this equation">#</a></span>\[\begin{equation}  \frac{\partial u_{ij+\frac{1}{2}}}{\partial t} = \frac{\partial^2 u_{ij+\frac{1}{2}}}{\partial x^2},\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-fd6ecc05-a32d-4397-9230-d67f6617cd89">
+<span class="eqno">()<a class="headerlink" href="#equation-fd6ecc05-a32d-4397-9230-d67f6617cd89" title="Permalink to this equation">#</a></span>\[\begin{equation}  \frac{\partial u_{ij+\frac{1}{2}}}{\partial t} = \frac{\partial^2 u_{ij+\frac{1}{2}}}{\partial x^2},\end{equation}\]</div>
 <p>around <span class="math notranslate nohighlight">\((x_i,t_{j+\frac{1}{2}})\)</span> giving the difference equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9bf69dbb-946c-4759-811d-894e373ef8e9">
-<span class="eqno">()<a class="headerlink" href="#equation-9bf69dbb-946c-4759-811d-894e373ef8e9" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a698394b-fa1f-4bb9-b125-18a59b3500f6">
+<span class="eqno">()<a class="headerlink" href="#equation-a698394b-fa1f-4bb9-b125-18a59b3500f6" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{w_{ij+1}-w_{ij}}{k}=\frac{1}{2}\left(\frac{w_{i+1j+1}-2w_{ij+1}+w_{i-1j+1}}{h^2}+\frac{w_{i+1j}-2w_{ij}+w_{i-1j}}{h^2}\right).
 \end{equation}\]</div>
 <p>Rearranging give the difference equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-fec16459-4d13-473c-9a26-883456486e5e">
-<span class="eqno">()<a class="headerlink" href="#equation-fec16459-4d13-473c-9a26-883456486e5e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-a8777954-dbeb-459b-ab20-a4280b8874b4">
+<span class="eqno">()<a class="headerlink" href="#equation-a8777954-dbeb-459b-ab20-a4280b8874b4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 -rw_{i-1j+1}+(2+2r)w_{ij+1}-rw_{i+1j+1}=rw_{i-1j}+(2-2r)w_{ij}+rw_{i+1j}
 \end{equation}\]</div>
 <p>for <span class="math notranslate nohighlight">\(i=1,...N-1\)</span> where <span class="math notranslate nohighlight">\(r=\frac{k}{h^2}\)</span>.</p>
@@ -421,23 +420,23 @@ is derived by discretising the</p>
 <section id="discete-grid">
 <h1>Discete Grid<a class="headerlink" href="#discete-grid" title="Link to this heading">#</a></h1>
 <p>The region <span class="math notranslate nohighlight">\(\Omega\)</span> is discretized into a uniform mesh <span class="math notranslate nohighlight">\(\Omega_h\)</span>. In the spatial direction (<span class="math notranslate nohighlight">\(x\)</span>), it is divided into <span class="math notranslate nohighlight">\(N\)</span> steps, yielding a step size of:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-5716245c-bcc9-4c51-97ae-7c3d917dc036">
-<span class="eqno">()<a class="headerlink" href="#equation-5716245c-bcc9-4c51-97ae-7c3d917dc036" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-6cb41636-a62e-4da9-b597-fe517e36d107">
+<span class="eqno">()<a class="headerlink" href="#equation-6cb41636-a62e-4da9-b597-fe517e36d107" title="Permalink to this equation">#</a></span>\[\begin{equation}
 h=\frac{1-0}{N},
 \end{equation}\]</div>
 <p>resulting in discrete spatial points:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-7fb52443-7b30-43e5-8ac5-1412e399e6a3">
-<span class="eqno">()<a class="headerlink" href="#equation-7fb52443-7b30-43e5-8ac5-1412e399e6a3" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-36a3e42c-1383-4aaf-901d-d000318c4598">
+<span class="eqno">()<a class="headerlink" href="#equation-36a3e42c-1383-4aaf-901d-d000318c4598" title="Permalink to this equation">#</a></span>\[\begin{equation}
 x[i]=0+ih, \quad i=0,1,...,N.
 \end{equation}\]</div>
 <p>In the temporal direction (<span class="math notranslate nohighlight">\(t\)</span>), it is divided into <span class="math notranslate nohighlight">\(N_t\)</span> steps, giving a step size of:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-53b1c83f-1600-43fe-9e1b-d4a9cc1edd5e">
-<span class="eqno">()<a class="headerlink" href="#equation-53b1c83f-1600-43fe-9e1b-d4a9cc1edd5e" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-ad95b01a-ff4e-40c6-bb31-048527765f18">
+<span class="eqno">()<a class="headerlink" href="#equation-ad95b01a-ff4e-40c6-bb31-048527765f18" title="Permalink to this equation">#</a></span>\[\begin{equation}
 k=\frac{1-0}{N_t},
 \end{equation}\]</div>
 <p>resulting in discrete temporal points:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b2ec631f-e553-43a4-bafb-cc25bba8ebad">
-<span class="eqno">()<a class="headerlink" href="#equation-b2ec631f-e553-43a4-bafb-cc25bba8ebad" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-bf9787dc-c471-4cf5-a829-c8760b4db149">
+<span class="eqno">()<a class="headerlink" href="#equation-bf9787dc-c471-4cf5-a829-c8760b4db149" title="Permalink to this equation">#</a></span>\[\begin{equation}
 t[i]=0+ik, \quad k=0,...,K.
 \end{equation}\]</div>
 <p>In this discretization scheme, the red dots represent unknown values, the green dots denote known boundary conditions, and the blue dots indicate known initial conditions of the Heat Equation. Additionally, ghost zones are included at the first and last indices. These ghost zones are crucial for defining derivatives at the boundary.</p>
@@ -854,7 +853,7 @@ Bphi: Actual Slope = 9.42477796076938, Computed Slope = 5.897360368731764, Diffe
         },
         kernelOptions: {
             name: "python3",
-            path: "./Diffusion_Equation_Simulations/z_approximation"
+            path: "./Alpha_Omega_Dynamos/z_approximation"
         },
         predefinedOutput: true
     }
@@ -872,22 +871,13 @@ Bphi: Actual Slope = 9.42477796076938, Computed Slope = 5.897360368731764, Diffe
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="Diffusion_Equation_Dirchilet.html"
+       href="../alpha_omega_dynamo.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Galactic Dynamo Diffusion Equation using Crank Nicholson without Ghost Zones</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="../../Alpha_Omega_Dynamos/alpha_omega_dynamo.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

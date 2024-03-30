@@ -378,33 +378,33 @@ document.write(`
 <h1>Crank-Nicolson Difference method<a class="headerlink" href="#crank-nicolson-difference-method" title="Link to this heading">#</a></h1>
 <p>The implicit Crank-Nicolson difference equation of the Heat Equation
 is derived by discretising the</p>
-<div class="amsmath math notranslate nohighlight" id="equation-a6e82f92-ef10-404d-861b-42188bc81d6a">
-<span class="eqno">()<a class="headerlink" href="#equation-a6e82f92-ef10-404d-861b-42188bc81d6a" title="Permalink to this equation">#</a></span>\[\begin{equation}  \frac{\partial u_{ij+\frac{1}{2}}}{\partial t} = \frac{\partial^2 u_{ij+\frac{1}{2}}}{\partial x^2},\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-eaec6403-3c1f-4ee7-88c7-529eb6e3fd11">
+<span class="eqno">()<a class="headerlink" href="#equation-eaec6403-3c1f-4ee7-88c7-529eb6e3fd11" title="Permalink to this equation">#</a></span>\[\begin{equation}  \frac{\partial u_{ij+\frac{1}{2}}}{\partial t} = \frac{\partial^2 u_{ij+\frac{1}{2}}}{\partial x^2},\end{equation}\]</div>
 <p>around <span class="math notranslate nohighlight">\((x_i,t_{j+\frac{1}{2}})\)</span> giving the difference equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0a136bd7-a2b1-4091-a6ed-de196f866c0c">
-<span class="eqno">()<a class="headerlink" href="#equation-0a136bd7-a2b1-4091-a6ed-de196f866c0c" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-2e84182b-75bf-4569-8bcf-b3738fc0984b">
+<span class="eqno">()<a class="headerlink" href="#equation-2e84182b-75bf-4569-8bcf-b3738fc0984b" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{w_{ij+1}-w_{ij}}{k}=\frac{1}{2}\left(\frac{w_{i+1j+1}-2w_{ij+1}+w_{i-1j+1}}{h^2}+\frac{w_{i+1j}-2w_{ij}+w_{i-1j}}{h^2}\right).
 \end{equation}\]</div>
 <p>Rearranging give the difference equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-9090f188-43e5-4079-83dd-78a0d9e3deea">
-<span class="eqno">()<a class="headerlink" href="#equation-9090f188-43e5-4079-83dd-78a0d9e3deea" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-9a738a9a-b176-4d88-a9de-1859250c7974">
+<span class="eqno">()<a class="headerlink" href="#equation-9a738a9a-b176-4d88-a9de-1859250c7974" title="Permalink to this equation">#</a></span>\[\begin{equation}
 -rw_{i-1j+1}+(2+2r)w_{ij+1}-rw_{i+1j+1}=rw_{i-1j}+(2-2r)w_{ij}+rw_{i+1j}
 \end{equation}\]</div>
 <p>for <span class="math notranslate nohighlight">\(i=1,...9\)</span> where <span class="math notranslate nohighlight">\(r=\frac{k}{h^2}\)</span>.</p>
 <p>The implicit Crank-Nicolson difference equation for <span class="math notranslate nohighlight">\( B_r \)</span> and <span class="math notranslate nohighlight">\( B_\phi \)</span> is derived by discretizing the equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eaa9375c-8ec2-44d6-b6ae-3071ca6c4477">
-<span class="eqno">()<a class="headerlink" href="#equation-eaa9375c-8ec2-44d6-b6ae-3071ca6c4477" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-47782886-071f-461a-8854-803f485a8eb4">
+<span class="eqno">()<a class="headerlink" href="#equation-47782886-071f-461a-8854-803f485a8eb4" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{\partial B_{r,ij+\frac{1}{2}}}{\partial t} = \eta \frac{\partial^2 B_{r,ij+\frac{1}{2}}}{\partial z^2},
 \end{equation}\]</div>
 <p>around <span class="math notranslate nohighlight">\( (z_i,t_{j+\frac{1}{2}}) \)</span> giving the difference equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-eebd972e-a18d-40ac-a04e-370316220044">
-<span class="eqno">()<a class="headerlink" href="#equation-eebd972e-a18d-40ac-a04e-370316220044" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-fb7ff02c-8711-478b-a01d-4d23ac9cfafe">
+<span class="eqno">()<a class="headerlink" href="#equation-fb7ff02c-8711-478b-a01d-4d23ac9cfafe" title="Permalink to this equation">#</a></span>\[\begin{equation}
 \frac{B_{ij+1}-B_{ij}}{k} = \frac{\eta}{2} \left( \frac{B_{ij+1}-2B_{ij}+B_{ij-1}}{h^2} + \frac{B_{i+1j+1}-2B_{i+1j}+B_{i+1j-1}}{h^2} \right),
 \end{equation}\]</div>
 <p>where <span class="math notranslate nohighlight">\( B_{ij} \)</span> represents <span class="math notranslate nohighlight">\( B_r \)</span> or <span class="math notranslate nohighlight">\( B_\phi \)</span> at the spatial grid point <span class="math notranslate nohighlight">\( (z_i,t_{j}) \)</span>, <span class="math notranslate nohighlight">\( k \)</span> is the time step, <span class="math notranslate nohighlight">\( h \)</span> is the grid spacing in the <span class="math notranslate nohighlight">\( z \)</span> direction, and <span class="math notranslate nohighlight">\( \eta \)</span> is the diffusion coefficient.</p>
 <p>Rearranging the equation, we get</p>
-<div class="amsmath math notranslate nohighlight" id="equation-e03b252c-fde7-419f-8742-a8ba5fe0966f">
-<span class="eqno">()<a class="headerlink" href="#equation-e03b252c-fde7-419f-8742-a8ba5fe0966f" title="Permalink to this equation">#</a></span>\[\begin{equation}
+<div class="amsmath math notranslate nohighlight" id="equation-99b37cdd-8eb5-4b7a-8721-b97c2295ce5d">
+<span class="eqno">()<a class="headerlink" href="#equation-99b37cdd-8eb5-4b7a-8721-b97c2295ce5d" title="Permalink to this equation">#</a></span>\[\begin{equation}
 -\alpha B_{i-1j+1} + (2+2r)B_{ij+1} - rB_{i+1j+1} = rB_{i-1j} + (2-2r)B_{ij} + rB_{i+1j}
 \end{equation}\]</div>
 <p>for ( i=1,…,9 ), where <span class="math notranslate nohighlight">\( \alpha = \frac{k \eta}{h^2} \)</span>. This is the correct way of discretizing the equation and removing the ( r ) terms.</p>
@@ -438,17 +438,17 @@ is derived by discretising the</p>
 <section id="discete-grid">
 <h1>Discete Grid<a class="headerlink" href="#discete-grid" title="Link to this heading">#</a></h1>
 <p>The region <span class="math notranslate nohighlight">\(\Omega\)</span> is discretised into a uniform mesh <span class="math notranslate nohighlight">\(\Omega_h\)</span>. In the space <span class="math notranslate nohighlight">\(x\)</span> direction into <span class="math notranslate nohighlight">\(N\)</span> steps giving a stepsize of</p>
-<div class="amsmath math notranslate nohighlight" id="equation-384fd55c-8418-4566-aa0c-d1cc07dbcd7b">
-<span class="eqno">()<a class="headerlink" href="#equation-384fd55c-8418-4566-aa0c-d1cc07dbcd7b" title="Permalink to this equation">#</a></span>\[\begin{equation} h=\frac{1-0}{N},\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-15c1ca0b-2c7e-4451-8498-36b9a80628a1">
+<span class="eqno">()<a class="headerlink" href="#equation-15c1ca0b-2c7e-4451-8498-36b9a80628a1" title="Permalink to this equation">#</a></span>\[\begin{equation} h=\frac{1-0}{N},\end{equation}\]</div>
 <p>resulting in</p>
-<div class="amsmath math notranslate nohighlight" id="equation-3b7d7f74-5fb4-4d4b-b9a3-c8e5ce8f745a">
-<span class="eqno">()<a class="headerlink" href="#equation-3b7d7f74-5fb4-4d4b-b9a3-c8e5ce8f745a" title="Permalink to this equation">#</a></span>\[\begin{equation}x[i]=0+ih, \ \ \  i=0,1,...,N,\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-a7133508-e112-4d6b-8a32-ed74f9296141">
+<span class="eqno">()<a class="headerlink" href="#equation-a7133508-e112-4d6b-8a32-ed74f9296141" title="Permalink to this equation">#</a></span>\[\begin{equation}x[i]=0+ih, \ \ \  i=0,1,...,N,\end{equation}\]</div>
 <p>and into <span class="math notranslate nohighlight">\(N_t\)</span> steps in the time <span class="math notranslate nohighlight">\(t\)</span> direction giving a stepsize of</p>
-<div class="amsmath math notranslate nohighlight" id="equation-b7beec2c-6c98-4c13-b1e4-6fcc468769fd">
-<span class="eqno">()<a class="headerlink" href="#equation-b7beec2c-6c98-4c13-b1e4-6fcc468769fd" title="Permalink to this equation">#</a></span>\[\begin{equation} k=\frac{1-0}{N_t}\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-6a6f79bc-408e-4028-a65b-ffd1e3b88b74">
+<span class="eqno">()<a class="headerlink" href="#equation-6a6f79bc-408e-4028-a65b-ffd1e3b88b74" title="Permalink to this equation">#</a></span>\[\begin{equation} k=\frac{1-0}{N_t}\end{equation}\]</div>
 <p>resulting in</p>
-<div class="amsmath math notranslate nohighlight" id="equation-61666fcf-f5fe-4179-a948-51e88cb515bd">
-<span class="eqno">()<a class="headerlink" href="#equation-61666fcf-f5fe-4179-a948-51e88cb515bd" title="Permalink to this equation">#</a></span>\[\begin{equation}t[i]=0+ik, \ \ \ k=0,...,K.\end{equation}\]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-ba483027-c2bf-46de-9a03-67dc09473fd8">
+<span class="eqno">()<a class="headerlink" href="#equation-ba483027-c2bf-46de-9a03-67dc09473fd8" title="Permalink to this equation">#</a></span>\[\begin{equation}t[i]=0+ik, \ \ \ k=0,...,K.\end{equation}\]</div>
 <p>The Figure below shows the discrete grid points for <span class="math notranslate nohighlight">\(N=20\)</span> and <span class="math notranslate nohighlight">\(N_t=400\)</span> , the red dots are the unknown values, the green dots are the known boundary conditions and the blue dots are the known initial conditions of the Heat Equation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

@@ -1,0 +1,600 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>\(\alpha \Omega\) Dynamo Simulation &#8212; Galactic Dynamo Simulations</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Alpha_Omega_Dynamos/alpha_omega_dynamo';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Galactic Dynamo Diffusion Equation using Crank Nicholson with Ghost Zones" href="z_approximation/Alpha_Omega_Dynamo_Neumann.html" />
+    <link rel="prev" title="Galactic Dynamo Diffusion Equation using Crank Nicholson with Ghost Zones" href="../Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Galactic Dynamo Simulations</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Galactic Dynamo and MHD Simulations
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Diffusion Equation Simulation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Diffusion_Equation_Simulations/Diffusion_Equation.html">Mean Field Dynamos</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet.html">Galactic Dynamo Diffusion Equation using Crank Nicholson without Ghost Zones</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann.html">Galactic Dynamo Diffusion Equation using Crank Nicholson with Ghost Zones</a></li>
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/SagarPrakashBarad/GalacticDynamos" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/Alpha_Omega_Dynamos/alpha_omega_dynamo.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>\alpha \Omega Dynamo Simulation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-simulation">Setting up the Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">Boundary conditions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenmodes-with-boundary-condtions">Eigenmodes with Boundary Condtions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="alpha-omega-dynamo-simulation">
+<h1><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation<a class="headerlink" href="#alpha-omega-dynamo-simulation" title="Link to this heading">#</a></h1>
+<p>We adopt the simplest approximation to the mean field dynamo equations, considering it as a flat rotating thin disc. This implies that <span class="math notranslate nohighlight">\(\epsilon = \frac{h_o}{R_o} \ll 1\)</span>, allowing us to neglect all terms involving <span class="math notranslate nohighlight">\(\epsilon^2\)</span> along with any radial derivatives associated with it. Under this approximation, we seek a local solution in <span class="math notranslate nohighlight">\(z\)</span> for specific values of <span class="math notranslate nohighlight">\(\phi\)</span> and <span class="math notranslate nohighlight">\(r\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \bar{B}_r}{\partial t} = - \frac{\partial }{\partial z} (\alpha \bar{B}_{\phi}) + \frac{\partial^2 \bar{B}_r}{\partial z^2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \bar{B}_\phi}{\partial t} =  DS\bar{B}_r + \frac{\partial^2 \bar{B}_\phi}{\partial z^2} 
+\]</div>
+<p>Here, the parameters <span class="math notranslate nohighlight">\(S\)</span> is the shear rate defined as <span class="math notranslate nohighlight">\(r \partial \Omega / \partial r\)</span> and for flat rotation curve is equal to <span class="math notranslate nohighlight">\(- \Omega\)</span>, where <span class="math notranslate nohighlight">\(\Omega_{0}\)</span> and <span class="math notranslate nohighlight">\(S_{0}\)</span> are there value at <span class="math notranslate nohighlight">\(r = R_o\)</span>. For the <span class="math notranslate nohighlight">\(\alpha\)</span>-coefficient, it has its function dependence as <span class="math notranslate nohighlight">\(\alpha \simeq l_{0}^{2} \Omega / h_{0}\)</span>.</p>
+<p><strong>Parameter Functional Dependence</strong></p>
+<div class="math notranslate nohighlight">
+\[
+S = - \Omega = - \Omega_{o} \frac{R_o}{r} 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\alpha = \alpha_{o} \frac{R_o}{r}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+D = - \alpha_{o} q \Omega \frac{h^3}{\eta_t^2}
+\]</div>
+<p>Here, q is defined as <span class="math notranslate nohighlight">\( - \frac{\partial ln \Omega}{\partial ln r} \)</span> and for flat rotation curve curve i.e <span class="math notranslate nohighlight">\(\Omega \propto \frac{1}{r}\)</span>, <span class="math notranslate nohighlight">\(q\)</span> is found to be 1. Thus finally, the Dynamo number is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+D = - \alpha_{o} \Omega_{0} \frac{h^3}{\eta_t^2} \frac{R_o^2}{r^2}
+\]</div>
+<section id="setting-up-the-simulation">
+<h2>Setting up the Simulation<a class="headerlink" href="#setting-up-the-simulation" title="Link to this heading">#</a></h2>
+<p>For the purpose of simulation, we will essentially treat all the parameters as constants and obtain the local solution to the dynamo problem. We expect that for <span class="math notranslate nohighlight">\(|D| &gt; |D_c|\)</span>, i.e., the critical dynamo number, we will obtain exponentially increasing solutions. The key idea here is to find <span class="math notranslate nohighlight">\(B_r\)</span> and <span class="math notranslate nohighlight">\(B_\phi\)</span> for all times, and for the parameters where we first observe increasing solutions, we determine our critical dynamo number. Additionally, we identify the radial positions on the discs where this possibility occurs.</p>
+</section>
+<section id="boundary-conditions">
+<h2>Boundary conditions<a class="headerlink" href="#boundary-conditions" title="Link to this heading">#</a></h2>
+<p>At the disc surface <span class="math notranslate nohighlight">\(z = \pm h\)</span>, where <span class="math notranslate nohighlight">\(h\)</span> is the half-thickness of the disc, we assume electromagnetic vacuum outside the disc, denoted by <span class="math notranslate nohighlight">\(\eta_t \rightarrow \infty\)</span> at <span class="math notranslate nohighlight">\(|z| &gt; h\)</span>. Consequently, mean electric currents vanish outside the disc, implying <span class="math notranslate nohighlight">\(\nabla \times \overline{\boldsymbol{B}} = 0\)</span> for <span class="math notranslate nohighlight">\(|z| &gt; h\)</span>. As a result, the large-scale magnetic field around the disc is potential, represented by <span class="math notranslate nohighlight">\(\bar{B} = \nabla \Phi(\boldsymbol{r})\)</span>. In an axially symmetric system, <span class="math notranslate nohighlight">\(\Phi\)</span> must be independent of <span class="math notranslate nohighlight">\(\phi\)</span>, leading to <span class="math notranslate nohighlight">\(\bar{B}_{\phi} = 0\)</span> and <span class="math notranslate nohighlight">\(\bar{B}_{r} = \partial \Phi / \partial r\)</span> for <span class="math notranslate nohighlight">\(|z| &gt; h\)</span>. Neglecting derivatives of <span class="math notranslate nohighlight">\(\Phi\)</span> with respect to <span class="math notranslate nohighlight">\(r\)</span>, we find <span class="math notranslate nohighlight">\(\bar{B}_{r} = 0\)</span> for <span class="math notranslate nohighlight">\(|z| &gt; h\)</span>.</p>
+<p>The boundary conditions at <span class="math notranslate nohighlight">\(|z| = h\)</span> are derived from matching the magnetic field inside the disc to the outer solution. Assuming no electric current sheets, <span class="math notranslate nohighlight">\(\bar{B}_{r}\)</span> and <span class="math notranslate nohighlight">\(\bar{B}_{\phi}\)</span> must be continuous at <span class="math notranslate nohighlight">\(|z| = h\)</span>, leading to the boundary conditions:</p>
+<p>[</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\bar{B}_{\phi} &amp;= 0, \\
+\bar{B}_{r} &amp;\approx 0 \quad \text{at} \quad z = \pm h.
+\end{align*}\]</div>
+<p>]</p>
+<p>These boundary conditions are exact for the first condition due to axial symmetry and the potential structure of the outer magnetic field. The second condition is approximate and becomes more accurate as the disc becomes thinner. These boundary conditions are known as the vacuum boundary conditions.</p>
+<p>The local dynamo equations in <span class="math notranslate nohighlight">\(z\)</span> take the form:</p>
+<p>[</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\gamma \mathcal{B}_{r} &amp;= -\frac{\partial}{\partial z}\left(\alpha \mathcal{B}_{\phi}\right) + \frac{\partial^{2} \mathcal{B}_{r}}{\partial z^{2}}, \\
+\gamma \mathcal{B}_{\phi} &amp;= D_{\mathrm{L}} \mathcal{B}_{r} + \frac{\partial^{2} \mathcal{B}_{\phi}}{\partial z^{2}},
+\end{align*}\]</div>
+<p>]</p>
+<p>with the boundary conditions:</p>
+<p>[</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\mathcal{B}_{r}(\pm 1) &amp;= \mathcal{B}_{\phi}(\pm 1) = 0,
+\end{align*}\]</div>
+<p>]</p>
+<p>where <span class="math notranslate nohighlight">\(h = 1\)</span> is the dimensionless local half-thickness of the disc, and both <span class="math notranslate nohighlight">\(h(r)\)</span> and <span class="math notranslate nohighlight">\(S(r)\)</span> are absorbed into the local dynamo number <span class="math notranslate nohighlight">\(D_{\mathrm{L}}\)</span>, a function of <span class="math notranslate nohighlight">\(r\)</span> (and possibly <span class="math notranslate nohighlight">\(\phi\)</span>).</p>
+<p>This formulation represents a one-dimensional boundary value problem in <span class="math notranslate nohighlight">\(z\)</span> with the eigenvalue <span class="math notranslate nohighlight">\(\gamma\)</span> and eigenfunction <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>, which depend parametrically on <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span> when <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(D_{\mathrm{L}}\)</span> depend on these variables.</p>
+<section id="eigenmodes-with-boundary-condtions">
+<h3>Eigenmodes with Boundary Condtions<a class="headerlink" href="#eigenmodes-with-boundary-condtions" title="Link to this heading">#</a></h3>
+<p>We are dealing with coupled second-order ordinary differential equations (PDEs) with “constant” coefficients. We will recycle the general solution for diffusion equation i.e linear combination of sine and cosine functions due to the homogeneity and isotropy of the problem. Thus, the general form of <span class="math notranslate nohighlight">\(B_r\)</span> and <span class="math notranslate nohighlight">\(B_\phi\)</span> would be:</p>
+<div class="math notranslate nohighlight">
+\[
+B_r(z) = A_r \cos(\sqrt{\gamma} \tilde{z}) + B_r \sin(\sqrt{\gamma} \tilde{z})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \tilde{z})
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(A_r\)</span>, <span class="math notranslate nohighlight">\(B_r\)</span>, <span class="math notranslate nohighlight">\(A_\phi\)</span>, and <span class="math notranslate nohighlight">\(B_\phi\)</span> are constants to be determined based on initial or boundary conditions.</p>
+<p>The parameter <span class="math notranslate nohighlight">\(\gamma\)</span> determines the decay rate of the magnetic field in time. Its value depends on the physical properties of the system and the boundary conditions.</p>
+<ol class="arabic simple">
+<li><p><strong>Vacuum Boundary condtion</strong>:</p></li>
+</ol>
+<p>For this boundary condition the analytical solution will be the following:</p>
+<div class="math notranslate nohighlight">
+\[B_r(z) = B_r cos((m + \frac{1}{2})\pi z)\]</div>
+<div class="math notranslate nohighlight">
+\[B_{\phi}(z) = B_{\phi} cos((n + \frac{1}{2})\pi z)\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Neumann Boundary condtion</strong>:</p></li>
+</ol>
+<p>For this boundary condition where at boundary the spatial derivative is <span class="math notranslate nohighlight">\(0\)</span>, then the analytical solution will be the following:</p>
+<div class="math notranslate nohighlight">
+\[B_r(z) = B_r sin((m)\pi z)\]</div>
+<div class="math notranslate nohighlight">
+\[B_{\phi}(z) = B_{\phi} cos((n)\pi z)\]</div>
+</section>
+</section>
+</section>
+<section id="results">
+<h1>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h1>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Alpha_Omega_Dynamos"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Galactic Dynamo Diffusion Equation using Crank Nicholson with Ghost Zones</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="z_approximation/Alpha_Omega_Dynamo_Neumann.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Galactic Dynamo Diffusion Equation using Crank Nicholson with Ghost Zones</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-up-the-simulation">Setting up the Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#boundary-conditions">Boundary conditions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenmodes-with-boundary-condtions">Eigenmodes with Boundary Condtions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sagar Prakash Barad
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
