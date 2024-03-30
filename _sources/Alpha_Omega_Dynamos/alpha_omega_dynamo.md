@@ -1,3 +1,17 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 ## $\alpha \Omega$ Dynamo Simulation
 
 We adopt the simplest approximation to the mean field dynamo equations, considering it as a flat rotating thin disc. This implies that $\epsilon = \frac{h_o}{R_o} \ll 1$, allowing us to neglect all terms involving $\epsilon^2$ along with any radial derivatives associated with it. Under this approximation, we seek a local solution in $z$ for specific values of $\phi$ and $r$.
