@@ -363,13 +363,16 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Galactic Dynamo Diffusion Equation using Crank Nicholson with Ghost Zones</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#crank-nicolson-difference-method">Crank-Nicolson Difference method</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discete-grid">Discete Grid</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discete-grid">Discete Grid</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ghost-zones">Ghost Zones</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-and-boundary-conditions">Initial and Boundary Conditions</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neumann-boundary-conditions">Neumann Boundary Conditions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-initial-and-boundary-conditions">Discrete Initial and Boundary Conditions</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-implicit-crank-nicolson-difference-equation">The Implicit Crank-Nicolson Difference Equation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-representation">Matrix Representation</a></li>
 </ul>
 
             </nav>
@@ -388,21 +391,41 @@ document.write(`
 </section>
 <section id="crank-nicolson-difference-method">
 <h1>Crank-Nicolson Difference method<a class="headerlink" href="#crank-nicolson-difference-method" title="Link to this heading">#</a></h1>
-<p>The implicit Crank-Nicolson difference equation of the Heat Equation
-is derived by discretising the</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d462f60a-4bc7-4ac3-80e8-16c3b166be5e">
-<span class="eqno">()<a class="headerlink" href="#equation-d462f60a-4bc7-4ac3-80e8-16c3b166be5e" title="Permalink to this equation">#</a></span>\[\begin{equation}  \frac{\partial u_{ij+\frac{1}{2}}}{\partial t} = \frac{\partial^2 u_{ij+\frac{1}{2}}}{\partial x^2},\end{equation}\]</div>
-<p>around <span class="math notranslate nohighlight">\((x_i,t_{j+\frac{1}{2}})\)</span> giving the difference equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ef163940-508b-40d3-86be-4b578b9ab224">
-<span class="eqno">()<a class="headerlink" href="#equation-ef163940-508b-40d3-86be-4b578b9ab224" title="Permalink to this equation">#</a></span>\[\begin{equation}
-\frac{w_{ij+1}-w_{ij}}{k}=\frac{1}{2}\left(\frac{w_{i+1j+1}-2w_{ij+1}+w_{i-1j+1}}{h^2}+\frac{w_{i+1j}-2w_{ij}+w_{i-1j}}{h^2}\right).
-\end{equation}\]</div>
-<p>Rearranging give the difference equation</p>
-<div class="amsmath math notranslate nohighlight" id="equation-2740f5fa-4ba0-4eba-9fcd-ac97786e0631">
-<span class="eqno">()<a class="headerlink" href="#equation-2740f5fa-4ba0-4eba-9fcd-ac97786e0631" title="Permalink to this equation">#</a></span>\[\begin{equation}
--rw_{i-1j+1}+(2+2r)w_{ij+1}-rw_{i+1j+1}=rw_{i-1j}+(2-2r)w_{ij}+rw_{i+1j}
-\end{equation}\]</div>
-<p>for <span class="math notranslate nohighlight">\(i=1,...N-1\)</span> where <span class="math notranslate nohighlight">\(r=\frac{k}{h^2}\)</span>.</p>
+<p>The implicit Crank-Nicolson difference equation of the Dynamo equation
+is derived by discretising the following coupled equations</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \bar{B}_r}{\partial t} = \eta_t\frac{\partial^2 \bar{B}_r}{\partial z^2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \bar{B}_\phi}{\partial t} = \eta_t \frac{\partial^2 \bar{B}_\phi}{\partial z^2} 
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\eta_t\)</span> is currently constant parameter called the magnetic diffusivity.</p>
+<p><strong>Discretization Scheme</strong></p>
+<ol class="arabic">
+<li><p><strong>Spatial Discretization</strong>:</p>
+<p>We divide the spatial domain  <span class="math notranslate nohighlight">\(z\)</span> into <span class="math notranslate nohighlight">\(N\)</span> grid points. Let <span class="math notranslate nohighlight">\(h\)</span> denote the spacing between consecutive grid points.</p>
+</li>
+<li><p><strong>Time Discretization</strong>:</p>
+<p>We discretize the time domain <span class="math notranslate nohighlight">\(t\)</span> into time steps of size <span class="math notranslate nohighlight">\(k\)</span>.</p>
+</li>
+<li><p><strong>Discretized Equations</strong>:</p>
+<p>Using finite difference approximations, we discretize the time derivatives and the second-order spatial derivatives in the given PDEs.</p>
+<p>Let <span class="math notranslate nohighlight">\(B_i\)</span> represent <span class="math notranslate nohighlight">\(B_r\)</span> and <span class="math notranslate nohighlight">\(B_\phi\)</span> for <span class="math notranslate nohighlight">\(i = 1, 2, \ldots, N\)</span>.</p>
+<p>The discretized equations for <span class="math notranslate nohighlight">\(B_i\)</span> and <span class="math notranslate nohighlight">\(B_{N+i}\)</span> are:</p>
+<ul class="simple">
+<li><p>For <span class="math notranslate nohighlight">\(B_r\)</span>:
+$<span class="math notranslate nohighlight">\(
+\frac{B_i^{j+1} - B_i^{j}}{k} = \eta_t \frac{1}{2} \left( \frac{B_{i-1}^{j+1} - 2B_{i}^{j+1} + B_{i+1}^{j+1} + B_{i-1}^{j} - 2B_{i}^{j} + B_{i+1}^{j}}{h^2} \right)
+\)</span>$</p></li>
+<li><p>For <span class="math notranslate nohighlight">\(B_\phi\)</span>:
+$<span class="math notranslate nohighlight">\(
+\frac{B_{N+i}^{j+1} - B_{N+i}^{j}}{k} = \eta_t \frac{1}{2} \left( \frac{B_{N+i-1}^{j+1} - 2B_{N+i}^{j+1} + B_{N+i+1}^{j+1} + B_{N+i-1}^{j} - 2B_{N+i}^{j} + B_{N+i+1}^{j}}{h^2} \right)
+\)</span>$</p></li>
+</ul>
+</li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># LIBRARY</span>
@@ -432,27 +455,21 @@ is derived by discretising the</p>
 </section>
 <section id="discete-grid">
 <h1>Discete Grid<a class="headerlink" href="#discete-grid" title="Link to this heading">#</a></h1>
-<p>The region <span class="math notranslate nohighlight">\(\Omega\)</span> is discretized into a uniform mesh <span class="math notranslate nohighlight">\(\Omega_h\)</span>. In the spatial direction (<span class="math notranslate nohighlight">\(x\)</span>), it is divided into <span class="math notranslate nohighlight">\(N\)</span> steps, yielding a step size of:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-8bc3ee90-a6d4-4418-a9f0-ac247b214639">
-<span class="eqno">()<a class="headerlink" href="#equation-8bc3ee90-a6d4-4418-a9f0-ac247b214639" title="Permalink to this equation">#</a></span>\[\begin{equation}
-h=\frac{1-0}{N},
-\end{equation}\]</div>
-<p>resulting in discrete spatial points:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-ff0b0f17-2d7e-401d-a1ff-72540bd70097">
-<span class="eqno">()<a class="headerlink" href="#equation-ff0b0f17-2d7e-401d-a1ff-72540bd70097" title="Permalink to this equation">#</a></span>\[\begin{equation}
-x[i]=0+ih, \quad i=0,1,...,N.
-\end{equation}\]</div>
-<p>In the temporal direction (<span class="math notranslate nohighlight">\(t\)</span>), it is divided into <span class="math notranslate nohighlight">\(N_t\)</span> steps, giving a step size of:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c8b0194f-b763-432c-9d05-357ad30bcc23">
-<span class="eqno">()<a class="headerlink" href="#equation-c8b0194f-b763-432c-9d05-357ad30bcc23" title="Permalink to this equation">#</a></span>\[\begin{equation}
-k=\frac{1-0}{N_t},
-\end{equation}\]</div>
-<p>resulting in discrete temporal points:</p>
-<div class="amsmath math notranslate nohighlight" id="equation-f11074c5-1453-4f1d-8665-853a1405199c">
-<span class="eqno">()<a class="headerlink" href="#equation-f11074c5-1453-4f1d-8665-853a1405199c" title="Permalink to this equation">#</a></span>\[\begin{equation}
-t[i]=0+ik, \quad k=0,...,K.
-\end{equation}\]</div>
-<p>In this discretization scheme, the red dots represent unknown values, the green dots denote known boundary conditions, and the blue dots indicate known initial conditions of the Heat Equation. Additionally, ghost zones are included at the first and last indices. These ghost zones are crucial for defining derivatives at the boundary.</p>
+<p>The region <span class="math notranslate nohighlight">\(\Omega\)</span> is discretised into a uniform mesh <span class="math notranslate nohighlight">\(\Omega_h\)</span>. In the space <span class="math notranslate nohighlight">\(x\)</span> direction into <span class="math notranslate nohighlight">\(N\)</span> steps giving a stepsize of</p>
+<div class="math notranslate nohighlight">
+\[ h=\frac{1-0}{N} \]</div>
+<p>resulting in</p>
+<div class="math notranslate nohighlight">
+\[ x[i]=0+ih, \ \ \  i=0,1,...,N, \]</div>
+<p>and into <span class="math notranslate nohighlight">\(N_t\)</span> steps in the time <span class="math notranslate nohighlight">\(t\)</span> direction giving a stepsize of</p>
+<div class="math notranslate nohighlight">
+\[ k=\frac{1-0}{N_t} \]</div>
+<p>resulting in</p>
+<div class="math notranslate nohighlight">
+\[ t[i]=0+ik, \ \ \ k=0,...,K.\]</div>
+<p>The Figure below shows the discrete grid points for <span class="math notranslate nohighlight">\(N=20\)</span> and <span class="math notranslate nohighlight">\(N_t=400\)</span> , the red dots are the unknown values, the green dots are the known boundary conditions and the blue dots are the known initial conditions of the diffusion Equation. In this discretization scheme, the red dots represent unknown values, the green dots denote known boundary conditions, and the blue dots indicate known initial conditions of the Heat Equation. Additionally, ghost zones are included at the first and last indices. These ghost zones are crucial for defining derivatives at the boundary.</p>
+<section id="ghost-zones">
+<h2>Ghost Zones<a class="headerlink" href="#ghost-zones" title="Link to this heading">#</a></h2>
 <p>Ghost zones are introduced to extend the computational domain slightly beyond the physical domain. They essentially serve as buffer zones at the boundaries, enabling the application of boundary conditions and accurate computation of derivatives.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -496,6 +513,7 @@ t[i]=0+ik, \quad k=0,...,K.
 <img alt="../../_images/ab6f439cbd82a0b3e89dbc008d7104e7465cd5e6302f5ddee5231a2024425367.png" src="../../_images/ab6f439cbd82a0b3e89dbc008d7104e7465cd5e6302f5ddee5231a2024425367.png" />
 </div>
 </div>
+</section>
 </section>
 <section id="initial-and-boundary-conditions">
 <h1>Initial and Boundary Conditions<a class="headerlink" href="#initial-and-boundary-conditions" title="Link to this heading">#</a></h1>
@@ -585,53 +603,54 @@ t[i]=0+ik, \quad k=0,...,K.
 </div>
 </section>
 </section>
-<section id="the-implicit-crank-nicolson-difference-equation">
-<h1>The Implicit Crank-Nicolson Difference Equation<a class="headerlink" href="#the-implicit-crank-nicolson-difference-equation" title="Link to this heading">#</a></h1>
-<p>The implicit Crank-Nicolson difference equation of the Diffusion Equation is given by:</p>
+<section id="matrix-representation">
+<h1>Matrix Representation<a class="headerlink" href="#matrix-representation" title="Link to this heading">#</a></h1>
+<p>The discretized equations form a system of linear equations at each time step, which can be represented in matrix form <span class="math notranslate nohighlight">\(A \mathbf{x} = \mathbf{b}\)</span>, where <span class="math notranslate nohighlight">\(A\)</span> is the coefficient matrix, <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is the vector of unknowns at time <span class="math notranslate nohighlight">\(j+1\)</span>, and <span class="math notranslate nohighlight">\(\mathbf{b}\)</span> is the vector containing terms at time <span class="math notranslate nohighlight">\(j\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[
 \frac{U_{i,j+1}-U_{i,j}}{k} =  \frac{1}{2}\left(\frac{U_{i+1j+1}-2U_{ij+1}+U_{i-1j+1}}{h^2}+\frac{U_{i+1j}-2U_{ij}+U_{i-1j}}{h^2}\right)
 \]</div>
-<p>Rearranging the equation, we get:</p>
+<p>We could redefine a few parameters for the ease of this matrix representation. They are the following:</p>
+<div class="math notranslate nohighlight">
+\[ \alpha = \frac{k}{2 h^2} \]</div>
+<p>After rearranging <span class="math notranslate nohighlight">\(j + 1\)</span> terms on one side and <span class="math notranslate nohighlight">\(j\)</span> terms on the other side of the equation, we get the following sets of linear equations:</p>
 <div class="math notranslate nohighlight">
 \[
 -\alpha U_{i-1j+1} + ( 2 + 2\alpha)U_{ij+1} - \alpha U_{i+1j+1} = \alpha U_{i-1j} + (2-2\alpha)U_{ij} + \alpha U_{i+1j}
 \]</div>
-<p>for <span class="math notranslate nohighlight">\((i = 1, \ldots, N-1)\)</span>, where <span class="math notranslate nohighlight">\((\alpha = \frac{k}{h^2})\)</span> and <span class="math notranslate nohighlight">\(N\)</span> is the grid size.</p>
-<p>This can be written in matrix form as:</p>
 <div class="math notranslate nohighlight">
 \[
-(I/2 + \alpha B)\mathbf{U}_{j} = (I/2 - \alpha B)\mathbf{U}_{j-1} +\mathbf{b}_{j}+\mathbf{b}_{j+1} 
+T\mathbf{U}_{j} = S\mathbf{U}_{j-1} +\mathbf{b}_{j}+\mathbf{b}_{j+1} 
 \]</div>
-<p>for which <span class="math notranslate nohighlight">\(A\)</span> is a <span class="math notranslate nohighlight">\(N-2 \times N-2\)</span> matrix:</p>
+<p>for which <span class="math notranslate nohighlight">\(T\)</span> is a <span class="math notranslate nohighlight">\(N \times N\)</span> matrix:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-(2I + \alpha B) = \begin{pmatrix}
-2+2\alpha &amp; -\alpha &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
--\alpha &amp; 2+2\alpha &amp; -\alpha &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; -\alpha &amp; 2+2\alpha &amp; -\alpha &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; -\alpha &amp; 2+2\alpha &amp; -\alpha &amp; 0 &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; -\alpha &amp; 2+2\alpha &amp; -\alpha &amp; 0 &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; -\alpha &amp; 2+2\alpha &amp; -\alpha &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; -\alpha &amp; 2+2\alpha &amp; -\alpha \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; -\alpha &amp; 2+2\alpha \\
+S = \begin{pmatrix}
+1  + \alpha &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 2+2\alpha &amp; -\alpha &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; -\alpha &amp; 2 + 2\alpha &amp; -\alpha &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; -\alpha &amp; 2 + 2\alpha &amp; -\alpha &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; -\alpha &amp; 2 + 2\alpha &amp; -\alpha &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; -\alpha &amp; 2 + 2\alpha &amp; -\alpha &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; -\alpha &amp; 2 + 2\alpha &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 + \alpha \\
 \end{pmatrix}
 \end{split}\]</div>
-<p><span class="math notranslate nohighlight">\(B\)</span> is another <span class="math notranslate nohighlight">\(N-2 \times N-2\)</span> matrix:</p>
+<p><span class="math notranslate nohighlight">\(S\)</span> is another <span class="math notranslate nohighlight">\(N \times N\)</span> matrix:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
-(2I - \alpha B) = \begin{pmatrix}
-2-2\alpha &amp; \alpha &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
-\alpha &amp; 2-2\alpha &amp; \alpha &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+S = \begin{pmatrix}
+1  - \alpha &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
+0 &amp; 2-2\alpha &amp; \alpha &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 0 &amp; \alpha &amp; 2-2\alpha &amp; \alpha &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\
 0 &amp; 0 &amp; \alpha &amp; 2-2\alpha &amp; \alpha &amp; 0 &amp; 0 &amp; 0 \\
 0 &amp; 0 &amp; 0 &amp; \alpha &amp; 2-2\alpha &amp; \alpha &amp; 0 &amp; 0 \\
 0 &amp; 0 &amp; 0 &amp; 0 &amp; \alpha &amp; 2-2\alpha &amp; \alpha &amp; 0 \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \alpha &amp; 2-2\alpha &amp; \alpha \\
-0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \alpha &amp; 2-2\alpha \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; \alpha &amp; 2-2\alpha &amp; 0 \\
+0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 0 &amp; 1 -  \alpha \\
 \end{pmatrix}
 \end{split}\]</div>
-<p><span class="math notranslate nohighlight">\(\mathbf{V}_j\)</span> is a column vector of size 9 containing <span class="math notranslate nohighlight">\(V_{ij}\)</span> values, <span class="math notranslate nohighlight">\(\mathbf{b}_j\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}_{j+1}\)</span> are column vectors of size 9 representing the boundary conditions for the current and next time steps, respectively.</p>
+<p><span class="math notranslate nohighlight">\(\mathbf{U}_j\)</span> is a column vector of size N-2 containing <span class="math notranslate nohighlight">\(U_{ij}\)</span> values, <span class="math notranslate nohighlight">\(\mathbf{b}_j\)</span> and <span class="math notranslate nohighlight">\(\mathbf{b}_{j+1}\)</span> are column vectors of size <span class="math notranslate nohighlight">\(N\)</span> representing the boundary conditions for the current and next time steps, respectively.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#  A and B</span>
@@ -641,8 +660,8 @@ t[i]=0+ik, \quad k=0,...,K.
     <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">i</span> <span class="o">==</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
         <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">r</span>
         <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">r</span>
-    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">r</span>
-    <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">r</span>
+    <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">r</span>
+    <span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">r</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">:</span>
         <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">r</span>
         <span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">r</span>
@@ -671,7 +690,7 @@ t[i]=0+ik, \quad k=0,...,K.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e81398cb345b120acea0965b560cd3064fb16c6432d8849a2d78f0f6e8a8e6c3.png" src="../../_images/e81398cb345b120acea0965b560cd3064fb16c6432d8849a2d78f0f6e8a8e6c3.png" />
+<img alt="../../_images/42ec28ed0371531392a0567eabf6f56acc2aba14e88a92d08dff08863fd588b8.png" src="../../_images/42ec28ed0371531392a0567eabf6f56acc2aba14e88a92d08dff08863fd588b8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -716,7 +735,7 @@ t[i]=0+ik, \quad k=0,...,K.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/a9ba2cee86ddaceacad299c5eeced91abfbb8e5bacaddd440aa0e6403c01dc4f.png" src="../../_images/a9ba2cee86ddaceacad299c5eeced91abfbb8e5bacaddd440aa0e6403c01dc4f.png" />
+<img alt="../../_images/5ab4b4000e881787d115a6716dfd5532e51048674771b0a0dcdb502a6bee2b78.png" src="../../_images/5ab4b4000e881787d115a6716dfd5532e51048674771b0a0dcdb502a6bee2b78.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -772,18 +791,21 @@ t[i]=0+ik, \quad k=0,...,K.
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/1a18f97a1c6b76a7a1fa694a18f056ac7e7ca9949873b08162bd07d2da37e35c.png" src="../../_images/1a18f97a1c6b76a7a1fa694a18f056ac7e7ca9949873b08162bd07d2da37e35c.png" />
+<img alt="../../_images/0e28a9ff79a09e82555f7163c7abab26247580f9bc46c5a152908cfb6ee2f759.png" src="../../_images/0e28a9ff79a09e82555f7163c7abab26247580f9bc46c5a152908cfb6ee2f759.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_Br</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Br</span><span class="p">[</span><span class="mi">12</span><span class="p">][</span><span class="mi">4</span><span class="p">:</span><span class="mi">50</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">log_Br</span><span class="p">)</span>
-<span class="n">log_Bphi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Bphi</span><span class="p">[</span><span class="mi">12</span><span class="p">][</span><span class="mi">4</span><span class="p">:</span><span class="mi">50</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">log_Bphi</span><span class="p">)</span>
-
-<span class="n">slope_Br</span><span class="p">,</span> <span class="n">intercept_Br</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">50</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">slope_Bphi</span><span class="p">,</span> <span class="n">intercept_Bphi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">50</span><span class="p">],</span> <span class="n">log_Bphi</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_Br</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Br</span><span class="p">[</span><span class="mi">2</span><span class="p">][:</span><span class="mi">10</span><span class="p">]))</span>
+<span class="n">log_Bphi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Bphi</span><span class="p">[</span><span class="mi">2</span><span class="p">][:</span><span class="mi">10</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope_Br</span><span class="p">,</span> <span class="n">intercept_Br</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">slope_Bphi</span><span class="p">,</span> <span class="n">intercept_Bphi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">log_Bphi</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">actual_slope_Br</span> <span class="o">=</span> <span class="n">m</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>  
 <span class="n">actual_slope_Bphi</span> <span class="o">=</span> <span class="n">n</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
@@ -797,26 +819,8 @@ t[i]=0+ik, \quad k=0,...,K.
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[-3.79494951 -4.29255792 -4.00656525 -4.13968542 -4.17493062 -4.27592501
- -4.36287326 -4.4602448  -4.55418146 -4.64767613 -4.73834854 -4.82626585
- -4.91109275 -4.9927659  -5.07133513 -5.14687858 -5.21954134 -5.28948764
- -5.35689571 -5.42195895 -5.48486296 -5.54579889 -5.60494366 -5.66247127
- -5.71854065 -5.77330274 -5.82689442 -5.87944256 -5.93106151 -5.9818555
- -6.03191797 -6.08133314 -6.13017613 -6.17851412 -6.22640678 -6.27390718
- -6.32106231 -6.36791378 -6.41449834 -6.46084843 -6.50699264 -6.55295617
- -6.59876118 -6.64442716 -6.68997124 -6.73540847]
-[ -6.25891782  -6.03710356  -6.03528679  -6.12652445  -6.25359245
-  -6.40470174  -6.56746674  -6.73644728  -6.9097578   -7.0848302
-  -7.26138513  -7.4385555   -7.61615967  -7.79402886  -7.97199431
-  -8.15008394  -8.328182    -8.50633617  -8.68448528  -8.86265657
-  -9.04082561  -9.21900096  -9.39717754  -9.57535392  -9.75353303
-  -9.93170991 -10.10988963 -10.28806695 -10.46624661 -10.64442433
- -10.82260374 -11.00078178 -11.17896096 -11.35713922 -11.53531823
- -11.71349665 -11.89167553 -12.06985406 -12.24803286 -12.42621145
- -12.6043902  -12.78256882 -12.96074755 -13.1389262  -13.3171049
- -13.49528356]
-Br: Actual Slope = 15.707963267948966, Computed Slope = 3.52764853536726, Difference = -12.180314732581706
-Bphi: Actual Slope = 9.42477796076938, Computed Slope = 5.897360368731764, Difference = -3.527417592037615
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Br: Actual Slope = 15.707963267948966, Computed Slope = 8.080820552537169, Difference = -7.627142715411797
+Bphi: Actual Slope = 9.42477796076938, Computed Slope = 7.097108270362105, Difference = -2.3276696904072747
 </pre></div>
 </div>
 </div>
@@ -826,7 +830,7 @@ Bphi: Actual Slope = 9.42477796076938, Computed Slope = 5.897360368731764, Diffe
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">50</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;log Br (Calc. Slope: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Br</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Actual Slope: </span><span class="si">{</span><span class="n">actual_slope_Br</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Diff: </span><span class="si">{</span><span class="n">difference_Br</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">log_Br</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;log Br (Calc. Slope: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Br</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Actual Slope: </span><span class="si">{</span><span class="n">actual_slope_Br</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Diff: </span><span class="si">{</span><span class="n">difference_Br</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Log Br&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Log Br versus Time&#39;</span><span class="p">)</span>
@@ -834,7 +838,7 @@ Bphi: Actual Slope = 9.42477796076938, Computed Slope = 5.897360368731764, Diffe
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">50</span><span class="p">],</span> <span class="n">log_Bphi</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;log Bphi (Calc. Slope: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Bphi</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Actual Slope: </span><span class="si">{</span><span class="n">actual_slope_Bphi</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Diff: </span><span class="si">{</span><span class="n">difference_Bphi</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">log_Bphi</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;log Bphi (Calc. Slope: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Bphi</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Actual Slope: </span><span class="si">{</span><span class="n">actual_slope_Bphi</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Diff: </span><span class="si">{</span><span class="n">difference_Bphi</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Log Bphi&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Log Bphi versus Time&#39;</span><span class="p">)</span>
@@ -848,7 +852,53 @@ Bphi: Actual Slope = 9.42477796076938, Computed Slope = 5.897360368731764, Diffe
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6050088ac7868dad57d48336ee910de6c6c063115285ca59466c3d3603ba0581.png" src="../../_images/6050088ac7868dad57d48336ee910de6c6c063115285ca59466c3d3603ba0581.png" />
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">log_Br</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;log Br (Calc. Slope: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Br</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Actual Slope: </span><span class="si">{</span><span class="n">actual_slope_Br</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Diff: </span><span class="si">{</span><span class="n">difference_Br</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Log Br&#39;</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/matplotlib/pyplot.py:2812,</span> in <span class="ni">plot</span><span class="nt">(scalex, scaley, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2810</span> <span class="nd">@_copy_docstring_and_deprecators</span><span class="p">(</span><span class="n">Axes</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2811</span> <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">scalex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2812</span>     <span class="k">return</span> <span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2813</span>         <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">scalex</span><span class="o">=</span><span class="n">scalex</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="n">scaley</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2814</span>         <span class="o">**</span><span class="p">({</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">}</span> <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{}),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/matplotlib/axes/_axes.py:1688,</span> in <span class="ni">Axes.plot</span><span class="nt">(self, scalex, scaley, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1445</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1446</span><span class="sd"> Plot y versus x as lines and/or markers.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1447</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1685</span><span class="sd"> (``&#39;green&#39;``) or hex strings (``&#39;#008000&#39;``).</span>
+<span class="g g-Whitespace">   </span><span class="mi">1686</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1687</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">cbook</span><span class="o">.</span><span class="n">normalize_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">mlines</span><span class="o">.</span><span class="n">Line2D</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1688</span> <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_lines</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1689</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1690</span>     <span class="bp">self</span><span class="o">.</span><span class="n">add_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/matplotlib/axes/_base.py:311,</span> in <span class="ni">_process_plot_var_args.__call__</span><span class="nt">(self, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>     <span class="n">this</span> <span class="o">+=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plot_args</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span>     <span class="n">this</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">ambiguous_fmt_datakey</span><span class="o">=</span><span class="n">ambiguous_fmt_datakey</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/matplotlib/axes/_base.py:504,</span> in <span class="ni">_process_plot_var_args._plot_args</span><span class="nt">(self, tup, kwargs, return_kwargs, ambiguous_fmt_datakey)</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span>     <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">update_units</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+<span class="ne">--&gt; </span><span class="mi">504</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x and y must have same first dimension, but &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">505</span>                      <span class="sa">f</span><span class="s2">&quot;have shapes </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">506</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">507</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x and y can be no greater than 2D, but have &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">508</span>                      <span class="sa">f</span><span class="s2">&quot;shapes </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="ne">ValueError</span>: x and y must have same first dimension, but have shapes (51,) and (10,)
+</pre></div>
+</div>
+<img alt="../../_images/736083d4589666946d166abe2e4884652da85111dd96f8f841a6e826723ba84a.png" src="../../_images/736083d4589666946d166abe2e4884652da85111dd96f8f841a6e826723ba84a.png" />
 </div>
 </div>
 </section>
@@ -919,13 +969,16 @@ Bphi: Actual Slope = 9.42477796076938, Computed Slope = 5.897360368731764, Diffe
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Galactic Dynamo Diffusion Equation using Crank Nicholson with Ghost Zones</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#crank-nicolson-difference-method">Crank-Nicolson Difference method</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discete-grid">Discete Grid</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discete-grid">Discete Grid</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ghost-zones">Ghost Zones</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-and-boundary-conditions">Initial and Boundary Conditions</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neumann-boundary-conditions">Neumann Boundary Conditions</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-initial-and-boundary-conditions">Discrete Initial and Boundary Conditions</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-implicit-crank-nicolson-difference-equation">The Implicit Crank-Nicolson Difference Equation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#matrix-representation">Matrix Representation</a></li>
 </ul>
 
   </nav></div>
