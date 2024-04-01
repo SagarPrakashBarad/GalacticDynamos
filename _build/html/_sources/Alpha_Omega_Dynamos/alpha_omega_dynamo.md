@@ -1,3 +1,17 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.11.5
+kernelspec:
+  display_name: Python 3
+  language: python
+  name: python3
+---
+
 ## $\alpha \Omega$ Dynamo Simulation
 
 We adopt the simplest approximation to the mean field dynamo equations, considering it as a flat rotating thin disc. This implies that $\epsilon = \frac{h_o}{R_o} \ll 1$, allowing us to neglect all terms involving $\epsilon^2$ along with any radial derivatives associated with it. Under this approximation, we seek a local solution in $z$ for specific values of $\phi$ and $r$.
@@ -104,8 +118,53 @@ $$B_r(z) = B_r sin((m)\pi z)$$
 
 $$B_{\phi}(z) = B_{\phi} cos((n)\pi z)$$
 
-
-
 ## Results
 
+We have solved the dynamo equation in z with the original eigenmodes of diffusion equation as the initial condition. We have have generated $B_r^o$ and $B_\phi^o$ using $\text{seed} = 100$. 
 
+**Parameters for the simulation**
+| Parameter | Value |
+|-----------|-------|
+| $ R_o $   | 20    |
+| $ h_o $  | 1     |
+| $ \alpha_0 $ | 10 |
+| $ \Omega_0 $ | 10 |
+| $ \eta_t $ | 1    |
+| $ q $ | 1         |
+
+#### Initial Condition
+
+![init_condition](/Alpha_Omega_Dynamos/z_approximation/results/initial_conditions.png)
+
+We ran a routine to find the critical dynamo number $D_c$ where $D$ and other relevant parameters were varying with $r$. And we found that at $ r = 1.8094$, B values start increasing with time for all time indices.
+
+| Parameter       | Value          |
+|-----------------|----------------|
+| $ l $           | 0.9999        |
+| $ a $           | 2.7624         |
+| $ b $           | 0.4216        |
+| $ D_c $           | 1.5262        |
+
+Thus, critical dynamo number for the above system came out to be $D_c = 1.5262$.
+
+#### Simulation @ $|D| \gt |D_c|$ 
+
+![results](/Alpha_Omega_Dynamos/z_approximation/results/Br_Bphi_Norm_Pitch_evolution_above_critical_D.gif)
+
+*Variation of $B_r$, $B_\phi$, $B_\text{norm}$ and pitch angle $\theta$ with time.*
+
+
+![growth_rates](/Alpha_Omega_Dynamos/z_approximation/results/log_Br_Bphi_vs_time_above_critical_D.png)
+
+This plot shows that the magnetic field decays till $t = 0.04$ sec and then increases after that. Both rates approach the growth rate, suggesting a critical point in the system. The right side of $t=0.04$ secs suggest exponential growth in the system after that point.
+
+#### Simulation @ $|D| \lt |D_c|$ 
+
+![results](/Alpha_Omega_Dynamos/z_approximation/results/Br_Bphi_Norm_Pitch_evolution_below_critical_D.gif)
+
+*Variation of $B_r$, $B_\phi$, $B_\text{norm}$ and pitch angle $\theta$ with time.*
+
+
+![growth_rates](/Alpha_Omega_Dynamos/z_approximation/results/log_Br_Bphi_vs_time_below_critical_D.png)
+
+This plot shows that the magnetic field decays with slope/rate similar to provided with (de)growth rate.
