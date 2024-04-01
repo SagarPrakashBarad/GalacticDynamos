@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -63,6 +63,7 @@
     <link rel="icon" href="../_static/logo.jpg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="\(\alpha \Omega\) Dynamo Equation using Crank Nicholson without Ghost Zones" href="z_approximation/Alpha_Omega_Dynamo.html" />
     <link rel="prev" title="Galactic Dynamo Diffusion Equation using Crank Nicholson with Ghost Zones" href="../Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -424,29 +425,23 @@ D = - \alpha_{o} \Omega_{0} \frac{h^3}{\eta_t^2} \frac{R_o^2}{r^2}
 <h2>Boundary conditions<a class="headerlink" href="#boundary-conditions" title="Link to this heading">#</a></h2>
 <p>At the disc surface <span class="math notranslate nohighlight">\(z = \pm h\)</span>, where <span class="math notranslate nohighlight">\(h\)</span> is the half-thickness of the disc, we assume electromagnetic vacuum outside the disc, denoted by <span class="math notranslate nohighlight">\(\eta_t \rightarrow \infty\)</span> at <span class="math notranslate nohighlight">\(|z| &gt; h\)</span>. Consequently, mean electric currents vanish outside the disc, implying <span class="math notranslate nohighlight">\(\nabla \times \overline{\boldsymbol{B}} = 0\)</span> for <span class="math notranslate nohighlight">\(|z| &gt; h\)</span>. As a result, the large-scale magnetic field around the disc is potential, represented by <span class="math notranslate nohighlight">\(\bar{B} = \nabla \Phi(\boldsymbol{r})\)</span>. In an axially symmetric system, <span class="math notranslate nohighlight">\(\Phi\)</span> must be independent of <span class="math notranslate nohighlight">\(\phi\)</span>, leading to <span class="math notranslate nohighlight">\(\bar{B}_{\phi} = 0\)</span> and <span class="math notranslate nohighlight">\(\bar{B}_{r} = \partial \Phi / \partial r\)</span> for <span class="math notranslate nohighlight">\(|z| &gt; h\)</span>. Neglecting derivatives of <span class="math notranslate nohighlight">\(\Phi\)</span> with respect to <span class="math notranslate nohighlight">\(r\)</span>, we find <span class="math notranslate nohighlight">\(\bar{B}_{r} = 0\)</span> for <span class="math notranslate nohighlight">\(|z| &gt; h\)</span>.</p>
 <p>The boundary conditions at <span class="math notranslate nohighlight">\(|z| = h\)</span> are derived from matching the magnetic field inside the disc to the outer solution. Assuming no electric current sheets, <span class="math notranslate nohighlight">\(\bar{B}_{r}\)</span> and <span class="math notranslate nohighlight">\(\bar{B}_{\phi}\)</span> must be continuous at <span class="math notranslate nohighlight">\(|z| = h\)</span>, leading to the boundary conditions:</p>
-<p>[</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \bar{B}_{\phi} &amp;= 0, \\
 \bar{B}_{r} &amp;\approx 0 \quad \text{at} \quad z = \pm h.
 \end{align*}\]</div>
-<p>]</p>
 <p>These boundary conditions are exact for the first condition due to axial symmetry and the potential structure of the outer magnetic field. The second condition is approximate and becomes more accurate as the disc becomes thinner. These boundary conditions are known as the vacuum boundary conditions.</p>
 <p>The local dynamo equations in <span class="math notranslate nohighlight">\(z\)</span> take the form:</p>
-<p>[</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \gamma \mathcal{B}_{r} &amp;= -\frac{\partial}{\partial z}\left(\alpha \mathcal{B}_{\phi}\right) + \frac{\partial^{2} \mathcal{B}_{r}}{\partial z^{2}}, \\
 \gamma \mathcal{B}_{\phi} &amp;= D_{\mathrm{L}} \mathcal{B}_{r} + \frac{\partial^{2} \mathcal{B}_{\phi}}{\partial z^{2}},
 \end{align*}\]</div>
-<p>]</p>
 <p>with the boundary conditions:</p>
-<p>[</p>
 <div class="amsmath math notranslate nohighlight">
 \[\begin{align*}
 \mathcal{B}_{r}(\pm 1) &amp;= \mathcal{B}_{\phi}(\pm 1) = 0,
 \end{align*}\]</div>
-<p>]</p>
 <p>where <span class="math notranslate nohighlight">\(h = 1\)</span> is the dimensionless local half-thickness of the disc, and both <span class="math notranslate nohighlight">\(h(r)\)</span> and <span class="math notranslate nohighlight">\(S(r)\)</span> are absorbed into the local dynamo number <span class="math notranslate nohighlight">\(D_{\mathrm{L}}\)</span>, a function of <span class="math notranslate nohighlight">\(r\)</span> (and possibly <span class="math notranslate nohighlight">\(\phi\)</span>).</p>
 <p>This formulation represents a one-dimensional boundary value problem in <span class="math notranslate nohighlight">\(z\)</span> with the eigenvalue <span class="math notranslate nohighlight">\(\gamma\)</span> and eigenfunction <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>, which depend parametrically on <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(\phi\)</span> when <span class="math notranslate nohighlight">\(\alpha\)</span> and <span class="math notranslate nohighlight">\(D_{\mathrm{L}}\)</span> depend on these variables.</p>
 <section id="eigenmodes-with-boundary-condtions">
@@ -593,6 +588,15 @@ B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \ti
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title">Galactic Dynamo Diffusion Equation using Crank Nicholson with Ghost Zones</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="z_approximation/Alpha_Omega_Dynamo.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation using Crank Nicholson without Ghost Zones</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

@@ -9,7 +9,7 @@ parts:
   - caption: Alpha Omega Dynamos
     chapters:  
     - file: Alpha_Omega_Dynamos/alpha_omega_dynamo
-    - file: Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo_Dirichlet
+    - file: Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo
 
   
 

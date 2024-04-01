@@ -56,31 +56,31 @@ At the disc surface $z = \pm h$, where $h$ is the half-thickness of the disc, we
 
 The boundary conditions at $|z| = h$ are derived from matching the magnetic field inside the disc to the outer solution. Assuming no electric current sheets, $\bar{B}_{r}$ and $\bar{B}_{\phi}$ must be continuous at $|z| = h$, leading to the boundary conditions:
 
-\[
+
 \begin{align*}
 \bar{B}_{\phi} &= 0, \\
 \bar{B}_{r} &\approx 0 \quad \text{at} \quad z = \pm h.
 \end{align*}
-\]
+
 
 These boundary conditions are exact for the first condition due to axial symmetry and the potential structure of the outer magnetic field. The second condition is approximate and becomes more accurate as the disc becomes thinner. These boundary conditions are known as the vacuum boundary conditions.
 
 The local dynamo equations in $z$ take the form:
 
-\[
+
 \begin{align*}
 \gamma \mathcal{B}_{r} &= -\frac{\partial}{\partial z}\left(\alpha \mathcal{B}_{\phi}\right) + \frac{\partial^{2} \mathcal{B}_{r}}{\partial z^{2}}, \\
 \gamma \mathcal{B}_{\phi} &= D_{\mathrm{L}} \mathcal{B}_{r} + \frac{\partial^{2} \mathcal{B}_{\phi}}{\partial z^{2}},
 \end{align*}
-\]
+
 
 with the boundary conditions:
 
-\[
+
 \begin{align*}
 \mathcal{B}_{r}(\pm 1) &= \mathcal{B}_{\phi}(\pm 1) = 0,
 \end{align*}
-\]
+
 
 where $h = 1$ is the dimensionless local half-thickness of the disc, and both $h(r)$ and $S(r)$ are absorbed into the local dynamo number $D_{\mathrm{L}}$, a function of $r$ (and possibly $\phi$).
 

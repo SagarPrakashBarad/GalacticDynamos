@@ -18,8 +18,7 @@
 
    - Setting up the Dynamo Equation [setup](/Alpha_Omega_Dynamos/alpha_omega_dynamo.md)
 
-   - Solving Dynamo Equation using Crank Nicholson Dirchilet Boundary Condition [simulation](/Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo_Dirchilet.ipynb)
-   - Solving Dynamo Equation using Crank Nicholson Neumann Boundary Condition [simulation](/Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo_Neumann.ipynb)
+   - Solving Dynamo Equation using Crank Nicholson Dirchilet Boundary Condition [simulation](/Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo.ipynb)
 
 
 ## References
