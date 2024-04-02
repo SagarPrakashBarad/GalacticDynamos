@@ -711,7 +711,9 @@ T \mathbf{B}_{j+1} = S \mathbf{B}_{j} + \mathbf{b}_{j} + \mathbf{b}_{j+1}
             <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">l</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span>
             <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
-            <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> 
+            <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span>
+            <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
             <span class="n">S</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span>
             <span class="n">T</span><span class="p">[</span><span class="n">N</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>
 
@@ -764,8 +766,8 @@ T \mathbf{B}_{j+1} = S \mathbf{B}_{j} + \mathbf{b}_{j} + \mathbf{b}_{j+1}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At r = 6.935326633165829, B values start increasing with time for all time indices.
-Linear Parameters: l = 0.9999999999999998, a = 0.7209465774963228, b = 0.007494441070995389, D = -0.10395279352073232
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At r = 1.5084623115577886, B values start increasing with time for all time indices.
+Linear Parameters: l = 0.9999999999999998, a = 3.314633691335981, b = 0.7283441172881233, D = -2.197359301547919
 </pre></div>
 </div>
 </div>
@@ -793,14 +795,10 @@ Linear Parameters: l = 0.9999999999999998, a = 0.7209465774963228, b = 0.0074944
         <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span>
             <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
             <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> 
-            <span class="c1">#if i != 0:</span>
-            <span class="c1">#    T[i, N +i -2] = -a</span>
-            <span class="c1">#    S[i, N + i -2] = a</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span><span class="n">i</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span>
+            <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
             <span class="n">S</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span>
             <span class="n">T</span><span class="p">[</span><span class="n">N</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>
-        <span class="c1">#if i == N-2:</span>
-        <span class="c1">#    T[i, N + i - 2] = -a</span>
-        <span class="c1">#    S[i, N + i - 2] = a</span>
 
 <span class="c1"># inverse of T</span>
 <span class="n">T_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
@@ -824,7 +822,7 @@ Linear Parameters: l = 0.9999999999999998, a = 0.7209465774963228, b = 0.0074944
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d92c19a2bcc3691cd6285458f31269d8d05670aeddf5bf375bc017dd43ef9b40.png" src="../../_images/d92c19a2bcc3691cd6285458f31269d8d05670aeddf5bf375bc017dd43ef9b40.png" />
+<img alt="../../_images/2fae6ee7125f14a1328fbdbfa0cbe22ef4f771953936a10572f9c9df898bc153.png" src="../../_images/2fae6ee7125f14a1328fbdbfa0cbe22ef4f771953936a10572f9c9df898bc153.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -834,7 +832,7 @@ Linear Parameters: l = 0.9999999999999998, a = 0.7209465774963228, b = 0.0074944
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D: -0.4158111740829293
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D: -8.789437206191677
 </pre></div>
 </div>
 </div>
@@ -897,7 +895,7 @@ Linear Parameters: l = 0.9999999999999998, a = 0.7209465774963228, b = 0.0074944
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/7cb2ea1666bf06d4246dec7109a1c6451a24e83561a5870c5dd7e81a264e65bc.png" src="../../_images/7cb2ea1666bf06d4246dec7109a1c6451a24e83561a5870c5dd7e81a264e65bc.png" />
+<img alt="../../_images/9dfd84b70a8088a69b362150a86648ddc852d4fe3b6773ec80fd1e2d52fc1176.png" src="../../_images/9dfd84b70a8088a69b362150a86648ddc852d4fe3b6773ec80fd1e2d52fc1176.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -953,46 +951,36 @@ Linear Parameters: l = 0.9999999999999998, a = 0.7209465774963228, b = 0.0074944
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c4911625176dd4423a24654c752447c228c1131d59e7767576027170eeb5a798.png" src="../../_images/c4911625176dd4423a24654c752447c228c1131d59e7767576027170eeb5a798.png" />
+<img alt="../../_images/52f405148def263cd940ea03fcb3b09c0f1c773b31cf614dc63f9e747b5de418.png" src="../../_images/52f405148def263cd940ea03fcb3b09c0f1c773b31cf614dc63f9e747b5de418.png" />
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_Br</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Br</span><span class="p">[</span><span class="mi">20</span><span class="p">]))</span>
-<span class="n">log_Bphi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Bphi</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+<span class="n">log_Bphi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Bphi</span><span class="p">[</span><span class="mi">20</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope_Br_1</span><span class="p">,</span> <span class="n">intercept_Br_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">slope_Bphi_1</span><span class="p">,</span> <span class="n">intercept_Bphi_1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="n">log_Bphi</span><span class="p">[:</span><span class="mi">2</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
-
-<span class="n">slope_Br_2</span><span class="p">,</span> <span class="n">intercept_Br_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">10</span><span class="p">:],</span> <span class="n">log_Br</span><span class="p">[</span><span class="mi">10</span><span class="p">:],</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">slope_Bphi_2</span><span class="p">,</span> <span class="n">intercept_Bphi_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">4</span><span class="p">:],</span> <span class="n">log_Bphi</span><span class="p">[</span><span class="mi">4</span><span class="p">:],</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope_Br</span><span class="p">,</span> <span class="n">intercept_Br</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">8</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">[:</span><span class="mi">8</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">slope_Bphi</span><span class="p">,</span> <span class="n">intercept_Bphi_1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">8</span><span class="p">],</span> <span class="n">log_Bphi</span><span class="p">[:</span><span class="mi">8</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">actual_slope_Br</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>  
 <span class="n">actual_slope_Bphi</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
 
-<span class="n">difference_Br_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Br_1</span><span class="p">)</span> <span class="o">-</span> <span class="n">actual_slope_Br</span>
-<span class="n">difference_Bphi_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Bphi_1</span><span class="p">)</span> <span class="o">-</span> <span class="n">actual_slope_Bphi</span>
+<span class="n">difference_Br_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Br</span><span class="p">)</span> <span class="o">-</span> <span class="n">actual_slope_Br</span>
+<span class="n">difference_Bphi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Bphi</span><span class="p">)</span> <span class="o">-</span> <span class="n">actual_slope_Bphi</span>
 
-<span class="n">difference_Br_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Br_2</span><span class="p">)</span> <span class="o">-</span> <span class="n">actual_slope_Br</span>
-<span class="n">difference_Bphi_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Bphi_2</span><span class="p">)</span> <span class="o">-</span> <span class="n">actual_slope_Bphi</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Br: Actual Slope 1 = </span><span class="si">{</span><span class="n">actual_slope_Br</span><span class="si">}</span><span class="s2">, Computed Slope 1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Br_1</span><span class="p">)</span><span class="si">}</span><span class="s2">, Difference 1 = </span><span class="si">{</span><span class="n">difference_Br_1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bphi: Actual Slope 1 = </span><span class="si">{</span><span class="n">actual_slope_Bphi</span><span class="si">}</span><span class="s2">, Computed Slope 1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Bphi_1</span><span class="p">)</span><span class="si">}</span><span class="s2">, Difference 1 = </span><span class="si">{</span><span class="n">difference_Bphi_1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Br: Actual Slope 2 = </span><span class="si">{</span><span class="n">actual_slope_Br</span><span class="si">}</span><span class="s2">, Computed Slope 2 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Br_2</span><span class="p">)</span><span class="si">}</span><span class="s2">, Difference 2 = </span><span class="si">{</span><span class="n">difference_Br_2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bphi: Actual Slope 2 = </span><span class="si">{</span><span class="n">actual_slope_Bphi</span><span class="si">}</span><span class="s2">, Computed Slope 2 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Bphi_2</span><span class="p">)</span><span class="si">}</span><span class="s2">, Difference 2 = </span><span class="si">{</span><span class="n">difference_Bphi_2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Br: Actual Slope 1 = </span><span class="si">{</span><span class="n">actual_slope_Br</span><span class="si">}</span><span class="s2">, Computed Slope 1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Br</span><span class="p">)</span><span class="si">}</span><span class="s2">, Difference 1 = </span><span class="si">{</span><span class="n">difference_Br_1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bphi: Actual Slope = </span><span class="si">{</span><span class="n">actual_slope_Bphi</span><span class="si">}</span><span class="s2">, Computed Slope 1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Bphi</span><span class="p">)</span><span class="si">}</span><span class="s2">, Difference 1 = </span><span class="si">{</span><span class="n">difference_Bphi</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Br: Actual Slope 1 = 10.995574287564276, Computed Slope 1 = 9.857050623074597, Difference 1 = -1.1385236644896786
-Bphi: Actual Slope 1 = 1.5707963267948966, Computed Slope 1 = 7.832311404526211, Difference 1 = 6.261515077731315
-Br: Actual Slope 2 = 10.995574287564276, Computed Slope 2 = 7.629232184972173, Difference 2 = -3.366342102592103
-Bphi: Actual Slope 2 = 1.5707963267948966, Computed Slope 2 = 7.577158269798935, Difference 2 = 6.0063619430040385
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Br: Actual Slope 1 = 10.995574287564276, Computed Slope 1 = 17.10244355445735, Difference 1 = 6.106869266893073
+Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, Difference 1 = 15.565777563839328
 </pre></div>
 </div>
 </div>
@@ -1003,8 +991,7 @@ Bphi: Actual Slope 2 = 1.5707963267948966, Computed Slope 2 = 7.577158269798935,
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">log_Br</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Log Br&quot;</span><span class="p">)</span>  <span class="c1"># Plot the curve for Log Br</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">time</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="p">[</span><span class="n">log_Br</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Slope 1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Br_1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">time</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">log_Br</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Slope 2 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Br_2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">log_Br</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Slope 1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Br</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Log Br&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Log Br versus Time&#39;</span><span class="p">)</span>
@@ -1013,8 +1000,7 @@ Bphi: Actual Slope 2 = 1.5707963267948966, Computed Slope 2 = 7.577158269798935,
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">log_Bphi</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Log Bphi&#39;</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">time</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="p">[</span><span class="n">log_Bphi</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">log_Bphi</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Slope 1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Bphi_1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">time</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">log_Bphi</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">log_Bphi</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Slope 2 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Bphi_2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">log_Bphi</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">log_Bphi</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Slope 1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Bphi</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Log Bphi&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Log Bphi versus Time&#39;</span><span class="p">)</span>
@@ -1028,7 +1014,7 @@ Bphi: Actual Slope 2 = 1.5707963267948966, Computed Slope 2 = 7.577158269798935,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/5949223311f6005d66f575dff7d78bd4076c7d62faec2bb0bb8fa9c05d94bfca.png" src="../../_images/5949223311f6005d66f575dff7d78bd4076c7d62faec2bb0bb8fa9c05d94bfca.png" />
+<img alt="../../_images/450989e22f280e1adee95ad19927baadd520179d8f7a5a9a77b18af81fcce2ae.png" src="../../_images/450989e22f280e1adee95ad19927baadd520179d8f7a5a9a77b18af81fcce2ae.png" />
 </div>
 </div>
 </section>
@@ -1051,7 +1037,9 @@ Bphi: Actual Slope 2 = 1.5707963267948966, Computed Slope 2 = 7.577158269798935,
         <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">l</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span>
             <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
-            <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> 
+            <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span>
+            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> 
+            <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
             <span class="n">S</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span>
             <span class="n">T</span><span class="p">[</span><span class="n">N</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>
 
@@ -1078,7 +1066,7 @@ Bphi: Actual Slope 2 = 1.5707963267948966, Computed Slope 2 = 7.577158269798935,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2ce97a2aad3b8e7e677ac96e78ca56ca3b93d9662c5a62c02e482f4987c9d5ed.png" src="../../_images/2ce97a2aad3b8e7e677ac96e78ca56ca3b93d9662c5a62c02e482f4987c9d5ed.png" />
+<img alt="../../_images/44f426388e9efe7c78926013307053b7e9a55ca19682e46b13c5d5ce792b19df.png" src="../../_images/44f426388e9efe7c78926013307053b7e9a55ca19682e46b13c5d5ce792b19df.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1091,7 +1079,7 @@ Bphi: Actual Slope 2 = 1.5707963267948966, Computed Slope 2 = 7.577158269798935,
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D: -0.02598819838018308
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D: -0.5493398253869798
 </pre></div>
 </div>
 </div>
@@ -1154,7 +1142,7 @@ Bphi: Actual Slope 2 = 1.5707963267948966, Computed Slope 2 = 7.577158269798935,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/6728d52306bcec170462d08858ea3e7212aa48d82b47d2cb638fc8fcd57e2069.png" src="../../_images/6728d52306bcec170462d08858ea3e7212aa48d82b47d2cb638fc8fcd57e2069.png" />
+<img alt="../../_images/e0169d6d23bab15f303aa6aa039e5c7cf710622f9dae33f7391692bf4b55941c.png" src="../../_images/e0169d6d23bab15f303aa6aa039e5c7cf710622f9dae33f7391692bf4b55941c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1210,7 +1198,7 @@ Bphi: Actual Slope 2 = 1.5707963267948966, Computed Slope 2 = 7.577158269798935,
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/cbf314b5df0cb77d02d6ba3bf7e5e2b3b51e1e90d192fb841dcfa5d47453c6d8.png" src="../../_images/cbf314b5df0cb77d02d6ba3bf7e5e2b3b51e1e90d192fb841dcfa5d47453c6d8.png" />
+<img alt="../../_images/db8cc2259b26ff527da572c7f9e9d8ed789bf7d22e6cdf4c41f577a690b77ccc.png" src="../../_images/db8cc2259b26ff527da572c7f9e9d8ed789bf7d22e6cdf4c41f577a690b77ccc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1223,28 +1211,23 @@ Bphi: Actual Slope 2 = 1.5707963267948966, Computed Slope 2 = 7.577158269798935,
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope_Br_1</span><span class="p">,</span> <span class="n">intercept_Br_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">4</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">[:</span><span class="mi">4</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">slope_Bphi</span><span class="p">,</span> <span class="n">intercept_Bphi_1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">log_Bphi</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">slope_Br_2</span><span class="p">,</span> <span class="n">intercept_Br_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[</span><span class="mi">10</span><span class="p">:],</span> <span class="n">log_Br</span><span class="p">[</span><span class="mi">10</span><span class="p">:],</span> <span class="mi">1</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slope_Br</span><span class="p">,</span> <span class="n">intercept_Br</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">8</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">[:</span><span class="mi">8</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">slope_Bphi</span><span class="p">,</span> <span class="n">intercept_Bphi_1</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">time</span><span class="p">[:</span><span class="mi">8</span><span class="p">],</span> <span class="n">log_Bphi</span><span class="p">[:</span><span class="mi">8</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
 
 <span class="n">actual_slope_Br</span> <span class="o">=</span> <span class="p">(</span><span class="n">m</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>  
 <span class="n">actual_slope_Bphi</span> <span class="o">=</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
 
-<span class="n">difference_Br_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Br_1</span><span class="p">)</span> <span class="o">-</span> <span class="n">actual_slope_Br</span>
+<span class="n">difference_Br_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Br</span><span class="p">)</span> <span class="o">-</span> <span class="n">actual_slope_Br</span>
 <span class="n">difference_Bphi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Bphi</span><span class="p">)</span> <span class="o">-</span> <span class="n">actual_slope_Bphi</span>
-<span class="n">difference_Br_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Br_2</span><span class="p">)</span> <span class="o">-</span> <span class="n">actual_slope_Br</span>
 
-
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Br: Actual Slope 1 = </span><span class="si">{</span><span class="n">actual_slope_Br</span><span class="si">}</span><span class="s2">, Computed Slope 1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Br_1</span><span class="p">)</span><span class="si">}</span><span class="s2">, Difference 1 = </span><span class="si">{</span><span class="n">difference_Br_1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Br: Actual Slope 1 = </span><span class="si">{</span><span class="n">actual_slope_Br</span><span class="si">}</span><span class="s2">, Computed Slope 1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Br</span><span class="p">)</span><span class="si">}</span><span class="s2">, Difference 1 = </span><span class="si">{</span><span class="n">difference_Br_1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bphi: Actual Slope = </span><span class="si">{</span><span class="n">actual_slope_Bphi</span><span class="si">}</span><span class="s2">, Computed Slope 1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Bphi</span><span class="p">)</span><span class="si">}</span><span class="s2">, Difference 1 = </span><span class="si">{</span><span class="n">difference_Bphi</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Br: Actual Slope 2 = </span><span class="si">{</span><span class="n">actual_slope_Br</span><span class="si">}</span><span class="s2">, Computed Slope 2 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Br_2</span><span class="p">)</span><span class="si">}</span><span class="s2">, Difference 2 = </span><span class="si">{</span><span class="n">difference_Br_2</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Br: Actual Slope 1 = 10.995574287564276, Computed Slope 1 = 4.980367577197363, Difference 1 = -6.015206710366913
-Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = nan, Difference 1 = nan
-Br: Actual Slope 2 = 10.995574287564276, Computed Slope 2 = 3.6098908382023005, Difference 2 = -7.385683449361975
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Br: Actual Slope 1 = 10.995574287564276, Computed Slope 1 = 7.500077389259177, Difference 1 = -3.495496898305099
+Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 7.500077389259177, Difference 1 = 5.92928106246428
 </pre></div>
 </div>
 </div>
@@ -1255,8 +1238,7 @@ Br: Actual Slope 2 = 10.995574287564276, Computed Slope 2 = 3.6098908382023005, 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">log_Br</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;log Br&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">time</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="p">[</span><span class="n">log_Br</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">[</span><span class="mi">2</span><span class="p">]],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Slope 1 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Br_1</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">time</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">time</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="p">[</span><span class="n">log_Br</span><span class="p">[</span><span class="mi">10</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Slope 2 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">slope_Br_2</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">time</span><span class="p">[</span><span class="mi">8</span><span class="p">]],</span> <span class="p">[</span><span class="n">log_Br</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">[</span><span class="mi">8</span><span class="p">]],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Slope = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Br</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Log Br&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Log Br versus Time&#39;</span><span class="p">)</span>
@@ -1264,7 +1246,8 @@ Br: Actual Slope 2 = 10.995574287564276, Computed Slope 2 = 3.6098908382023005, 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">log_Bphi</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;log Bphi (Calc. Slope: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Bphi</span><span class="p">)</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Actual Slope: </span><span class="si">{</span><span class="n">actual_slope_Bphi</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, Diff: </span><span class="si">{</span><span class="n">difference_Bphi</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">log_Bphi</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;log Bphi&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">time</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">time</span><span class="p">[</span><span class="mi">8</span><span class="p">]],</span> <span class="p">[</span><span class="n">log_Br</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">log_Br</span><span class="p">[</span><span class="mi">8</span><span class="p">]],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Slope = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="n">slope_Bphi</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Log Bphi&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Log Bphi versus Time&#39;</span><span class="p">)</span>
@@ -1278,7 +1261,7 @@ Br: Actual Slope 2 = 10.995574287564276, Computed Slope 2 = 3.6098908382023005, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/346e29cd10a297db806d7587fcb913d9312a2a5d353f0ecf8207de3c914c7ca2.png" src="../../_images/346e29cd10a297db806d7587fcb913d9312a2a5d353f0ecf8207de3c914c7ca2.png" />
+<img alt="../../_images/aea9d1a1ad8d4771bfebc4adea0718d7bc44de57018af4aa8c83466b38b10d67.png" src="../../_images/aea9d1a1ad8d4771bfebc4adea0718d7bc44de57018af4aa8c83466b38b10d67.png" />
 </div>
 </div>
 </section>
