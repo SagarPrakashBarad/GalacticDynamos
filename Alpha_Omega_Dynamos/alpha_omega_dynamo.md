@@ -136,16 +136,16 @@ We have solved the dynamo equation in z with the original eigenmodes of diffusio
 
 ![init_condition](/Alpha_Omega_Dynamos/z_approximation/results/initial_conditions.png)
 
-We ran a routine to find the critical dynamo number $D_c$ where $D$ and other relevant parameters were varying with $r$. And we found that at $ r = 6.9354$, B values start increasing with time for all time indices.
+We ran a routine to find the critical dynamo number $D_c$ where $D$ and other relevant parameters were varying with $r$. And we found that at $ r = 1.508$, B values start increasing with time for all time indices.
 
 | Parameter       | Value          |
 |-----------------|----------------|
 | $ l $           | 0.9999        |
-| $ a $           | 0.7209         |
-| $ b $           | 0.0079        |
-| $ D_c $           | -0.1039        |
+| $ a $           | 3.314         |
+| $ b $           | 0.7289        |
+| $ D_c $           | -2.197        |
 
-Thus, critical dynamo number for the above system came out to be $D_c = 0.1039$.
+Thus, critical dynamo number for the above system came out to be $D_c = 2.197$.
 
 #### Simulation @ $|D| \gt |D_c|$ 
 
@@ -156,7 +156,7 @@ Thus, critical dynamo number for the above system came out to be $D_c = 0.1039$.
 
 ![growth_rates](/Alpha_Omega_Dynamos/z_approximation/results/log_Br_Bphi_vs_time_above_critical_D.png)
 
-This plot shows that the magnetic field decays till $t = 0.01$ sec and then increases after that. Both rates approach the growth rate, suggesting a critical point in the system. The right side of $t=0.01$ secs suggest exponential growth in the system after that point.
+This plot shows that the log of magnetic field increases linearly implying exponential increase. 
 
 #### Simulation @ $|D| \lt |D_c|$ 
 
@@ -167,4 +167,6 @@ This plot shows that the magnetic field decays till $t = 0.01$ sec and then incr
 
 ![growth_rates](/Alpha_Omega_Dynamos/z_approximation/results/log_Br_Bphi_vs_time_below_critical_D.png)
 
-The plot on the right demonstrates a magnetic field decay characterized by a slope or rate akin to the specified (de)growth rate. Meanwhile, the plot on the left illustrates a magnetic field decay until $t = 0.02$ seconds, followed by a subsequent increase. Notably, both rates converge toward the growth rate, indicating a critical juncture within the system.
+The plots demonstrates a magnetic field decay characterized by a slope or rate akin to the specified (de)growth rate. 
+
+For detailed analysis of the results check the simulation file [here](/Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo.ipynb).
