@@ -1022,9 +1022,9 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, 
 <h1>Results Below Critical Dynamo Number<a class="headerlink" href="#results-below-critical-dynamo-number" title="Link to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">linear_parameters</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">critical_r</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">l</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="n">linear_parameters</span><span class="p">(</span><span class="mi">10</span><span class="o">*</span><span class="n">critical_r</span><span class="p">)</span>
 
-<span class="c1">#  A and B</span>
+<span class="c1"># T and S</span>
 <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">S</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
@@ -1037,8 +1037,8 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, 
         <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">l</span>
         <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">:</span>
             <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
-            <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span>
-            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> 
+            <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span> 
+            <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span><span class="n">i</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">a</span>
             <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="n">i</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">a</span>
             <span class="n">S</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span>
             <span class="n">T</span><span class="p">[</span><span class="n">N</span> <span class="o">+</span> <span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span>
@@ -1066,7 +1066,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/44f426388e9efe7c78926013307053b7e9a55ca19682e46b13c5d5ce792b19df.png" src="../../_images/44f426388e9efe7c78926013307053b7e9a55ca19682e46b13c5d5ce792b19df.png" />
+<img alt="../../_images/986d9b374b33b25f3224f1f848a63896ac379ffebb87a2db0760925d57d4e386.png" src="../../_images/986d9b374b33b25f3224f1f848a63896ac379ffebb87a2db0760925d57d4e386.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1079,7 +1079,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D: -0.5493398253869798
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D: -0.02197359301547919
 </pre></div>
 </div>
 </div>
@@ -1142,7 +1142,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/e0169d6d23bab15f303aa6aa039e5c7cf710622f9dae33f7391692bf4b55941c.png" src="../../_images/e0169d6d23bab15f303aa6aa039e5c7cf710622f9dae33f7391692bf4b55941c.png" />
+<img alt="../../_images/d517b3ec57eb183618cea61f8a068ca682addc7f201a66c5781404b04c07f3ef.png" src="../../_images/d517b3ec57eb183618cea61f8a068ca682addc7f201a66c5781404b04c07f3ef.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1198,7 +1198,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/db8cc2259b26ff527da572c7f9e9d8ed789bf7d22e6cdf4c41f577a690b77ccc.png" src="../../_images/db8cc2259b26ff527da572c7f9e9d8ed789bf7d22e6cdf4c41f577a690b77ccc.png" />
+<img alt="../../_images/c70f199d62f2d440970e85e65aabbccfc39f6ca7f85f4a617c807f2c3e1754c5.png" src="../../_images/c70f199d62f2d440970e85e65aabbccfc39f6ca7f85f4a617c807f2c3e1754c5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1226,8 +1226,8 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Br: Actual Slope 1 = 10.995574287564276, Computed Slope 1 = 7.500077389259177, Difference 1 = -3.495496898305099
-Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 7.500077389259177, Difference 1 = 5.92928106246428
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Br: Actual Slope 1 = 10.995574287564276, Computed Slope 1 = 7.407918075507147, Difference 1 = -3.587656212057129
+Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 7.407918075507147, Difference 1 = 5.83712174871225
 </pre></div>
 </div>
 </div>
@@ -1261,7 +1261,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 7.500077389259177, D
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/aea9d1a1ad8d4771bfebc4adea0718d7bc44de57018af4aa8c83466b38b10d67.png" src="../../_images/aea9d1a1ad8d4771bfebc4adea0718d7bc44de57018af4aa8c83466b38b10d67.png" />
+<img alt="../../_images/f7417927c0c4c7d1324091d2e4a57cc4b0b582f7b497f83f733ed07bae1308fd.png" src="../../_images/f7417927c0c4c7d1324091d2e4a57cc4b0b582f7b497f83f733ed07bae1308fd.png" />
 </div>
 </div>
 </section>
