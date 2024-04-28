@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Galactic Dynanmo &#8212; Galactic Dynamo Simulations</title>
+    <title>Project Information &#8212; Galactic Dynamo Simulations</title>
   
   
   
@@ -63,7 +63,7 @@
     <link rel="icon" href="_static/logo.jpg"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Diffusion Equation" href="Diffusion_Equation_Simulations/Diffusion_Equation.html" />
+    <link rel="next" title="Mean Field Dynamo Equation" href="diffusion_equation_simulations/diffusion_equation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,26 +176,33 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Galactic Dynanmo
+                    Project Information
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Diffusion Equation Simulation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Diffusion_Equation_Simulations/Diffusion_Equation.html">Diffusion Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_equation_simulations/diffusion_equation.html">Mean Field Dynamo Equation</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_equation_simulations/z_approximation/diffusion_equation_dirchilet.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_equation_simulations/z_approximation/diffusion_equation_neumann.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)</a></li>
 
 
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Alpha Omega Dynamos</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Alpha_Omega_Dynamos/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="alpha_omega_dynamos/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="alpha_omega_dynamos/z_approximation/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation using Crank Nicholson without Ghost Zones</a></li>
+
+
+
+
+
 
 </ul>
 
@@ -350,7 +357,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Galactic Dynanmo</h1>
+    <h1>Project Information</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -360,14 +367,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-information">Project Information</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-simulations-of-galatic-dynamos">Numerical Simulations of Galatic Dynamos</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-numerical-solutions-to-diffusion-equations">Task 1 Numerical Solutions to Diffusion Equations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-numerical-solutions-to-alpha-omega-dynamo-equation">Task 2 Numerical Solutions to <span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Project Information</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-simulations-of-galactic-dynamos">Numerical Simulations of Galactic Dynamos</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-numerical-solutions-to-diffusion-equations">Task 1: Numerical Solutions to Diffusion Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-numerical-solutions-to-alpha-omega-dynamo-equation">Task 2: Numerical Solutions to <span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-3-sensetivity-of-solution-to-order-of-finite-difference">Task 3: Sensetivity of Solution to order of finite difference</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="visible nav section-nav flex-column">
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -378,42 +389,47 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="galactic-dynanmo">
-<h1>Galactic Dynanmo<a class="headerlink" href="#galactic-dynanmo" title="Link to this heading">#</a></h1>
-<p><img alt="GalacticDynamo" src="_images/galactic_dynamo.jpg" />
-<em>Caption: Illustration of a galactic dynamo generated by AI.</em></p>
+  <div align="center">
+  <h1>Galactic Dynamo</h1>
+  <img src="galactic_dynamo.jpg" alt="Galactic Dynamo" width="700"/>
+</div>
+<p align="center" style="font-family: 'Courier New', monospace; font-size: 14px;">
+  <em>Illustration of a galactic dynamo generated by AI.</em>
+</p>
 <section id="project-information">
-<h2>Project Information<a class="headerlink" href="#project-information" title="Link to this heading">#</a></h2>
-<p>This project is a part of the term project given in course P464 Plamsa Physics and Magnetohydrodynamics taught in Spring 2024 at NISER Bhubaneswar.</p>
+<h1>Project Information<a class="headerlink" href="#project-information" title="Link to this heading">#</a></h1>
+<p>This project is part of the P464 course in Plasma Physics and Magnetohydrodynamics, offered during the Spring 2024 semester at NISER Bhubaneswar.</p>
 <p>Submitted by: Sagar Prakash Barad, Integrated MSc. SPS batch 20</p>
 <p>Supervised by: Dr. Luke R. Chamandy, SPS, NISER</p>
 </section>
-<section id="numerical-simulations-of-galatic-dynamos">
-<h2>Numerical Simulations of Galatic Dynamos<a class="headerlink" href="#numerical-simulations-of-galatic-dynamos" title="Link to this heading">#</a></h2>
+<section id="numerical-simulations-of-galactic-dynamos">
+<h1>Numerical Simulations of Galactic Dynamos<a class="headerlink" href="#numerical-simulations-of-galactic-dynamos" title="Link to this heading">#</a></h1>
 <section id="task-1-numerical-solutions-to-diffusion-equations">
-<h3>Task 1 Numerical Solutions to Diffusion Equations<a class="headerlink" href="#task-1-numerical-solutions-to-diffusion-equations" title="Link to this heading">#</a></h3>
+<h2>Task 1: Numerical Solutions to Diffusion Equations<a class="headerlink" href="#task-1-numerical-solutions-to-diffusion-equations" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Setting up the Diffusion Equation <a class="reference internal" href="Diffusion_Equation_Simulations/Diffusion_Equation.html"><span class="std std-doc">setup</span></a></p></li>
-<li><p>Solving Diffusion Equation using Crank Nicholson Dirchilet Boundary Condition <a class="reference internal" href="Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet.html"><span class="std std-doc">simulation</span></a></p></li>
-<li><p>Solving Diffusion Equation using Crank Nicholson Neumann Boundary Condition <a class="reference internal" href="Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann.html"><span class="std std-doc">simulation</span></a></p></li>
+<li><p>Setting up the Diffusion Equation (<span class="xref myst">setup</span>)</p></li>
+<li><p>Solving the Diffusion Equation using Crank-Nicholson Dirichlet Boundary Condition (<a class="reference internal" href="#/Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirichlet.ipynb"><span class="xref myst">simulation</span></a>)</p></li>
+<li><p>Solving the Diffusion Equation using Crank-Nicholson Neumann Boundary Condition (<span class="xref myst">simulation</span>)</p></li>
 </ul>
 </section>
 <section id="task-2-numerical-solutions-to-alpha-omega-dynamo-equation">
-<h3>Task 2 Numerical Solutions to <span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation<a class="headerlink" href="#task-2-numerical-solutions-to-alpha-omega-dynamo-equation" title="Link to this heading">#</a></h3>
+<h2>Task 2: Numerical Solutions to <span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation<a class="headerlink" href="#task-2-numerical-solutions-to-alpha-omega-dynamo-equation" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>Setting up the Dynamo Equation <a class="reference internal" href="Alpha_Omega_Dynamos/alpha_omega_dynamo.html"><span class="std std-doc">setup</span></a></p></li>
-<li><p>Solving Dynamo Equation using Crank Nicholson Dirchilet Boundary Condition <a class="reference internal" href="Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo.html"><span class="std std-doc">simulation</span></a></p></li>
+<li><p>Setting up the Dynamo Equation (<span class="xref myst">setup</span>)</p></li>
+<li><p>Solving the Dynamo Equation using Crank-Nicholson Dirichlet Boundary Condition (<span class="xref myst">simulation</span>)</p></li>
 </ul>
+</section>
+<section id="task-3-sensetivity-of-solution-to-order-of-finite-difference">
+<h2>Task 3: Sensetivity of Solution to order of finite difference<a class="headerlink" href="#task-3-sensetivity-of-solution-to-order-of-finite-difference" title="Link to this heading">#</a></h2>
 </section>
 </section>
 <section id="references">
-<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
-<p>[1] Shukurov, A., &amp; Subramanian, K. (2022). Astrophysical Magnetic Fields: From Galaxies to the Early Universe. Cambridge University Press.</p>
-<p>[2] Strogatz, S.  Nonlinear dynamics and chaos: with applications to physics, biology, chemistry, and engineering (studies in nonlinearity), Westview Press; 2 edition (29 July 2014)</p>
-<p>[3] Brian Bradie, A Friendly Introduction to Numerical Analysis</p>
-<p>[4] Atkinson, Han Elementary Numerical Analysis</p>
-<p>[5] Richard L. Burden, J. Douglas Faires, Numerical Analysis, Brooks/Cole 1997</p>
-</section>
+<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<p>[1] Shukurov, A., &amp; Subramanian, K. 2022, <em>Astrophysical Magnetic Fields: From Galaxies to the Early Universe</em>, Cambridge University Press</p>
+<p>[2] Strogatz, S. 2014, <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering (Studies in Nonlinearity)</em>, Westview Press, 2nd edn.</p>
+<p>[3] Bradie, B. <em>A Friendly Introduction to Numerical Analysis</em></p>
+<p>[4] Atkinson, Han <em>Elementary Numerical Analysis</em></p>
+<p>[5] Burden, R. L., &amp; Faires, J. D. 1997, <em>Numerical Analysis</em>, Brooks/Cole</p>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -451,11 +467,11 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="right-next"
-       href="Diffusion_Equation_Simulations/Diffusion_Equation.html"
+       href="diffusion_equation_simulations/diffusion_equation.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Diffusion Equation</p>
+        <p class="prev-next-title">Mean Field Dynamo Equation</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -475,14 +491,18 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#project-information">Project Information</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-simulations-of-galatic-dynamos">Numerical Simulations of Galatic Dynamos</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-numerical-solutions-to-diffusion-equations">Task 1 Numerical Solutions to Diffusion Equations</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-numerical-solutions-to-alpha-omega-dynamo-equation">Task 2 Numerical Solutions to <span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Project Information</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-simulations-of-galactic-dynamos">Numerical Simulations of Galactic Dynamos</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-1-numerical-solutions-to-diffusion-equations">Task 1: Numerical Solutions to Diffusion Equations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-2-numerical-solutions-to-alpha-omega-dynamo-equation">Task 2: Numerical Solutions to <span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#task-3-sensetivity-of-solution-to-order-of-finite-difference">Task 3: Sensetivity of Solution to order of finite difference</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a><ul class="visible nav section-nav flex-column">
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>

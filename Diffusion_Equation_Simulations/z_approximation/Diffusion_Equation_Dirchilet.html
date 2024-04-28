@@ -59,12 +59,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'diffusion_equation_simulations/z_approximation/diffusion_equation_dirchilet';</script>
     <link rel="icon" href="../../_static/logo.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)" href="Diffusion_Equation_Neumann.html" />
-    <link rel="prev" title="Diffusion Equation" href="../Diffusion_Equation.html" />
+    <link rel="next" title="Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)" href="diffusion_equation_neumann.html" />
+    <link rel="prev" title="Mean Field Dynamo Equation" href="../diffusion_equation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,26 +175,33 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../index.html">
-                    Galactic Dynanmo
+                    Project Information
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Diffusion Equation Simulation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Diffusion_Equation.html">Diffusion Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diffusion_equation.html">Mean Field Dynamo Equation</a></li>
 
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="Diffusion_Equation_Neumann.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="diffusion_equation_neumann.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)</a></li>
 
 
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Alpha Omega Dynamos</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Alpha_Omega_Dynamos/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../alpha_omega_dynamos/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../../alpha_omega_dynamos/z_approximation/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation using Crank Nicholson without Ghost Zones</a></li>
+
+
+
+
+
 
 </ul>
 
@@ -265,7 +272,7 @@
       
       
       
-      <li><a href="../../_sources/Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet.ipynb" target="_blank"
+      <li><a href="../../_sources/diffusion_equation_simulations/z_approximation/diffusion_equation_dirchilet.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -3915,7 +3922,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope = 1.5708061270906244, Di
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;seed_1/log_Br_Bphi_vs_time.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;seed_1/log_Br_Bphi_vs_time.png&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -4201,7 +4208,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope = 1.5661093922713243, Di
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;seed_2/log_Br_Bphi_vs_time.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;seed_2/log_Br_Bphi_vs_time.png&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -4487,7 +4494,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope = 1.5629031592116118, Di
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;seed_3/log_Br_Bphi_vs_time.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;seed_3/log_Br_Bphi_vs_time.png&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -4511,7 +4518,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope = 1.5629031592116118, Di
         },
         kernelOptions: {
             name: "python3",
-            path: "./Diffusion_Equation_Simulations/z_approximation"
+            path: "./diffusion_equation_simulations/z_approximation"
         },
         predefinedOutput: true
     }
@@ -4529,16 +4536,16 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope = 1.5629031592116118, Di
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Diffusion_Equation.html"
+       href="../diffusion_equation.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Diffusion Equation</p>
+        <p class="prev-next-title">Mean Field Dynamo Equation</p>
       </div>
     </a>
     <a class="right-next"
-       href="Diffusion_Equation_Neumann.html"
+       href="diffusion_equation_neumann.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>

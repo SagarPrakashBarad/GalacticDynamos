@@ -59,12 +59,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Alpha_Omega_Dynamos/alpha_omega_dynamo';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'alpha_omega_dynamos/alpha_omega_dynamo';</script>
     <link rel="icon" href="../_static/logo.jpg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="\(\alpha \Omega\) Dynamo Equation using Crank Nicholson without Ghost Zones" href="z_approximation/Alpha_Omega_Dynamo.html" />
-    <link rel="prev" title="Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)" href="../Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann.html" />
+    <link rel="next" title="\(\alpha \Omega\) Dynamo Equation using Crank Nicholson without Ghost Zones" href="z_approximation/alpha_omega_dynamo.html" />
+    <link rel="prev" title="Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)" href="../diffusion_equation_simulations/z_approximation/diffusion_equation_neumann.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,19 +175,19 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    Galactic Dynanmo
+                    Project Information
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Diffusion Equation Simulation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Diffusion_Equation_Simulations/Diffusion_Equation.html">Diffusion Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diffusion_equation_simulations/diffusion_equation.html">Mean Field Dynamo Equation</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diffusion_equation_simulations/z_approximation/diffusion_equation_dirchilet.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../diffusion_equation_simulations/z_approximation/diffusion_equation_neumann.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)</a></li>
 
 
 
@@ -195,6 +195,13 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Alpha Omega Dynamos</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="z_approximation/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation using Crank Nicholson without Ghost Zones</a></li>
+
+
+
+
+
 
 </ul>
 
@@ -265,7 +272,7 @@
       
       
       
-      <li><a href="../_sources/Alpha_Omega_Dynamos/alpha_omega_dynamo.md" target="_blank"
+      <li><a href="../_sources/alpha_omega_dynamos/alpha_omega_dynamo.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -545,7 +552,7 @@ B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \ti
 <p><em>Variation of <span class="math notranslate nohighlight">\(B_r\)</span>, <span class="math notranslate nohighlight">\(B_\phi\)</span>, <span class="math notranslate nohighlight">\(B_\text{norm}\)</span> and pitch angle <span class="math notranslate nohighlight">\(\theta\)</span> with time.</em></p>
 <p><img alt="growth_rates" src="../_images/log_Br_Bphi_vs_time_below_critical_D.png" /></p>
 <p>The plots demonstrates a magnetic field decay characterized by a slope or rate akin to the specified (de)growth rate.</p>
-<p>For detailed analysis of the results check the simulation file <a class="reference internal" href="z_approximation/Alpha_Omega_Dynamo.html"><span class="std std-doc">here</span></a>.</p>
+<p>For detailed analysis of the results check the simulation file <span class="xref myst">here</span>.</p>
 </section>
 </section>
 
@@ -562,7 +569,7 @@ B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \ti
         },
         kernelOptions: {
             name: "python3",
-            path: "./Alpha_Omega_Dynamos"
+            path: "./alpha_omega_dynamos"
         },
         predefinedOutput: true
     }
@@ -580,7 +587,7 @@ B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \ti
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann.html"
+       href="../diffusion_equation_simulations/z_approximation/diffusion_equation_neumann.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
@@ -589,7 +596,7 @@ B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \ti
       </div>
     </a>
     <a class="right-next"
-       href="z_approximation/Alpha_Omega_Dynamo.html"
+       href="z_approximation/alpha_omega_dynamo.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>

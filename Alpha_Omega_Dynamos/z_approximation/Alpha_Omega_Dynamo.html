@@ -59,7 +59,7 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'alpha_omega_dynamos/z_approximation/alpha_omega_dynamo';</script>
     <link rel="icon" href="../../_static/logo.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -174,26 +174,33 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../../index.html">
-                    Galactic Dynanmo
+                    Project Information
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Diffusion Equation Simulation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../../Diffusion_Equation_Simulations/Diffusion_Equation.html">Diffusion Equation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diffusion_equation_simulations/diffusion_equation.html">Mean Field Dynamo Equation</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../../Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diffusion_equation_simulations/z_approximation/diffusion_equation_dirchilet.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../../Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../diffusion_equation_simulations/z_approximation/diffusion_equation_neumann.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)</a></li>
 
 
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Alpha Omega Dynamos</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation using Crank Nicholson without Ghost Zones</a></li>
+
+
+
+
+
 
 </ul>
 
@@ -264,7 +271,7 @@
       
       
       
-      <li><a href="../../_sources/Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo.ipynb" target="_blank"
+      <li><a href="../../_sources/alpha_omega_dynamos/z_approximation/alpha_omega_dynamo.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -471,14 +478,14 @@ $<span class="math notranslate nohighlight">\(
 <p>The Figure below shows the discrete grid points for <span class="math notranslate nohighlight">\(N=20\)</span> and <span class="math notranslate nohighlight">\(N_t=400\)</span> , the red dots are the unknown values, the green dots are the known boundary conditions and the blue dots are the known initial conditions of the Heat Equation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">40</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">2000</span>
 <span class="n">Nt</span> <span class="o">=</span> <span class="mi">400</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">N</span>
 <span class="n">k</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">Nt</span>
 <span class="n">r</span> <span class="o">=</span> <span class="n">k</span> <span class="o">/</span> <span class="p">(</span><span class="n">h</span> <span class="o">*</span> <span class="n">h</span><span class="p">)</span>
 <span class="n">time_steps</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="n">time_steps</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">k</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
-<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">1.001</span><span class="p">,</span> <span class="mf">1.0001</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> 
+<span class="n">z</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mf">1.00</span><span class="p">,</span> <span class="mf">1.0001</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span> 
 <span class="n">Z</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">time</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -504,7 +511,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ff2c2a75c66d8e7a0b2a5619c211857610e6f3760ef8feff1bf06c1a14129cc4.png" src="../../_images/ff2c2a75c66d8e7a0b2a5619c211857610e6f3760ef8feff1bf06c1a14129cc4.png" />
+<img alt="../../_images/0834343665a98525b77ec805376540cc6b5c39187f54ce4a7c801751a19cfd48.png" src="../../_images/0834343665a98525b77ec805376540cc6b5c39187f54ce4a7c801751a19cfd48.png" />
 </div>
 </div>
 </section>
@@ -593,7 +600,7 @@ $<span class="math notranslate nohighlight">\(
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/881013ca909d0b2571df4647578cd3752e7e6ac8ab7fc32230882a1ea88813a2.png" src="../../_images/881013ca909d0b2571df4647578cd3752e7e6ac8ab7fc32230882a1ea88813a2.png" />
+<img alt="../../_images/8f0a73433c6ccf3e4b9301fdffb8cfc7457dc040011b3c6d4b8725871f63f5b2.png" src="../../_images/8f0a73433c6ccf3e4b9301fdffb8cfc7457dc040011b3c6d4b8725871f63f5b2.png" />
 </div>
 </div>
 </section>
@@ -611,11 +618,11 @@ $<span class="math notranslate nohighlight">\(
 <p>After rearranging <span class="math notranslate nohighlight">\(j + 1\)</span> terms on one side and <span class="math notranslate nohighlight">\(j\)</span> terms on the other side of the equation, we get the following sets of linear equations:</p>
 <div class="math notranslate nohighlight">
 \[ 
-B_i^{j+1} (1 + 2 \lambda) - \lambda B_{i+1}^{j+1} - \lambda B_{i - 1}^{j+1} + \alpha B_{N+i+1}^{j+1} - \alpha B_{N+i - 1}^{j+1} = B_i^{j+1} (1 - 2 \lambda) + \lambda B_{i+1}^{j+1} + \lambda B_{i - 1}^{j+1} - \alpha B_{N+i+1}^{j+1} + \alpha B_{N+i - 1}^{j+1}
+B_i^{j+1} (1 + 2 \lambda) - \lambda B_{i+1}^{j+1} - \lambda B_{i - 1}^{j+1} + \alpha B_{N+i+1}^{j+1} - \alpha B_{N+i - 1}^{j+1} = B_i^{j} (1 - 2 \lambda) + \lambda B_{i+1}^{j} + \lambda B_{i - 1}^{j} - \alpha B_{N+i+1}^{j} + \alpha B_{N+i - 1}^{j}
 \]</div>
 <div class="math notranslate nohighlight">
 \[ 
-B_i^{j+1} (1 + 2 \lambda) - \lambda B_{i+1}^{j+1} - \lambda B_{i - 1}^{j+1} - \beta B_{i}^{j+1} = B_i^{j+1} (1 - 2 \lambda) + \lambda B_{i+1}^{j+1} + \lambda B_{i - 1}^{j+1} + \beta B_{i+1}^{j+1} 
+B_i^{j+1} (1 + 2 \lambda) - \lambda B_{i+1}^{j+1} - \lambda B_{i - 1}^{j+1} - \beta B_{i}^{j+1} = B_i^{j} (1 - 2 \lambda) + \lambda B_{i+1}^{j} + \lambda B_{i - 1}^{j} + \beta B_{i+1}^{j} 
 \]</div>
 <p>Combining these two expressions as one <span class="math notranslate nohighlight">\(2N\)</span> vector transformation, i.e., <span class="math notranslate nohighlight">\(B_i^{j}\)</span> where <span class="math notranslate nohighlight">\(i = 1, 2, 3, \ldots, 2N\)</span> or <span class="math notranslate nohighlight">\(\mathbf{B} = (B_r, B_{\phi})^T\)</span>, we can represent the matrix equation as:</p>
 <div class="math notranslate nohighlight">
@@ -702,7 +709,7 @@ T \mathbf{B}_{j+1} = S \mathbf{B}_{j} + \mathbf{b}_{j} + \mathbf{b}_{j+1}
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">):</span>
         <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">l</span>
         <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">l</span>
-        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span>
             <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">l</span>
             <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">l</span>
             <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">l</span>
@@ -719,7 +726,7 @@ T \mathbf{B}_{j+1} = S \mathbf{B}_{j} + \mathbf{b}_{j} + \mathbf{b}_{j+1}
     <span class="n">T_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
     
     <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">time_steps</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
-        <span class="n">bc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+        <span class="n">bc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">a</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
         <span class="n">bc</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
         <span class="n">bc</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span> <span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
         <span class="n">bc</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">4</span><span class="p">]</span><span class="o">=</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
@@ -764,8 +771,8 @@ T \mathbf{B}_{j+1} = S \mathbf{B}_{j} + \mathbf{b}_{j} + \mathbf{b}_{j+1}
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At r = 1.5084623115577886, B values start increasing with time for all time indices.
-Linear Parameters: l = 0.9999999999999998, a = 3.314633691335981, b = 0.7283441172881233, D = -2.197359301547919
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At r = 19.899502512562815, B values start increasing with time for all time indices.
+Linear Parameters: l = 2500.0, a = 12.563128140624206, b = 2.538068494174301e-09, D = -1.0101260075375605e-07
 </pre></div>
 </div>
 </div>
@@ -820,7 +827,7 @@ Linear Parameters: l = 0.9999999999999998, a = 3.314633691335981, b = 0.72834411
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/2fae6ee7125f14a1328fbdbfa0cbe22ef4f771953936a10572f9c9df898bc153.png" src="../../_images/2fae6ee7125f14a1328fbdbfa0cbe22ef4f771953936a10572f9c9df898bc153.png" />
+<img alt="../../_images/852db5f9943bc2777cdc5a33a0a7650f9f1e06a46dab5f60f277538893482eea.png" src="../../_images/852db5f9943bc2777cdc5a33a0a7650f9f1e06a46dab5f60f277538893482eea.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -830,7 +837,7 @@ Linear Parameters: l = 0.9999999999999998, a = 3.314633691335981, b = 0.72834411
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D: -8.789437206191677
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D: -4.040504030150242e-07
 </pre></div>
 </div>
 </div>
@@ -847,8 +854,8 @@ Linear Parameters: l = 0.9999999999999998, a = 3.314633691335981, b = 0.72834411
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">time_steps</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
     <span class="n">bc</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-    <span class="n">bc</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span><span class="o">=</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">N</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
-    <span class="n">bc</span><span class="p">[</span><span class="n">N</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span> <span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
+    <span class="c1">#bc[N-2]=l*B[N,j-1]+l*B[N,j]</span>
+    <span class="c1">#bc[N-1]= l*B[N+1,j-1]+l*B[N+1,j]</span>
     <span class="n">bc</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">-</span><span class="mi">3</span><span class="p">]</span><span class="o">=</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">l</span><span class="o">*</span><span class="n">B</span><span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="p">,</span><span class="n">j</span><span class="p">]</span>
     <span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">B</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="n">N</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">B</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="mi">2</span><span class="p">:</span><span class="mi">2</span><span class="o">*</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">])))</span>
     <span class="n">dot_prod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">T_inv</span><span class="p">,</span><span class="n">v1</span><span class="o">+</span><span class="n">bc</span><span class="p">)</span>
@@ -893,7 +900,7 @@ Linear Parameters: l = 0.9999999999999998, a = 3.314633691335981, b = 0.72834411
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/9dfd84b70a8088a69b362150a86648ddc852d4fe3b6773ec80fd1e2d52fc1176.png" src="../../_images/9dfd84b70a8088a69b362150a86648ddc852d4fe3b6773ec80fd1e2d52fc1176.png" />
+<img alt="../../_images/155d799723418e440cdf2163c1a2fa1bd5db3390e323f9ef75a50f45372034d6.png" src="../../_images/155d799723418e440cdf2163c1a2fa1bd5db3390e323f9ef75a50f45372034d6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -949,7 +956,7 @@ Linear Parameters: l = 0.9999999999999998, a = 3.314633691335981, b = 0.72834411
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/52f405148def263cd940ea03fcb3b09c0f1c773b31cf614dc63f9e747b5de418.png" src="../../_images/52f405148def263cd940ea03fcb3b09c0f1c773b31cf614dc63f9e747b5de418.png" />
+<img alt="../../_images/2e306e94326ce730bc2b0a8e26adedbd42e5e716f490c5c12750f6e7f370dc2c.png" src="../../_images/2e306e94326ce730bc2b0a8e26adedbd42e5e716f490c5c12750f6e7f370dc2c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -977,8 +984,8 @@ Linear Parameters: l = 0.9999999999999998, a = 3.314633691335981, b = 0.72834411
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Br: Actual Slope 1 = 10.995574287564276, Computed Slope 1 = 17.10244355445735, Difference 1 = 6.106869266893073
-Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, Difference 1 = 15.565777563839328
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Br: Actual Slope 1 = 10.995574287564276, Computed Slope 1 = nan, Difference 1 = nan
+Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = nan, Difference 1 = nan
 </pre></div>
 </div>
 </div>
@@ -1012,7 +1019,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/450989e22f280e1adee95ad19927baadd520179d8f7a5a9a77b18af81fcce2ae.png" src="../../_images/450989e22f280e1adee95ad19927baadd520179d8f7a5a9a77b18af81fcce2ae.png" />
+<img alt="../../_images/5ac3b761a74d3a18830abfd7f16d074a8b9f83ba7337cceb37dec2ee5705811d.png" src="../../_images/5ac3b761a74d3a18830abfd7f16d074a8b9f83ba7337cceb37dec2ee5705811d.png" />
 </div>
 </div>
 </section>
@@ -1064,7 +1071,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/986d9b374b33b25f3224f1f848a63896ac379ffebb87a2db0760925d57d4e386.png" src="../../_images/986d9b374b33b25f3224f1f848a63896ac379ffebb87a2db0760925d57d4e386.png" />
+<img alt="../../_images/04e2a66554e3eef4a3c1fb25ffb89701a70bbd965356e6ec0a8dea977118eb68.png" src="../../_images/04e2a66554e3eef4a3c1fb25ffb89701a70bbd965356e6ec0a8dea977118eb68.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1077,7 +1084,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D: -0.02197359301547919
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>D: -1.0101260075375606e-09
 </pre></div>
 </div>
 </div>
@@ -1140,7 +1147,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/d517b3ec57eb183618cea61f8a068ca682addc7f201a66c5781404b04c07f3ef.png" src="../../_images/d517b3ec57eb183618cea61f8a068ca682addc7f201a66c5781404b04c07f3ef.png" />
+<img alt="../../_images/a5c776bdd64c61f89e43ac62a538cf5a9a1a5f7083671bf67601b3778e223633.png" src="../../_images/a5c776bdd64c61f89e43ac62a538cf5a9a1a5f7083671bf67601b3778e223633.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1196,7 +1203,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/c70f199d62f2d440970e85e65aabbccfc39f6ca7f85f4a617c807f2c3e1754c5.png" src="../../_images/c70f199d62f2d440970e85e65aabbccfc39f6ca7f85f4a617c807f2c3e1754c5.png" />
+<img alt="../../_images/c5300074c94d8a294d9189b4620b8e66870e9ff71afc4701be6cf3d53cede123.png" src="../../_images/c5300074c94d8a294d9189b4620b8e66870e9ff71afc4701be6cf3d53cede123.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1224,8 +1231,8 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 17.136573890634224, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Br: Actual Slope 1 = 10.995574287564276, Computed Slope 1 = 7.407918075507147, Difference 1 = -3.587656212057129
-Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 7.407918075507147, Difference 1 = 5.83712174871225
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Br: Actual Slope 1 = 10.995574287564276, Computed Slope 1 = 7.634016941953307, Difference 1 = -3.3615573456109686
+Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 7.634016941953307, Difference 1 = 6.063220615158411
 </pre></div>
 </div>
 </div>
@@ -1259,7 +1266,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 7.407918075507147, D
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/f7417927c0c4c7d1324091d2e4a57cc4b0b582f7b497f83f733ed07bae1308fd.png" src="../../_images/f7417927c0c4c7d1324091d2e4a57cc4b0b582f7b497f83f733ed07bae1308fd.png" />
+<img alt="../../_images/6a43a63e2c1f307e8f0d70b8dcabc9e963ca1a79ab51fe3d02fa1208f82f8e0b.png" src="../../_images/6a43a63e2c1f307e8f0d70b8dcabc9e963ca1a79ab51fe3d02fa1208f82f8e0b.png" />
 </div>
 </div>
 </section>
@@ -1277,7 +1284,7 @@ Bphi: Actual Slope = 1.5707963267948966, Computed Slope 1 = 7.407918075507147, D
         },
         kernelOptions: {
             name: "python3",
-            path: "./Alpha_Omega_Dynamos/z_approximation"
+            path: "./alpha_omega_dynamos/z_approximation"
         },
         predefinedOutput: true
     }
