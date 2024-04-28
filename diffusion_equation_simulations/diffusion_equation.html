@@ -1,0 +1,749 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Mean Field Dynamo Equation &#8212; Galactic Dynamo Simulations</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'diffusion_equation_simulations/diffusion_equation';</script>
+    <link rel="icon" href="../_static/logo.jpg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)" href="z_approximation/diffusion_equation_dirchilet.html" />
+    <link rel="prev" title="Project Information" href="../index.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.jpg" class="logo__image only-light" alt="Galactic Dynamo Simulations - Home"/>
+    <script>document.write(`<img src="../_static/logo.jpg" class="logo__image only-dark" alt="Galactic Dynamo Simulations - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Project Information
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Diffusion Equation Simulation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mean Field Dynamo Equation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="z_approximation/diffusion_equation_dirchilet.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="z_approximation/diffusion_equation_neumann.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Alpha Omega Dynamos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../alpha_omega_dynamos/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../alpha_omega_dynamos/z_approximation/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation using Crank Nicholson without Ghost Zones</a></li>
+
+
+
+
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/SagarPrakashBarad/GalacticDynamos" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/diffusion_equation_simulations/diffusion_equation.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mean Field Dynamo Equation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mean Field Dynamo Equation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-up-simulation">Setting the up Simulation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-we-begin">Before we begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grounds-for-simulation">Grounds for Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-neglecting-radial-derivatives">Approximation: Neglecting Radial Derivatives</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenmodes-with-boundary-condtions">Eigenmodes with Boundary Condtions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neglecting-radial-derivatives-z-approximation">Neglecting Radial Derivatives (z approximation)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dirchilet-boundary-condition">Dirchilet Boundary Condition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neumann-boundary-condition">Neumann Boundary Condition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-conclusions">Discussion &amp; Conclusions</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="mean-field-dynamo-equation">
+<h1>Mean Field Dynamo Equation<a class="headerlink" href="#mean-field-dynamo-equation" title="Link to this heading">#</a></h1>
+<p>The mean-field dynamo equation describes the generation of a magnetic field in a turbulent conducting fluid. The general form of the mean-field dynamo equation, neglecting the alpha effect, velocity terms, and assuming the diffusion coefficient is scalar, along with the condition that the divergence of the magnetic field (<span class="math notranslate nohighlight">\(\nabla \cdot \mathbf{B} = 0\)</span>), is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \bar{\mathbf{B}}}{\partial t} = \nabla \times (\bar{\mathbf{v}} \times \bar{\mathbf{B}}) + \eta \nabla^2 \bar{\mathbf{B}}
+\]</div>
+<p>Where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\bar{\mathbf{B}}\)</span> is the magnetic field vector.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{\mathbf{v}}\)</span> is the velocity vector of the conducting fluid.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\eta\)</span> is the magnetic diffusion coefficient.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\nabla \times (\bar{\mathbf{v}} \times \bar{\mathbf{B}})\)</span> represents the stretching and folding of the magnetic field lines due to the fluid motion.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\eta \nabla^2 \bar{\mathbf{B}}\)</span> represents the diffusion of the magnetic field.</p></li>
+</ul>
+<p>Neglecting the alpha effect and the stretching term (<span class="math notranslate nohighlight">\(\bar{\mathbf{v}} \times \bar{\mathbf{B}}\)</span>) and considering a scalar diffusion coefficient with <span class="math notranslate nohighlight">\(\nabla \cdot \mathbf{B} = 0\)</span>, the simplified mean-field dynamo equation becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \bar{\mathbf{B}}}{\partial t} = \eta \nabla^2 \bar{\mathbf{B}}
+\]</div>
+<p>This equation describes the evolution of the magnetic field solely due to diffusion, without any contribution from fluid motion or turbulent effects.</p>
+<p>For the radial component ( <span class="math notranslate nohighlight">\(B_r\)</span> ):
+$<span class="math notranslate nohighlight">\(
+\frac{\partial \bar{B}_r}{\partial t} = \eta \left( \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial \bar{B}_r}{\partial r} \right) - \frac{Br}{r^2}+ \frac{\partial^2 \bar{B}_r}{\partial z^2} \right)
+\)</span>$</p>
+<p>For the azimuthal component (<span class="math notranslate nohighlight">\(B_{\phi}\)</span>):
+$<span class="math notranslate nohighlight">\(
+\frac{\partial \bar{B}_\phi}{\partial t} = \eta \left( \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial \bar{B}_\phi}{\partial r} \right) - \frac{B_{\phi}}{r^2} + \frac{\partial^2 \bar{B}_\phi}{\partial z^2} \right)
+\)</span>$</p>
+<p>For the axial component (<span class="math notranslate nohighlight">\( B_z \)</span>):
+$<span class="math notranslate nohighlight">\(
+\frac{\partial \bar{B}_z}{\partial t} = \eta \left( \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial \bar{B}_z}{\partial r} \right) - \frac{B_z}{r^2} + \frac{\partial^2 \bar{B}_z}{\partial z^2} \right)
+\)</span>$</p>
+<p>These spiral galxies can be approximated as a spatially symmetric thin disc where <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \phi} = 0\)</span>. We also that observe <span class="math notranslate nohighlight">\(B_z\)</span>  is much weaker than  <span class="math notranslate nohighlight">\(B_r\)</span> and <span class="math notranslate nohighlight">\(B_\phi\)</span>, we can neglect <span class="math notranslate nohighlight">\(B_z\)</span> in equations for <span class="math notranslate nohighlight">\(B_r\)</span> and <span class="math notranslate nohighlight">\(B_\phi\)</span>. Alternatively, <span class="math notranslate nohighlight">\(B_z\)</span> can be determined from the solenoidality condition <span class="math notranslate nohighlight">\(\nabla \cdot \mathbf{B} = 0\)</span> as soon as <span class="math notranslate nohighlight">\(B_r\)</span> and <span class="math notranslate nohighlight">\(B_{\phi}\)</span> have been solved for.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="setting-the-up-simulation">
+<h1>Setting the up Simulation<a class="headerlink" href="#setting-the-up-simulation" title="Link to this heading">#</a></h1>
+<section id="before-we-begin">
+<h2>Before we begin<a class="headerlink" href="#before-we-begin" title="Link to this heading">#</a></h2>
+<p>This is essentially the step zero of the simulation to non dimensional the differential equation.Nondimensionalization allows us to focus on the relative importance of different terms in the equations and simplifies the interpretation of the results. It also helps in comparing simulations across different scales and systems. To nondimensionalize the given equations, we’ll scale each parameter by equivalent units to obtain a set of dimensionless quantities. This ensures that parameters of vastly different magnitudes can be treated uniformly, which is particularly useful for simulations. Let’s denote the scaling factors as ( <span class="math notranslate nohighlight">\(R_o\)</span> ) for radial distance, ( <span class="math notranslate nohighlight">\(h\)</span> ) for axial distance, and <span class="math notranslate nohighlight">\(\frac{\eta}{h^2}\)</span>  for time. The dimensional variables are denoted by <span class="math notranslate nohighlight">\((r, z, t)\)</span>, while the nondimensional variables are denoted by (<span class="math notranslate nohighlight">\(\tilde{r}, \tilde{z}, \tilde{t}\)</span>).</p>
+<p>We’ll use the following scaling:</p>
+<ul class="simple">
+<li><p>Radial distance: <span class="math notranslate nohighlight">\(r \rightarrow \tilde{r} = \frac{r}{R_o}\)</span></p></li>
+<li><p>Axial distance:  <span class="math notranslate nohighlight">\(z \rightarrow \tilde{z} = \frac{z}{h}\)</span></p></li>
+<li><p>Time:  <span class="math notranslate nohighlight">\(t \rightarrow \tilde{t} = \frac{\eta t}{h^2}\)</span></p></li>
+<li><p>galatic size ratio: <span class="math notranslate nohighlight">\(\epsilon = \frac{h}{R_o}\)</span></p></li>
+</ul>
+<p><strong>note</strong>: for typical spiral galaxies the values of <span class="math notranslate nohighlight">\(h\)</span> and <span class="math notranslate nohighlight">\(R_o\)</span> are <span class="math notranslate nohighlight">\(0.5 \ \text{Kpc}\)</span> and <span class="math notranslate nohighlight">\(10 \ \text{Kpc}\)</span> respectively. And hence, <span class="math notranslate nohighlight">\(\epsilon \ll 1\)</span>.</p>
+<p>Applying these scalings to the equations:</p>
+<ol class="arabic simple">
+<li><p>For <span class="math notranslate nohighlight">\(B_r\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \bar{B}_r}{\partial t} = \eta \left( \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial \bar{B}_r}{\partial r} \right) - \frac{B_r}{r^2} + \frac{\partial^2 \bar{B}_r}{\partial z^2} \right)
+\]</div>
+<p>Becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \bar{B}_r}{\partial \tilde{t}} = \left( \epsilon^2 \left(\frac{1}{\tilde{r}} \frac{\partial}{\partial \tilde{r}} \left( \tilde{r} \frac{\partial \bar{B}_r}{\partial \tilde{r}} \right) - \frac{\bar{B}_r}{\tilde{r}^2} \right)  + \frac{\partial^2 \bar{B}_r}{\partial \tilde{z}^2} \right)
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>For <span class="math notranslate nohighlight">\(B_\phi\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \bar{B}_\phi}{\partial t} = \eta \left( \frac{1}{r} \frac{\partial}{\partial r} \left( r \frac{\partial \bar{B}_\phi}{\partial r} \right) - \frac{B_\phi}{r^2} + \frac{\partial^2 \bar{B}_\phi}{\partial z^2} \right)
+\]</div>
+<p>Becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial \bar{B}_\phi}{\partial \tilde{t}} = \left( \epsilon^2 \left(\frac{1}{\tilde{r}} \frac{\partial}{\partial \tilde{r}} \left( \tilde{r} \frac{\partial \bar{B}_r}{\partial \tilde{r}} \right) - \frac{\bar{B}_r}{\tilde{r}^2} \right)  + \frac{\partial^2 \bar{B}_\phi}{\partial \tilde{z}^2} \right)
+\]</div>
+<p>We can similarly nondimensionalize the equation for <span class="math notranslate nohighlight">\(B_z\)</span>.</p>
+</section>
+<section id="grounds-for-simulation">
+<h2>Grounds for Simulation<a class="headerlink" href="#grounds-for-simulation" title="Link to this heading">#</a></h2>
+<p>We’ll explore two different approximations for solving the system: one neglecting the radial derivatives entirely and solving only for the axial direction <span class="math notranslate nohighlight">\(\hat{z}\)</span>, and the other approximating the derivative in <span class="math notranslate nohighlight">\(\hat{z}\)</span> while solving in <span class="math notranslate nohighlight">\(\hat{r}\)</span> direction.</p>
+<section id="approximation-neglecting-radial-derivatives">
+<h3>Approximation: Neglecting Radial Derivatives<a class="headerlink" href="#approximation-neglecting-radial-derivatives" title="Link to this heading">#</a></h3>
+<p>In this approximation, we neglect all radial derivatives and solve the equations only for the axial direction  <span class="math notranslate nohighlight">\(\tilde{z}\)</span>. This simplifies the equations significantly and is applicable when variations in the radial direction are much smaller compared to the axial direction, such as in thin disk systems. In this approximation, we solve the equations in the radial direction <span class="math notranslate nohighlight">\(\tilde{r}\)</span> but approximate the axial derivative <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \tilde{z}}\)</span>. This is commonly done in situations where the system has a dominant axial symmetry, such as in spiral galaxies where the thin disk approximation is valid.</p>
+<ol class="arabic simple">
+<li><p>For <span class="math notranslate nohighlight">\(B_r\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial B_r}{\partial \tilde{t}} = \left( \frac{\partial^2 B_r}{\partial \tilde{z}^2} \right)
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>For <span class="math notranslate nohighlight">\(B_\phi\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+\frac{\partial B_\phi} {\partial \tilde{t}} = \left( \frac{\partial^2 B_\phi}{\partial \tilde{z}^2} \right)
+\]</div>
+<p>To solve the equations for <span class="math notranslate nohighlight">\(B_r\)</span> and <span class="math notranslate nohighlight">\(B_\phi\)</span> in the axial direction <span class="math notranslate nohighlight">\(\tilde{z}\)</span> under the thin disk approximation.
+We seek solutions of the form <span class="math notranslate nohighlight">\(B(z,t) = B_0(z) \exp(-\gamma t)\)</span> where <span class="math notranslate nohighlight">\(B_0(z)\)</span> represents the spatial variation of the magnetic field and <span class="math notranslate nohighlight">\(\gamma\)</span> is a decay constant.</p>
+<p>Substituting this form into the differential equations, we obtain:</p>
+<ol class="arabic simple">
+<li><p>For <span class="math notranslate nohighlight">\(B_r\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+-\gamma B_r = \frac{d^2 B_r}{d \tilde{z}^2}
+\]</div>
+<ol class="arabic simple" start="2">
+<li><p>For <span class="math notranslate nohighlight">\(B_\phi\)</span>:</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[
+-\gamma B_\phi = \frac{d^2 B_\phi}{d \tilde{z}^2}
+\]</div>
+<p>These are second-order ordinary differential equations (ODEs) with constant coefficients. The general solution for each equation can be written as a linear combination of sine and cosine functions due to the homogeneity and isotropy of the problem. Thus, the general form of <span class="math notranslate nohighlight">\(B_r\)</span> and <span class="math notranslate nohighlight">\(B_\phi\)</span> would be:</p>
+<div class="math notranslate nohighlight">
+\[
+B_r(z) = A_r \cos(\sqrt{\gamma} \tilde{z}) + B_r \sin(\sqrt{\gamma} \tilde{z})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \tilde{z})
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(A_r\)</span>, <span class="math notranslate nohighlight">\(B_r\)</span>, <span class="math notranslate nohighlight">\(A_\phi\)</span>, and <span class="math notranslate nohighlight">\(B_\phi\)</span> are constants to be determined based on initial or boundary conditions.</p>
+<p>The parameter <span class="math notranslate nohighlight">\(\gamma\)</span> determines the decay rate of the magnetic field in time. Its value depends on the physical properties of the system and the boundary conditions.</p>
+<section id="eigenmodes-with-boundary-condtions">
+<h4>Eigenmodes with Boundary Condtions<a class="headerlink" href="#eigenmodes-with-boundary-condtions" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Vacuum Boundary condtion</strong>:</p></li>
+</ol>
+<p>For this boundary condition the analytical solution will be the following:</p>
+<div class="math notranslate nohighlight">
+\[B_r(z) = B_r cos((m + \frac{1}{2})\pi z)\]</div>
+<div class="math notranslate nohighlight">
+\[B_{\phi}(z) = B_{\phi} cos((n + \frac{1}{2})\pi z)\]</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Neumann Boundary condtion</strong>:</p></li>
+</ol>
+<p>For this boundary condition where at boundary the spatial derivative is <span class="math notranslate nohighlight">\(0\)</span>, then the analytical solution will be the following:</p>
+<div class="math notranslate nohighlight">
+\[B_r(z) = B_r sin((m)\pi z)\]</div>
+<div class="math notranslate nohighlight">
+\[B_{\phi}(z) = B_{\phi} sin((n)\pi z)\]</div>
+</section>
+</section>
+</section>
+<section id="results">
+<h2>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
+<p>We have solved the diffusion equation in z for exactly 3 types of seed field. Firstly with the original eigenmodes and we have also experiments with decaying and gaussian and trigonmetric initial seeds for the solutions.</p>
+<section id="neglecting-radial-derivatives-z-approximation">
+<h3>Neglecting Radial Derivatives (z approximation)<a class="headerlink" href="#neglecting-radial-derivatives-z-approximation" title="Link to this heading">#</a></h3>
+<section id="dirchilet-boundary-condition">
+<h4>Dirchilet Boundary Condition<a class="headerlink" href="#dirchilet-boundary-condition" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Seed 1</strong> : Oscillatory Solutions.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[ B_r = B_o cos(\frac{3}{2} \pi z) \]</div>
+<div class="math notranslate nohighlight">
+\[ B_r = B_o cos(\frac{1}{2} \pi z) \]</div>
+<p><img alt="seed_1" src="../_images/Br_Bphi_Norm_Pitch_evolution.gif" /></p>
+<p><img alt="seed_1" src="../_images/log_Br_Bphi_vs_time.png" /></p>
+<ol class="arabic">
+<li><p><strong>Seed 2</strong> : Exponential Decay Solution.
+$<span class="math notranslate nohighlight">\( B_r = B_o (1- e^{-\gamma(1-|z|)}) \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( B_{\phi} = B_o (1 - \gamma|z|) \)</span>$
+<img alt="seed_2" src="../_images/Br_Bphi_Norm_Pitch_evolution1.gif" /></p>
+<p><img alt="seed_2" src="../_images/log_Br_Bphi_vs_time1.png" /></p>
+</li>
+<li><p><strong>Seed 3</strong> : Gaussian and Trigonometric .
+<img alt="seed_3" src="../_images/Br_Bphi_Norm_Pitch_evolution2.gif" /></p>
+<p><img alt="seed_3" src="../_images/log_Br_Bphi_vs_time2.png" /></p>
+</li>
+</ol>
+<p>For detailed analysis of the results check the simulation file <span class="xref myst">here</span>.</p>
+</section>
+<section id="neumann-boundary-condition">
+<h4>Neumann Boundary Condition<a class="headerlink" href="#neumann-boundary-condition" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Seed 1</strong> : Oscillatory Solutions.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[ B_r = B_o cos(\frac{3}{2} \pi z) \]</div>
+<div class="math notranslate nohighlight">
+\[ B_r = B_o cos(\frac{1}{2} \pi z) \]</div>
+<p><img alt="seed_1" src="../_images/Br_Bphi_Norm_Pitch_evolution_neu.gif" /></p>
+<p><img alt="seed_1" src="../_images/log_Br_Bphi_vs_time_neu.png" /></p>
+<ol class="arabic">
+<li><p><strong>Seed 2</strong> : Exponential Decay Solution.
+$<span class="math notranslate nohighlight">\( B_r = B_o (1- e^{-\gamma(1-|z|)}) \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( B_{\phi} = B_o (1 - \gamma|z|) \)</span>$
+<img alt="seed_2" src="../_images/Br_Bphi_Norm_Pitch_evolution_neu1.gif" /></p>
+<p><img alt="seed_2" src="../_images/log_Br_Bphi_vs_time_neu1.png" /></p>
+</li>
+<li><p><strong>Seed 3</strong> : Gaussian and Trigonometric .
+<img alt="seed_3" src="../_images/Br_Bphi_Norm_Pitch_evolution_neu2.gif" /></p>
+<p><img alt="seed_3" src="../_images/log_Br_Bphi_vs_time_neu2.png" />
+For detailed analysis of the results check the simulation file <span class="xref myst">here</span>.</p>
+</li>
+</ol>
+</section>
+</section>
+</section>
+<section id="discussion-conclusions">
+<h2>Discussion &amp; Conclusions<a class="headerlink" href="#discussion-conclusions" title="Link to this heading">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./diffusion_equation_simulations"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Project Information</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="z_approximation/diffusion_equation_dirchilet.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mean Field Dynamo Equation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-up-simulation">Setting the up Simulation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-we-begin">Before we begin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grounds-for-simulation">Grounds for Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-neglecting-radial-derivatives">Approximation: Neglecting Radial Derivatives</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenmodes-with-boundary-condtions">Eigenmodes with Boundary Condtions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#neglecting-radial-derivatives-z-approximation">Neglecting Radial Derivatives (z approximation)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dirchilet-boundary-condition">Dirchilet Boundary Condition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#neumann-boundary-condition">Neumann Boundary Condition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-conclusions">Discussion &amp; Conclusions</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sagar Prakash Barad
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
