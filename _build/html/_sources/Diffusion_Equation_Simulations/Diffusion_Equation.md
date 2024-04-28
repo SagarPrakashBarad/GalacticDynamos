@@ -12,7 +12,7 @@ kernelspec:
   name: python3
 ---
 
-# Diffusion Equation
+# Mean Field Dynamo Equation
 
 The mean-field dynamo equation describes the generation of a magnetic field in a turbulent conducting fluid. The general form of the mean-field dynamo equation, neglecting the alpha effect, velocity terms, and assuming the diffusion coefficient is scalar, along with the condition that the divergence of the magnetic field ($\nabla \cdot \mathbf{B} = 0$), is given by:
 
@@ -99,7 +99,7 @@ We can similarly nondimensionalize the equation for $B_z$.
 We'll explore two different approximations for solving the system: one neglecting the radial derivatives entirely and solving only for the axial direction $\hat{z}$, and the other approximating the derivative in $\hat{z}$ while solving in $\hat{r}$ direction.
 
 
-### Approximation 1: Neglecting Radial Derivatives
+### Approximation: Neglecting Radial Derivatives
 
 In this approximation, we neglect all radial derivatives and solve the equations only for the axial direction  $\tilde{z}$. This simplifies the equations significantly and is applicable when variations in the radial direction are much smaller compared to the axial direction, such as in thin disk systems. In this approximation, we solve the equations in the radial direction $\tilde{r}$ but approximate the axial derivative $\frac{\partial}{\partial \tilde{z}}$. This is commonly done in situations where the system has a dominant axial symmetry, such as in spiral galaxies where the thin disk approximation is valid.
 
@@ -162,58 +162,61 @@ For this boundary condition where at boundary the spatial derivative is $0$, the
    
 $$B_r(z) = B_r sin((m)\pi z)$$
 
-$$B_{\phi}(z) = B_{\phi} cos((n)\pi z)$$
-
-### Approximation 2: Approximating the Axial Derivative
-
-Now, for the second approximation, we approximate the axial derivative as $\frac{\partial}{\partial \tilde{z}} \approx -\frac{\pi}{2h}$. This approximation assumes that the variation in $\tilde{z}$ is much smaller compared to the azimuthal variation $\phi$ within the thin disk, hence the derivative becomes effectively constant.
-
-1. For $B_r$:
-
-$$
-\frac{\partial \bar{B}_r}{\partial \tilde{t}} = \left( \epsilon^2 \left(\frac{1}{\tilde{r}} \frac{\partial}{\partial \tilde{r}} \left( \tilde{r} \frac{\partial \bar{B}_r}{\partial \tilde{r}} \right) - \frac{\bar{B}_r}{\tilde{r}^2} \right) + (\frac{\pi}{2h})^2 B_r \right)
-$$
-
-
-2. For $B_\phi$:
-
-$$
-\frac{\partial \bar{B}_\phi}{\partial \tilde{t}} = \left( \epsilon^2 \left(\frac{1}{\tilde{r}} \frac{\partial}{\partial \tilde{r}} \left( \tilde{r} \frac{\partial \bar{B}_r}{\partial \tilde{r}} \right) - \frac{\bar{B}_r}{\tilde{r}^2} \right)  + (\frac{\pi}{2h})^2 B_\phi \right)
-$$
+$$B_{\phi}(z) = B_{\phi} sin((n)\pi z)$$
 
 
 ## Results
-We have solved the diffusion equation z with the original eigenmodes as the initial condition. We have have generated $Br_o$ and $Br_\phi$ using three seeds and also have exerpimented with six different eigenmodes in between $B_r$ and $B_\phi$.
+We have solved the diffusion equation in z for exactly 3 types of seed field. Firstly with the original eigenmodes and we have also experiments with decaying and gaussian and trigonmetric initial seeds for the solutions. 
 
 ### Neglecting Radial Derivatives (z approximation)
 
 #### Dirchilet Boundary Condition
 
-1. Seed = 10 with eigenmodes $m=5$ and $n=3$. 
-   ![seed_10](/Diffusion_Equation_Simulations/z_approximation/seed_10/Br_Bphi_Norm_Pitch_evolution.gif)
+1. **Seed 1** : Oscillatory Solutions. 
+   
+$$ B_r = B_o cos(\frac{3}{2} \pi z) $$
+$$ B_r = B_o cos(\frac{1}{2} \pi z) $$
+   ![seed_1](/Diffusion_Equation_Simulations/z_approximation/seed_1/Br_Bphi_Norm_Pitch_evolution.gif)
 
-   ![seed_10](/Diffusion_Equation_Simulations/z_approximation/seed_10/log_Br_Bphi_vs_time.png)
+   ![seed_1](/Diffusion_Equation_Simulations/z_approximation/seed_1/log_Br_Bphi_vs_time.png)
 
-2. Seed = 25 with eigenmodes $m=25$ and $n=25$.
-   ![seed_25](/Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif)
+1. **Seed 2** : Exponential Decay Solution.
+   $$ B_r = B_o (1- e^{-\gamma(1-|z|)}) $$
+   $$ B_{\phi} = B_o (1 - \gamma|z|) $$
+   ![seed_2](/Diffusion_Equation_Simulations/z_approximation/seed_2/Br_Bphi_Norm_Pitch_evolution.gif)
 
-3. Seed = 100 with eigenmodes $m=100$ and $n=75$.
-   ![seed_25](/Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif)
+   ![seed_2](/Diffusion_Equation_Simulations/z_approximation/seed_2/log_Br_Bphi_vs_time.png)
+
+2. **Seed 3** : Gaussian and Trigonometric .
+   ![seed_3](/Diffusion_Equation_Simulations/z_approximation/seed_3/Br_Bphi_Norm_Pitch_evolution.gif)
+
+   ![seed_3](/Diffusion_Equation_Simulations/z_approximation/seed_3/log_Br_Bphi_vs_time.png)
 
 For detailed analysis of the results check the simulation file [here](/Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet.ipynb).
 
 #### Neumann Boundary Condition
 
-1. Seed = 10 with eigenmodes $m=5$ and $n=3$. 
-   ![seed_10](/Diffusion_Equation_Simulations/z_approximation/seed_10/Br_Bphi_Norm_Pitch_evolution.gif)
+1. **Seed 1** : Oscillatory Solutions. 
+   
+$$ B_r = B_o cos(\frac{3}{2} \pi z) $$
+$$ B_r = B_o cos(\frac{1}{2} \pi z) $$
+   ![seed_1](/Diffusion_Equation_Simulations/z_approximation/seed_1/Br_Bphi_Norm_Pitch_evolution_neu.gif)
 
-   ![seed_10](/Diffusion_Equation_Simulations/z_approximation/seed_10/log_Br_Bphi_vs_time_neu.png)
+   ![seed_1](/Diffusion_Equation_Simulations/z_approximation/seed_1/log_Br_Bphi_vs_time_neu.png)
 
-2. Seed = 25 with eigenmodes $m=25$ and $n=25$.
-   ![seed_25](/Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif)
+1. **Seed 2** : Exponential Decay Solution.
+   $$ B_r = B_o (1- e^{-\gamma(1-|z|)}) $$
+   $$ B_{\phi} = B_o (1 - \gamma|z|) $$
+   ![seed_2](/Diffusion_Equation_Simulations/z_approximation/seed_2/Br_Bphi_Norm_Pitch_evolution_neu.gif)
 
-3. Seed = 100 with eigenmodes $m=100$ and $n=75$.
-   ![seed_25](/Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif)
+   ![seed_2](/Diffusion_Equation_Simulations/z_approximation/seed_2/log_Br_Bphi_vs_time_neu.png)
 
+2. **Seed 3** : Gaussian and Trigonometric .
+   ![seed_3](/Diffusion_Equation_Simulations/z_approximation/seed_3/Br_Bphi_Norm_Pitch_evolution_neu.gif)
+
+   ![seed_3](/Diffusion_Equation_Simulations/z_approximation/seed_3/log_Br_Bphi_vs_time_neu.png)
 For detailed analysis of the results check the simulation file [here](/Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_neumann.ipynb).
+
+
+## Discussion & Conclusions
 

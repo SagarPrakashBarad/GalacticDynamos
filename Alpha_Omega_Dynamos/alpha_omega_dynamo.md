@@ -12,39 +12,106 @@ kernelspec:
   name: python3
 ---
 
+<div align="center">
+  <h1>Task 2</h1>
+</div>
+
+Solve the mean-field $\alpha-\Omega$ dynamo equations in the kinematic regime. That is, include the $\Omega$ effect term in the equation for $\dfrac{\partial \bar{B}_\phi}{\partial t}$ and the $\alpha$ effect term in the equation for $\dfrac{\partial \bar{B}_r}{\partial t}$. This requires specifying the overall magnitude and spatial dependence of $\Omega$ and $\alpha$.
+* Repeat the investigation you had done for task 1, with the new equations, for different values of the dynamo number, $D$
+$$ D = − \dfrac{\alpha_0 q \Omega h^3}{\eta_t^2} $$
+where $q = − \dfrac{d \ln \Omega}{d \ln r}$ and $\alpha_0 > 0$ is the amplitude of the $\alpha$ effect. Note that $q > 0$ if $\Omega$ decreases with $r$, which is generally the case in galaxies, so $D < 0$.
+* The exponential decay becomes exponential growth if $|D| > |D_c|$, where $D_c$ is the critical dynamo number. Find the critical dynamo number numerically (ideally, you would automate this feature).
+* Compare the growth rate you obtain for a given value of $D$ (for $|D| > |D_c|$) with the no-z solution prediction for the local growth rate $\gamma$. Do the same comparison for $D_c$ . Do the results agree with your expectations?
+
+
 ## $\alpha \Omega$ Dynamo Simulation
 
-We adopt the simplest approximation to the mean field dynamo equations, considering it as a flat rotating thin disc. This implies that $\epsilon = \frac{h_o}{R_o} \ll 1$, allowing us to neglect all terms involving $\epsilon^2$ along with any radial derivatives associated with it. Under this approximation, we seek a local solution in $z$ for specific values of $\phi$ and $r$.
+We begin by adopting the simplest approximation to the mean field dynamo equations, treating the system as a flat rotating thin disc. This assumption implies that the aspect ratio, denoted by $\epsilon = \frac{h_o}{R_o}$, where $h_o$ is the disc thickness and $R_o$ is its radius, is much less than 1, allowing us to neglect all terms involving $\epsilon^2$, along with any radial derivatives associated with it.
+
+Under this approximation, we seek a local solution in the $z$ direction for specific values of $\phi$ and $r$. Our mean field dynamo equation is given by:
 
 $$
-\frac{\partial \bar{B}_r}{\partial t} = - \frac{\partial }{\partial z} (\alpha \bar{B}_{\phi}) + \frac{\partial^2 \bar{B}_r}{\partial z^2}
+\frac{\partial \bar{\mathbf{B}}}{\partial t} = \nabla \times \left[ \bar{\mathbf{V}} \times \bar{\mathbf{B}} + \mathcal{E} - \eta \left( \nabla \times \bar{\mathbf{B}} \right) \right]
+$$
+
+where $\mathcal{E} = \left( \alpha \bar{\mathbf{B}} \right) - \eta_t \left( \nabla \times \bar{\mathbf{B}} \right)$.
+
+To simplify the equations further, we make the following approximations:
+
+1. We consider the velocity field $\bar{\mathbf{V}}$ to be of the form:
+$$
+\mathbf{\bar{V}} = \bar{V}_r(r) \mathbf{\hat{r}} + r \Omega(r) \mathbf{\hat{\phi}} + \bar{V}_z(r, z) \mathbf{\hat{z}}
+$$
+Here, $\bar{V}_r$, $\Omega$, and $\bar{V}_z$ represent the radial, azimuthal, and vertical components of the velocity field, respectively.
+
+2. We take the turbulent magnetic diffusivity, $\eta_T$, to be independent of $\bar{\mathbf{B}}$. This simplifies our equation to:
+$$
+\boxed{ \frac{\partial \bar{\mathbf{B}}}{\partial t} = \nabla \times \left( \bar{\mathbf{V}} \times \bar{\mathbf{B}} \right) + \nabla \times \left(\alpha \bar{\mathbf{B}} \right) - \eta_T \left( \nabla \times \nabla \times \bar{\mathbf{B}} \right) }
+$$
+
+3. Solving the equations in cylindrical coordinates and assuming azimuthal symmetry, we derive the equations for $\bar{B}_r$ and $\bar{B}_{\phi}$ as:
+$$
+\frac{\partial \bar{B}_r}{\partial t} = V_r \frac{\partial \bar{B}_z}{\partial z} - \frac{\partial (V_z \bar{B}_r)}{\partial z} - \frac{\partial (\alpha \bar{B}_\phi)}{\partial z} + \eta_T \left[ \frac{\partial^2 \bar{B}_r}{\partial z^2} + \frac{\partial}{\partial r} \left( \frac{1}{r} \frac{\partial}{\partial r} \left( r \bar{B}_r \right) \right) \right]
+$$
+$$
+\frac{\partial \bar{B}_\phi}{\partial t} = r \Omega \frac{\partial \bar{B}_z}{\partial z} - \frac{\partial (V_z \bar{B}_\phi)}{\partial z} - \frac{\partial (V_r \bar{B}_\phi)}{\partial r} + \frac{\partial (r \Omega \bar{B}_r)}{\partial r} + \frac{\partial (\alpha \bar{B}_r)}{\partial z} - \frac{\partial (\alpha \bar{B}_z)}{\partial r} + \eta_T \left[ \frac{\partial^2 \bar{B}_\phi}{\partial z^2} + \frac{\partial}{\partial r} \left( \frac{1}{r} \frac{\partial}{\partial r} \left( r \bar{B}_\phi \right) \right) \right]
+$$
+
+4. Utilizing the $\alpha-\Omega$ approximation and defining $q = -\dfrac{\partial \ln \Omega}{\partial \ln r} = -\dfrac{r}{\Omega} \dfrac{\partial \Omega}{\partial r}$, we obtain the simplified equations:
+$$
+\boxed{ \frac{\partial \bar{B}_r}{\partial t} = - \frac{\partial (\alpha \bar{B}_\phi)}{\partial z} + \eta_T \frac{\partial^2 \bar{B}_r}{\partial z^2} } \quad \text{and} \quad \boxed{ \frac{\partial \bar{B}_\phi}{\partial t} = DS \bar{B}_r + \eta_T \frac{\partial^2 \bar{B}_\phi}{\partial z^2} }
+$$
+
+Here, we have neglected all terms involving $\dfrac{\partial}{\partial r}$ in $\bar{B}$ and omitted the $\alpha^2$ term for simplicity. The parameter $S$ represents the shear rate and is defined as $S = r \dfrac{\partial \Omega}{\partial r}$. For a flat rotation curve, $S = -\Omega$, where $\Omega_{0}$ and $S_{0}$ are their values at $r = R_o$. Additionally, the $\alpha$-coefficient has a functional dependence of $\alpha \simeq l_{0}^{2} \Omega / h_{0}$.
+
+## Parameter Functional Dependence
+
+In our model, we express the shear rate ($S$) and the $\alpha$ coefficient as functions of the galactic coordinates. Specifically:
+
+$$
+S = - \Omega = - \Omega_{o} \frac{1}{\sqrt{1 + \left( \frac{r}{r_{\omega}} \right)^2}}
 $$
 
 $$
-\frac{\partial \bar{B}_\phi}{\partial t} =  DS\bar{B}_r + \frac{\partial^2 \bar{B}_\phi}{\partial z^2} 
+\alpha = \alpha_{o} \sin \left( \frac{\pi z}{2h} \right)
 $$
 
-Here, the parameters $S$ is the shear rate defined as $r \partial \Omega / \partial r$ and for flat rotation curve is equal to $- \Omega$, where $\Omega_{0}$ and $S_{0}$ are there value at $r = R_o$. For the $\alpha$-coefficient, it has its function dependence as $\alpha \simeq l_{0}^{2} \Omega / h_{0}$. 
-
-**Parameter Functional Dependence**
-
-$$
-S = - \Omega = - \Omega_{o} \frac{R_o}{r} 
-$$
-
-$$
-\alpha = \alpha_{o} \frac{R_o}{r}
-$$
+The dynamo number ($D$) is then defined as:
 
 $$
 D = - \alpha_{o} q \Omega \frac{h^3}{\eta_t^2}
 $$
 
-Here, q is defined as $ - \frac{\partial ln \Omega}{\partial ln r} $ and for flat rotation curve curve i.e $\Omega \propto \frac{1}{r}$, $q$ is found to be 1. Thus finally, the Dynamo number is defined as
+Here, $q$ denotes the derivative of the logarithm of $\Omega$ with respect to the logarithm of $r$. For a galaxy with a flat rotation curve ($\Omega \propto \frac{1}{r}$), $q$ evaluates to 1. Therefore, the dynamo number can be expressed as:
 
 $$
 D = - \alpha_{o} \Omega_{0} \frac{h^3}{\eta_t^2} \frac{R_o^2}{r^2}
 $$
+
+Where:
+
+- $h$ represents the thickness of the thin galactic disk,
+- $\alpha$ is the coefficient responsible for converting toroidal magnetic fields into poloidal ones, and
+- $\Omega$ denotes the rotation rate of the galaxy, inducing the twisting of poloidal fields into toroidal ones.
+
+**Example**
+
+Let's consider the Milky Way Galaxy with $r_{\omega} = 2$ kpc and $\Omega_0 = 110$ km/s/kpc, resulting in $q \approx 1$.
+
+We compute $\alpha$ as:
+
+$$
+\alpha = \frac{\tau^2 v^2 \Omega}{h} = \frac{(10 \text{ Myrs})^2 \times (10 \text{ km/s})^2 \times 110 \text{ km/s/kpc} }{ 100 \text{ pc}} = 11 \text{ km/s} = 0.1124 \text{ (100 pc/Myrs)}
+$$
+
+With $\eta_T = 3.48 \times 10^{-2}\text{ (100 pc)}^2/\text{ Myr}$ and $h = 100$ pc, the critical dynamo number is:
+
+$$
+D = - \frac{\alpha \times 0.98 \times 110 \text{ km/s/kpc} \times (100 \text{ pc})^3}{(3.48 \times 10^{-2}\text{ (100 pc)}^2/\text{ Myr})^2} = -0.948 \: \alpha = - 10.648 \text{ km/s}
+$$
+
+Here, $\alpha$ is measured in km/s.
+
 
 ### Setting up the Simulation
 
@@ -52,85 +119,11 @@ For the purpose of simulation, we will essentially treat all the parameters as c
 
 ### Boundary conditions
 
-At the disc surface $z = \pm h$, where $h$ is the half-thickness of the disc, we assume electromagnetic vacuum outside the disc, denoted by $\eta_t \rightarrow \infty$ at $|z| > h$. Consequently, mean electric currents vanish outside the disc, implying $\nabla \times \overline{\boldsymbol{B}} = 0$ for $|z| > h$. As a result, the large-scale magnetic field around the disc is potential, represented by $\bar{B} = \nabla \Phi(\boldsymbol{r})$. In an axially symmetric system, $\Phi$ must be independent of $\phi$, leading to $\bar{B}_{\phi} = 0$ and $\bar{B}_{r} = \partial \Phi / \partial r$ for $|z| > h$. Neglecting derivatives of $\Phi$ with respect to $r$, we find $\bar{B}_{r} = 0$ for $|z| > h$.
-
-The boundary conditions at $|z| = h$ are derived from matching the magnetic field inside the disc to the outer solution. Assuming no electric current sheets, $\bar{B}_{r}$ and $\bar{B}_{\phi}$ must be continuous at $|z| = h$, leading to the boundary conditions:
-
-
-\begin{align*}
-\bar{B}_{\phi} &= 0, \\
-\bar{B}_{r} &\approx 0 \quad \text{at} \quad z = \pm h.
-\end{align*}
-
-
-These boundary conditions are exact for the first condition due to axial symmetry and the potential structure of the outer magnetic field. The second condition is approximate and becomes more accurate as the disc becomes thinner. These boundary conditions are known as the vacuum boundary conditions.
-
-The local dynamo equations in $z$ take the form:
-
-
-\begin{align*}
-\gamma \mathcal{B}_{r} &= -\frac{\partial}{\partial z}\left(\alpha \mathcal{B}_{\phi}\right) + \frac{\partial^{2} \mathcal{B}_{r}}{\partial z^{2}}, \\
-\gamma \mathcal{B}_{\phi} &= D_{\mathrm{L}} \mathcal{B}_{r} + \frac{\partial^{2} \mathcal{B}_{\phi}}{\partial z^{2}},
-\end{align*}
-
-
-with the boundary conditions:
-
-
-\begin{align*}
-\mathcal{B}_{r}(\pm 1) &= \mathcal{B}_{\phi}(\pm 1) = 0,
-\end{align*}
-
-
-where $h = 1$ is the dimensionless local half-thickness of the disc, and both $h(r)$ and $S(r)$ are absorbed into the local dynamo number $D_{\mathrm{L}}$, a function of $r$ (and possibly $\phi$).
-
-This formulation represents a one-dimensional boundary value problem in $z$ with the eigenvalue $\gamma$ and eigenfunction $\mathcal{B}$, which depend parametrically on $r$ and $\phi$ when $\alpha$ and $D_{\mathrm{L}}$ depend on these variables.
-
-#### Eigenmodes with Boundary Condtions
-
-We are dealing with coupled second-order ordinary differential equations (PDEs) with "constant" coefficients. We will recycle the general solution for diffusion equation i.e linear combination of sine and cosine functions due to the homogeneity and isotropy of the problem. Thus, the general form of $B_r$ and $B_\phi$ would be:
-
-$$
-B_r(z) = A_r \cos(\sqrt{\gamma} \tilde{z}) + B_r \sin(\sqrt{\gamma} \tilde{z})
-$$
-
-$$
-B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \tilde{z})
-$$
-
-where $A_r$, $B_r$, $A_\phi$, and $B_\phi$ are constants to be determined based on initial or boundary conditions.
-
-The parameter $\gamma$ determines the decay rate of the magnetic field in time. Its value depends on the physical properties of the system and the boundary conditions.
-
-1. **Vacuum Boundary condtion**:
-
-For this boundary condition the analytical solution will be the following:
-   
-$$B_r(z) = B_r cos((m + \frac{1}{2})\pi z)$$
-
-$$B_{\phi}(z) = B_{\phi} cos((n + \frac{1}{2})\pi z)$$
-
-2. **Neumann Boundary condtion**:
-
-For this boundary condition where at boundary the spatial derivative is $0$, then the analytical solution will be the following:
-   
-$$B_r(z) = B_r sin((m)\pi z)$$
-
-$$B_{\phi}(z) = B_{\phi} cos((n)\pi z)$$
+We will use the same bound conditions as done in the task 1.
 
 ## Results
 
-We have solved the dynamo equation in z with the original eigenmodes of diffusion equation as the initial condition. We have have generated $B_r^o$ and $B_\phi^o$ using $\text{seed} = 100$. 
-
-**Parameters for the simulation**
-| Parameter | Value |
-|-----------|-------|
-| $ R_o $   | 20    |
-| $ h_o $  | 1     |
-| $ \alpha_0 $ | 10 |
-| $ \Omega_0 $ | 10 |
-| $ \eta_t $ | 1    |
-| $ q $ | 1         |
+We have solved the dynamo equation in z with the original eigenmodes of diffusion equation as the initial condition. We have have generated $B_r^o$ and $B_\phi^o$. 
 
 #### Initial Condition
 
@@ -149,24 +142,37 @@ Thus, critical dynamo number for the above system came out to be $D_c = 2.197$.
 
 #### Simulation @ $|D| \gt |D_c|$ 
 
-![results](/Alpha_Omega_Dynamos/z_approximation/results/Br_Bphi_Norm_Pitch_evolution_above_critical_D.gif)
+**Parameter values**
+| Parameter     | Value                |
+|---------------|----------------------|
+| $\eta$        | 1                    |
+| $\alpha$      | 0.5714285714285714   |
+| $\omega$      | 0.10219053791315619  |
+| $Rw$          | -5.007336357744653   |
+| $Ra$          | 4.0                  |
+| Dynamo number | -20.029345430978612  |
+
+
+![results](/alpha_omega_dynamos/z_approximation/results/Br_Bphi_Norm_Pitch_evolution_above_critical_D.gif)
 
 *Variation of $B_r$, $B_\phi$, $B_\text{norm}$ and pitch angle $\theta$ with time.*
 
 
-![growth_rates](/Alpha_Omega_Dynamos/z_approximation/results/log_Br_Bphi_vs_time_above_critical_D.png)
+![growth_rates](/alpha_omega_dynamos/z_approximation/results/log_Br_Bphi_vs_time_above_Dc.png)
 
 This plot shows that the log of magnetic field increases linearly implying exponential increase. 
 
 #### Simulation @ $|D| \lt |D_c|$ 
 
-![results](/Alpha_Omega_Dynamos/z_approximation/results/Br_Bphi_Norm_Pitch_evolution_below_critical_D.gif)
+![results](/alpha_omega_dynamos/z_approximation/results/Br_Bphi_Norm_Pitch_evolution_below_critical_D.gif)
 
 *Variation of $B_r$, $B_\phi$, $B_\text{norm}$ and pitch angle $\theta$ with time.*
 
 
-![growth_rates](/Alpha_Omega_Dynamos/z_approximation/results/log_Br_Bphi_vs_time_below_critical_D.png)
+![growth_rates](/alpha_omega_dynamos/z_approximation/results/log_Br_Bphi_vs_time_below_Dc.png)
 
 The plots demonstrates a magnetic field decay characterized by a slope or rate akin to the specified (de)growth rate. 
 
-For detailed analysis of the results check the simulation file [here](/Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo.ipynb).
+For detailed analysis of the results check the simulation file [here](/alpha_omega_dynamos/z_approximation/Alpha_Omega_Dynamo.ipynb).
+
+## Discussion & Conclusions

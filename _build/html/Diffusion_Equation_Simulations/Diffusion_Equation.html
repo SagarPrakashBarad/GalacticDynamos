@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Diffusion Equation &#8212; Galactic Dynamo Simulations</title>
+    <title>Mean Field Dynamo Equation &#8212; Galactic Dynamo Simulations</title>
   
   
   
@@ -59,12 +59,12 @@
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Diffusion_Equation_Simulations/Diffusion_Equation';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'diffusion_equation_simulations/diffusion_equation';</script>
     <link rel="icon" href="../_static/logo.jpg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)" href="z_approximation/Diffusion_Equation_Dirchilet.html" />
-    <link rel="prev" title="Galactic Dynanmo" href="../index.html" />
+    <link rel="next" title="Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)" href="z_approximation/diffusion_equation_dirchilet.html" />
+    <link rel="prev" title="Project Information" href="../index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -175,26 +175,34 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    Galactic Dynanmo
+                    Project Information
                 </a>
             </li>
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Diffusion Equation Simulation</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Diffusion Equation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Mean Field Dynamo Equation</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="z_approximation/Diffusion_Equation_Dirchilet.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="z_approximation/diffusion_equation_dirchilet.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="z_approximation/Diffusion_Equation_Neumann.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="z_approximation/diffusion_equation_neumann.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)</a></li>
 
 
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Alpha Omega Dynamos</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../Alpha_Omega_Dynamos/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../alpha_omega_dynamos/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../alpha_omega_dynamos/z_approximation/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation using Crank Nicholson without Ghost Zones</a></li>
+
+
+
+
 
 </ul>
 
@@ -265,7 +273,7 @@
       
       
       
-      <li><a href="../_sources/Diffusion_Equation_Simulations/Diffusion_Equation.md" target="_blank"
+      <li><a href="../_sources/diffusion_equation_simulations/diffusion_equation.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -349,7 +357,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Diffusion Equation</h1>
+    <h1>Mean Field Dynamo Equation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -359,15 +367,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Diffusion Equation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mean Field Dynamo Equation</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-up-simulation">Setting the up Simulation</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-we-begin">Before we begin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grounds-for-simulation">Grounds for Simulation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-1-neglecting-radial-derivatives">Approximation 1: Neglecting Radial Derivatives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-neglecting-radial-derivatives">Approximation: Neglecting Radial Derivatives</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenmodes-with-boundary-condtions">Eigenmodes with Boundary Condtions</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-2-approximating-the-axial-derivative">Approximation 2: Approximating the Axial Derivative</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a><ul class="nav section-nav flex-column">
@@ -378,6 +385,7 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-conclusions">Discussion &amp; Conclusions</a></li>
 </ul>
 </li>
 </ul>
@@ -392,8 +400,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="diffusion-equation">
-<h1>Diffusion Equation<a class="headerlink" href="#diffusion-equation" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="mean-field-dynamo-equation">
+<h1>Mean Field Dynamo Equation<a class="headerlink" href="#mean-field-dynamo-equation" title="Link to this heading">#</a></h1>
 <p>The mean-field dynamo equation describes the generation of a magnetic field in a turbulent conducting fluid. The general form of the mean-field dynamo equation, neglecting the alpha effect, velocity terms, and assuming the diffusion coefficient is scalar, along with the condition that the divergence of the magnetic field (<span class="math notranslate nohighlight">\(\nabla \cdot \mathbf{B} = 0\)</span>), is given by:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -470,8 +478,8 @@ $<span class="math notranslate nohighlight">\(
 <section id="grounds-for-simulation">
 <h2>Grounds for Simulation<a class="headerlink" href="#grounds-for-simulation" title="Link to this heading">#</a></h2>
 <p>We’ll explore two different approximations for solving the system: one neglecting the radial derivatives entirely and solving only for the axial direction <span class="math notranslate nohighlight">\(\hat{z}\)</span>, and the other approximating the derivative in <span class="math notranslate nohighlight">\(\hat{z}\)</span> while solving in <span class="math notranslate nohighlight">\(\hat{r}\)</span> direction.</p>
-<section id="approximation-1-neglecting-radial-derivatives">
-<h3>Approximation 1: Neglecting Radial Derivatives<a class="headerlink" href="#approximation-1-neglecting-radial-derivatives" title="Link to this heading">#</a></h3>
+<section id="approximation-neglecting-radial-derivatives">
+<h3>Approximation: Neglecting Radial Derivatives<a class="headerlink" href="#approximation-neglecting-radial-derivatives" title="Link to this heading">#</a></h3>
 <p>In this approximation, we neglect all radial derivatives and solve the equations only for the axial direction  <span class="math notranslate nohighlight">\(\tilde{z}\)</span>. This simplifies the equations significantly and is applicable when variations in the radial direction are much smaller compared to the axial direction, such as in thin disk systems. In this approximation, we solve the equations in the radial direction <span class="math notranslate nohighlight">\(\tilde{r}\)</span> but approximate the axial derivative <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \tilde{z}}\)</span>. This is commonly done in situations where the system has a dominant axial symmetry, such as in spiral galaxies where the thin disk approximation is valid.</p>
 <ol class="arabic simple">
 <li><p>For <span class="math notranslate nohighlight">\(B_r\)</span>:</p></li>
@@ -532,62 +540,69 @@ B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \ti
 <div class="math notranslate nohighlight">
 \[B_r(z) = B_r sin((m)\pi z)\]</div>
 <div class="math notranslate nohighlight">
-\[B_{\phi}(z) = B_{\phi} cos((n)\pi z)\]</div>
+\[B_{\phi}(z) = B_{\phi} sin((n)\pi z)\]</div>
 </section>
-</section>
-<section id="approximation-2-approximating-the-axial-derivative">
-<h3>Approximation 2: Approximating the Axial Derivative<a class="headerlink" href="#approximation-2-approximating-the-axial-derivative" title="Link to this heading">#</a></h3>
-<p>Now, for the second approximation, we approximate the axial derivative as <span class="math notranslate nohighlight">\(\frac{\partial}{\partial \tilde{z}} \approx -\frac{\pi}{2h}\)</span>. This approximation assumes that the variation in <span class="math notranslate nohighlight">\(\tilde{z}\)</span> is much smaller compared to the azimuthal variation <span class="math notranslate nohighlight">\(\phi\)</span> within the thin disk, hence the derivative becomes effectively constant.</p>
-<ol class="arabic simple">
-<li><p>For <span class="math notranslate nohighlight">\(B_r\)</span>:</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial \bar{B}_r}{\partial \tilde{t}} = \left( \epsilon^2 \left(\frac{1}{\tilde{r}} \frac{\partial}{\partial \tilde{r}} \left( \tilde{r} \frac{\partial \bar{B}_r}{\partial \tilde{r}} \right) - \frac{\bar{B}_r}{\tilde{r}^2} \right) + (\frac{\pi}{2h})^2 B_r \right)
-\]</div>
-<ol class="arabic simple" start="2">
-<li><p>For <span class="math notranslate nohighlight">\(B_\phi\)</span>:</p></li>
-</ol>
-<div class="math notranslate nohighlight">
-\[
-\frac{\partial \bar{B}_\phi}{\partial \tilde{t}} = \left( \epsilon^2 \left(\frac{1}{\tilde{r}} \frac{\partial}{\partial \tilde{r}} \left( \tilde{r} \frac{\partial \bar{B}_r}{\partial \tilde{r}} \right) - \frac{\bar{B}_r}{\tilde{r}^2} \right)  + (\frac{\pi}{2h})^2 B_\phi \right)
-\]</div>
 </section>
 </section>
 <section id="results">
 <h2>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
-<p>We have solved the diffusion equation z with the original eigenmodes as the initial condition. We have have generated <span class="math notranslate nohighlight">\(Br_o\)</span> and <span class="math notranslate nohighlight">\(Br_\phi\)</span> using three seeds and also have exerpimented with six different eigenmodes in between <span class="math notranslate nohighlight">\(B_r\)</span> and <span class="math notranslate nohighlight">\(B_\phi\)</span>.</p>
+<p>We have solved the diffusion equation in z for exactly 3 types of seed field. Firstly with the original eigenmodes and we have also experiments with decaying and gaussian and trigonmetric initial seeds for the solutions.</p>
 <section id="neglecting-radial-derivatives-z-approximation">
 <h3>Neglecting Radial Derivatives (z approximation)<a class="headerlink" href="#neglecting-radial-derivatives-z-approximation" title="Link to this heading">#</a></h3>
 <section id="dirchilet-boundary-condition">
 <h4>Dirchilet Boundary Condition<a class="headerlink" href="#dirchilet-boundary-condition" title="Link to this heading">#</a></h4>
-<ol class="arabic">
-<li><p>Seed = 10 with eigenmodes <span class="math notranslate nohighlight">\(m=5\)</span> and <span class="math notranslate nohighlight">\(n=3\)</span>.
-<img alt="seed_10" src="Diffusion_Equation_Simulations/z_approximation/seed_10/Br_Bphi_Norm_Pitch_evolution.gif" /></p>
-<p><img alt="seed_10" src="Diffusion_Equation_Simulations/z_approximation/seed_10/log_Br_Bphi_vs_time.png" /></p>
-</li>
-<li><p>Seed = 25 with eigenmodes <span class="math notranslate nohighlight">\(m=25\)</span> and <span class="math notranslate nohighlight">\(n=25\)</span>.
-<img alt="seed_25" src="Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif" /></p></li>
-<li><p>Seed = 100 with eigenmodes <span class="math notranslate nohighlight">\(m=100\)</span> and <span class="math notranslate nohighlight">\(n=75\)</span>.
-<img alt="seed_25" src="Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif" /></p></li>
+<ol class="arabic simple">
+<li><p><strong>Seed 1</strong> : Oscillatory Solutions.</p></li>
 </ol>
-<p>For detailed analysis of the results check the simulation file <a class="reference internal" href="z_approximation/Diffusion_Equation_Dirchilet.html"><span class="std std-doc">here</span></a>.</p>
-</section>
-<section id="neumann-boundary-condition">
-<h4>Neumann Boundary Condition<a class="headerlink" href="#neumann-boundary-condition" title="Link to this heading">#</a></h4>
+<div class="math notranslate nohighlight">
+\[ B_r = B_o cos(\frac{3}{2} \pi z) \]</div>
+<div class="math notranslate nohighlight">
+\[ B_r = B_o cos(\frac{1}{2} \pi z) \]</div>
+<p><img alt="seed_1" src="../_images/Br_Bphi_Norm_Pitch_evolution.gif" /></p>
+<p><img alt="seed_1" src="../_images/log_Br_Bphi_vs_time.png" /></p>
 <ol class="arabic">
-<li><p>Seed = 10 with eigenmodes <span class="math notranslate nohighlight">\(m=5\)</span> and <span class="math notranslate nohighlight">\(n=3\)</span>.
-<img alt="seed_10" src="Diffusion_Equation_Simulations/z_approximation/seed_10/Br_Bphi_Norm_Pitch_evolution.gif" /></p>
-<p><img alt="seed_10" src="Diffusion_Equation_Simulations/z_approximation/seed_10/log_Br_Bphi_vs_time_neu.png" /></p>
+<li><p><strong>Seed 2</strong> : Exponential Decay Solution.
+$<span class="math notranslate nohighlight">\( B_r = B_o (1- e^{-\gamma(1-|z|)}) \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( B_{\phi} = B_o (1 - \gamma|z|) \)</span>$
+<img alt="seed_2" src="../_images/Br_Bphi_Norm_Pitch_evolution1.gif" /></p>
+<p><img alt="seed_2" src="../_images/log_Br_Bphi_vs_time1.png" /></p>
 </li>
-<li><p>Seed = 25 with eigenmodes <span class="math notranslate nohighlight">\(m=25\)</span> and <span class="math notranslate nohighlight">\(n=25\)</span>.
-<img alt="seed_25" src="Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif" /></p></li>
-<li><p>Seed = 100 with eigenmodes <span class="math notranslate nohighlight">\(m=100\)</span> and <span class="math notranslate nohighlight">\(n=75\)</span>.
-<img alt="seed_25" src="Diffusion_Equation_Simulations/z_approximation/seed_25/Br_Bphi_Norm_Pitch_evolution.gif" /></p></li>
+<li><p><strong>Seed 3</strong> : Gaussian and Trigonometric .
+<img alt="seed_3" src="../_images/Br_Bphi_Norm_Pitch_evolution2.gif" /></p>
+<p><img alt="seed_3" src="../_images/log_Br_Bphi_vs_time2.png" /></p>
+</li>
 </ol>
 <p>For detailed analysis of the results check the simulation file <span class="xref myst">here</span>.</p>
 </section>
+<section id="neumann-boundary-condition">
+<h4>Neumann Boundary Condition<a class="headerlink" href="#neumann-boundary-condition" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Seed 1</strong> : Oscillatory Solutions.</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[ B_r = B_o cos(\frac{3}{2} \pi z) \]</div>
+<div class="math notranslate nohighlight">
+\[ B_r = B_o cos(\frac{1}{2} \pi z) \]</div>
+<p><img alt="seed_1" src="../_images/Br_Bphi_Norm_Pitch_evolution_neu.gif" /></p>
+<p><img alt="seed_1" src="../_images/log_Br_Bphi_vs_time_neu.png" /></p>
+<ol class="arabic">
+<li><p><strong>Seed 2</strong> : Exponential Decay Solution.
+$<span class="math notranslate nohighlight">\( B_r = B_o (1- e^{-\gamma(1-|z|)}) \)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\( B_{\phi} = B_o (1 - \gamma|z|) \)</span>$
+<img alt="seed_2" src="../_images/Br_Bphi_Norm_Pitch_evolution_neu1.gif" /></p>
+<p><img alt="seed_2" src="../_images/log_Br_Bphi_vs_time_neu1.png" /></p>
+</li>
+<li><p><strong>Seed 3</strong> : Gaussian and Trigonometric .
+<img alt="seed_3" src="../_images/Br_Bphi_Norm_Pitch_evolution_neu2.gif" /></p>
+<p><img alt="seed_3" src="../_images/log_Br_Bphi_vs_time_neu2.png" />
+For detailed analysis of the results check the simulation file <span class="xref myst">here</span>.</p>
+</li>
+</ol>
 </section>
+</section>
+</section>
+<section id="discussion-conclusions">
+<h2>Discussion &amp; Conclusions<a class="headerlink" href="#discussion-conclusions" title="Link to this heading">#</a></h2>
 </section>
 </section>
 
@@ -604,7 +619,7 @@ B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \ti
         },
         kernelOptions: {
             name: "python3",
-            path: "./Diffusion_Equation_Simulations"
+            path: "./diffusion_equation_simulations"
         },
         predefinedOutput: true
     }
@@ -627,11 +642,11 @@ B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \ti
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Galactic Dynanmo</p>
+        <p class="prev-next-title">Project Information</p>
       </div>
     </a>
     <a class="right-next"
-       href="z_approximation/Diffusion_Equation_Dirchilet.html"
+       href="z_approximation/diffusion_equation_dirchilet.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
@@ -655,15 +670,14 @@ B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \ti
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Diffusion Equation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Mean Field Dynamo Equation</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#setting-the-up-simulation">Setting the up Simulation</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#before-we-begin">Before we begin</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grounds-for-simulation">Grounds for Simulation</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-1-neglecting-radial-derivatives">Approximation 1: Neglecting Radial Derivatives</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-neglecting-radial-derivatives">Approximation: Neglecting Radial Derivatives</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#eigenmodes-with-boundary-condtions">Eigenmodes with Boundary Condtions</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-2-approximating-the-axial-derivative">Approximation 2: Approximating the Axial Derivative</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a><ul class="nav section-nav flex-column">
@@ -674,6 +688,7 @@ B_\phi(z) = A_\phi \cos(\sqrt{\gamma} \tilde{z}) + B_\phi \sin(\sqrt{\gamma} \ti
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-conclusions">Discussion &amp; Conclusions</a></li>
 </ul>
 </li>
 </ul>

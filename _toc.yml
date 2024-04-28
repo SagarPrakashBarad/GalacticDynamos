@@ -3,13 +3,14 @@ root: index
 parts:
   - caption: Diffusion Equation Simulation
     chapters:
-    - file: Diffusion_Equation_Simulations/Diffusion_Equation
-    - file: Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirchilet
-    - file: Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann 
+    - file: diffusion_equation_simulations/diffusion_equation
+    - file: diffusion_equation_simulations/z_approximation/diffusion_equation_dirchilet
+    - file: diffusion_equation_simulations/z_approximation/diffusion_equation_neumann 
   - caption: Alpha Omega Dynamos
     chapters:  
-    - file: Alpha_Omega_Dynamos/alpha_omega_dynamo
-    - file: Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo
+    - file: alpha_omega_dynamos/alpha_omega_dynamo
+    - file: alpha_omega_dynamos/z_approximation/alpha_omega_dynamo
+
 
   
 
