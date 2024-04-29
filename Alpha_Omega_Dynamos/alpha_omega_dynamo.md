@@ -17,9 +17,11 @@ kernelspec:
 </div>
 
 Solve the mean-field $\alpha-\Omega$ dynamo equations in the kinematic regime. That is, include the $\Omega$ effect term in the equation for $\dfrac{\partial \bar{B}_\phi}{\partial t}$ and the $\alpha$ effect term in the equation for $\dfrac{\partial \bar{B}_r}{\partial t}$. This requires specifying the overall magnitude and spatial dependence of $\Omega$ and $\alpha$.
-* Repeat the investigation you had done for task 1, with the new equations, for different values of the dynamo number, $D$
-$$ D = − \dfrac{\alpha_0 q \Omega h^3}{\eta_t^2} $$
-where $q = − \dfrac{d \ln \Omega}{d \ln r}$ and $\alpha_0 > 0$ is the amplitude of the $\alpha$ effect. Note that $q > 0$ if $\Omega$ decreases with $r$, which is generally the case in galaxies, so $D < 0$.
+* Repeat the investigation you had done for task 1, with the new equations, for different values of the dynamo number $D$,
+   $$ D = − \dfrac{\alpha_0 q \Omega h^3}{\eta_t^2} $$ 
+   
+  where $q = − \dfrac{d \ln \Omega}{d \ln r}$ and $\alpha_0 > 0$ is the amplitude of the $\alpha$ effect. Note that $q > 0$ if $\Omega$ decreases with $r$, which is generally the case in galaxies, so $D < 0$.
+  
 * The exponential decay becomes exponential growth if $|D| > |D_c|$, where $D_c$ is the critical dynamo number. Find the critical dynamo number numerically (ideally, you would automate this feature).
 * Compare the growth rate you obtain for a given value of $D$ (for $|D| > |D_c|$) with the no-z solution prediction for the local growth rate $\gamma$. Do the same comparison for $D_c$ . Do the results agree with your expectations?
 
@@ -39,25 +41,31 @@ where $\mathcal{E} = \left( \alpha \bar{\mathbf{B}} \right) - \eta_t \left( \nab
 To simplify the equations further, we make the following approximations:
 
 1. We consider the velocity field $\bar{\mathbf{V}}$ to be of the form:
+   
 $$
 \mathbf{\bar{V}} = \bar{V}_r(r) \mathbf{\hat{r}} + r \Omega(r) \mathbf{\hat{\phi}} + \bar{V}_z(r, z) \mathbf{\hat{z}}
 $$
+
 Here, $\bar{V}_r$, $\Omega$, and $\bar{V}_z$ represent the radial, azimuthal, and vertical components of the velocity field, respectively.
 
 2. We take the turbulent magnetic diffusivity, $\eta_T$, to be independent of $\bar{\mathbf{B}}$. This simplifies our equation to:
+   
 $$
 \boxed{ \frac{\partial \bar{\mathbf{B}}}{\partial t} = \nabla \times \left( \bar{\mathbf{V}} \times \bar{\mathbf{B}} \right) + \nabla \times \left(\alpha \bar{\mathbf{B}} \right) - \eta_T \left( \nabla \times \nabla \times \bar{\mathbf{B}} \right) }
 $$
 
-3. Solving the equations in cylindrical coordinates and assuming azimuthal symmetry, we derive the equations for $\bar{B}_r$ and $\bar{B}_{\phi}$ as:
+2. Solving the equations in cylindrical coordinates and assuming azimuthal symmetry, we derive the equations for $\bar{B}_r$ and $\bar{B}_{\phi}$ as:
+
 $$
 \frac{\partial \bar{B}_r}{\partial t} = V_r \frac{\partial \bar{B}_z}{\partial z} - \frac{\partial (V_z \bar{B}_r)}{\partial z} - \frac{\partial (\alpha \bar{B}_\phi)}{\partial z} + \eta_T \left[ \frac{\partial^2 \bar{B}_r}{\partial z^2} + \frac{\partial}{\partial r} \left( \frac{1}{r} \frac{\partial}{\partial r} \left( r \bar{B}_r \right) \right) \right]
 $$
+
 $$
 \frac{\partial \bar{B}_\phi}{\partial t} = r \Omega \frac{\partial \bar{B}_z}{\partial z} - \frac{\partial (V_z \bar{B}_\phi)}{\partial z} - \frac{\partial (V_r \bar{B}_\phi)}{\partial r} + \frac{\partial (r \Omega \bar{B}_r)}{\partial r} + \frac{\partial (\alpha \bar{B}_r)}{\partial z} - \frac{\partial (\alpha \bar{B}_z)}{\partial r} + \eta_T \left[ \frac{\partial^2 \bar{B}_\phi}{\partial z^2} + \frac{\partial}{\partial r} \left( \frac{1}{r} \frac{\partial}{\partial r} \left( r \bar{B}_\phi \right) \right) \right]
 $$
 
-4. Utilizing the $\alpha-\Omega$ approximation and defining $q = -\dfrac{\partial \ln \Omega}{\partial \ln r} = -\dfrac{r}{\Omega} \dfrac{\partial \Omega}{\partial r}$, we obtain the simplified equations:
+1. Utilizing the $\alpha-\Omega$ approximation and defining $q = -\dfrac{\partial \ln \Omega}{\partial \ln r} = -\dfrac{r}{\Omega} \dfrac{\partial \Omega}{\partial r}$, we obtain the simplified equations:
+   
 $$
 \boxed{ \frac{\partial \bar{B}_r}{\partial t} = - \frac{\partial (\alpha \bar{B}_\phi)}{\partial z} + \eta_T \frac{\partial^2 \bar{B}_r}{\partial z^2} } \quad \text{and} \quad \boxed{ \frac{\partial \bar{B}_\phi}{\partial t} = DS \bar{B}_r + \eta_T \frac{\partial^2 \bar{B}_\phi}{\partial z^2} }
 $$

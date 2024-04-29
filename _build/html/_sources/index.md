@@ -50,6 +50,6 @@ Supervised by: Dr. Luke R. Chamandy, SPS, NISER
 
 [5] Burden, R. L., & Faires, J. D. 1997, *Numerical Analysis*, Brooks/Cole
 
-[6] Reasons to Believe. (2024). Earth: The Champion Dynamo. Reasons.org. https://reasons.org/explore/publications/articles/earth-the-champion-dynamo
+[6] Reasons to Believe. (2024). Earth: The Champion Dynamo. Reasons.org. [here](https://reasons.org/explore/publications/articles/earth-the-champion-dynamo)
 
 

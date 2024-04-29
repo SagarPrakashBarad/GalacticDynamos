@@ -44,5 +44,6 @@ Supervised by: Dr. Luke R. Chamandy, SPS, NISER
 
 [4] Atkinson, Han *Elementary Numerical Analysis*
 
-[5] Burden, R. L., & Faires, J. D. 1997, *Numerical Analysis*, Brooks/Cole
+[5] Burden, R. L., & Faires, J. D. 1997, *Numerical Analysis*, Brooks/cole
 
+[6] Reasons to Believe. (2024). Earth: The Champion Dynamo. Reasons.org. [here](https://reasons.org/explore/publications/articles/earth-the-champion-dynamo)

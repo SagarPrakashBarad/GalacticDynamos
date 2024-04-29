@@ -3737,21 +3737,29 @@ is derived by discretising the following coupled equations</p>
 <section id="crank-nicholson-method-for-coupled-pdes">
 <h1>Crank-Nicholson method for Coupled PDEs<a class="headerlink" href="#crank-nicholson-method-for-coupled-pdes" title="Link to this heading">#</a></h1>
 <p>We are using Crank-Nicholson difference scheme as done for Task 1, however to extend it to coupled PDEs we will do the following analysis.</p>
-<p>Let <span class="math notranslate nohighlight">\(\bar{B}_r\)</span> and <span class="math notranslate nohighlight">\(\bar{B}_\phi\)</span> be the radial and azimuthal part of magnetic field. Thus,
-$<span class="math notranslate nohighlight">\( \frac{\partial B_r}{\partial t} = - \frac{\partial (\alpha B_\phi)}{\partial z} + \eta_T \frac{\partial^2 B_r}{\partial z^2} \)</span><span class="math notranslate nohighlight">\(
-\)</span><span class="math notranslate nohighlight">\( \frac{\partial B_\phi}{\partial t} = DS B_r + \eta_T \frac{\partial^2 B_phi}{\partial z^2} \)</span>$</p>
-<p>Lets first discretize equations,
-$<span class="math notranslate nohighlight">\( \frac{(B_r)^{j+1}_{i} - (B_r)^{j}_{i}}{k} = - \left. \dfrac{d \alpha}{h}\right \vert_i \left( \frac{(B_\phi)^{j+1}_{i} + (B_\phi)^{j}_{i}}{2} \right) - \dfrac{\alpha_{i}}{2} \: \left( \frac{(B_\phi)^{j+1}_{i+1} - (B_\phi)^{j+1}_{i}}{h} + \frac{(B_\phi)^{j}_{i+1} - (B_\phi)^{j}_{i}}{h} \right) + \dfrac{\eta_T}{2} \: \left( \dfrac{(B_r)^{j+1}_{i+1} - 2(B_r)^{j+1}_{i} + (B_r)^{j+1}_{i-1}}{h^2} + \dfrac{(B_r)^{j}_{i+1} - 2(B_r)^{j}_{i} + (B_r)^{j}_{i-1}}{h^2} \right) \)</span><span class="math notranslate nohighlight">\(
-and 
-\)</span><span class="math notranslate nohighlight">\( \frac{(B_\phi)^{j+1}_{i} - (B_\phi)^{j}_{i}}{k} = DS \left( \frac{(B_r)^{j+1}_{i} + (B_r)^{j}_{i}}{2} \right) + \dfrac{\eta_T}{2} \: \left( \dfrac{(B_\phi)^{j+1}_{i+1} - 2(B_\phi)^{j+1}_{i} + (B_\phi)^{j+1}_{i-1}}{h^2} + \dfrac{(B_\phi)^{j}_{i+1} - 2(B_\phi)^{j}_{i} + (B_\phi)^{j}_{i-1}}{h^2} \right) \)</span>$</p>
-<p>Putting <span class="math notranslate nohighlight">\(\beta = \dfrac{k}{2 \: h}\)</span> and <span class="math notranslate nohighlight">\(\beta = \dfrac{\eta_T \: k}{2 \: h^2}\)</span>, we separate the present time-step <span class="math notranslate nohighlight">\((j+1)\)</span> and the past time-step <span class="math notranslate nohighlight">\((j)\)</span> as
-$<span class="math notranslate nohighlight">\( \left(1+2\beta \right) (B_r)^{j+1}_{i} - \beta  (B_r)^{j+1}_{i+1} - \beta (B_r)^{j+1}_{i-1} + \lambda \alpha_i (B_\phi)^{j+1}_{i+1} + \left( \dfrac{1}{2} \left. \dfrac{d \alpha}{h}\right \vert_i - \lambda \alpha_i \right) (B_\phi)^{j+1}_{i} = \left(1-2\beta \right) (B_r)^{j}_{i} + \beta  (B_r)^{j}_{i+1} + \beta (B_r)^{j}_{i-1} - \lambda \alpha_i (B_\phi)^{j}_{i+1} + \left( - \dfrac{1}{2} \left. \dfrac{d \alpha}{h}\right \vert_i + \lambda \alpha_i \right) (B_\phi)^{j}_{i} \)</span><span class="math notranslate nohighlight">\(
-and 
-\)</span><span class="math notranslate nohighlight">\( \left(1+2\beta \right) (B_\phi)^{j+1}_{i} - \beta  (B_\phi)^{j+1}_{i+1} - \beta (B_\phi)^{j+1}_{i-1} - \dfrac{k \: DS}{2} (B_r)^{j+1}_{i} = \left(1-2\beta \right) (B_\phi)^{j}_{i} + \beta  (B_r)^{j}_{i+1} + \beta (B_r)^{j}_{i-1} + \dfrac{k \: DS}{2} (B_r)^{j}_{i} \)</span>$</p>
-<p>Let <span class="math notranslate nohighlight">\(B = \left[ B_r \:\: B_\phi\right]^T\)</span>
-This whole coupled equation can be simplified to single variable <span class="math notranslate nohighlight">\(B\)</span> as
-$<span class="math notranslate nohighlight">\( \left[\begin{array}{cc} (1+2 \beta) &amp; \left( \dfrac{1}{2} \left. \dfrac{d \alpha}{dz}\right \vert_i - \lambda \alpha_i \right) \\ \dfrac{k \: DS}{2} &amp; (1+2 \beta) \end{array}\right] 
-B^{j+1}_{i} + \left[\begin{array}{cc}-\beta &amp; \lambda \\ 0 &amp; -\beta \end{array}\right] B^{j+1}_{i+1} + \left[\begin{array}{cc}-\beta &amp; 0 \\ 0 &amp; -\beta \end{array}\right] B^{j+1}_{i-1} = \left[\begin{array}{cc}(1-2 \beta) &amp; \left( - \dfrac{1}{2} \left. \dfrac{d \alpha}{dz}\right \vert_i + \lambda \alpha_i \right) \\ -\dfrac{k \: DS}{2} &amp; (1-2 \beta) \end{array}\right] B^{j}_{i} + \left[\begin{array}{cc}\beta &amp; -\lambda \\ 0 &amp; \beta \end{array}\right] B^{j}_{i+1} + \left[\begin{array}{cc}\beta &amp; 0 \\ 0 &amp; \beta \end{array}\right] B^{j}_{i-1} \)</span>$</p>
+<p>Let <span class="math notranslate nohighlight">\(\bar{B}_r\)</span> and <span class="math notranslate nohighlight">\(\bar{B}_\phi\)</span> be the radial and azimuthal part of magnetic field. Thus,</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial B_r}{\partial t} = - \frac{\partial (\alpha B_\phi)}{\partial z} + \eta_T \frac{\partial^2 B_r}{\partial z^2} \]</div>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial B_\phi}{\partial t} = DS B_r + \eta_T \frac{\partial^2 B_phi}{\partial z^2} \]</div>
+<p>Lets first discretize equations,</p>
+<div class="math notranslate nohighlight">
+\[ \frac{(B_r)^{j+1}_{i} - (B_r)^{j}_{i}}{k} = - \left. \dfrac{d \alpha}{h}\right \vert_i \left( \frac{(B_\phi)^{j+1}_{i} + (B_\phi)^{j}_{i}}{2} \right) - \dfrac{\alpha_{i}}{2} \: \left( \frac{(B_\phi)^{j+1}_{i+1} - (B_\phi)^{j+1}_{i}}{h} + \frac{(B_\phi)^{j}_{i+1} - (B_\phi)^{j}_{i}}{h} \right) + \dfrac{\eta_T}{2} \: \left( \dfrac{(B_r)^{j+1}_{i+1} - 2(B_r)^{j+1}_{i} + (B_r)^{j+1}_{i-1}}{h^2} + \dfrac{(B_r)^{j}_{i+1} - 2(B_r)^{j}_{i} + (B_r)^{j}_{i-1}}{h^2} \right) \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ \frac{(B_\phi)^{j+1}_{i} - (B_\phi)^{j}_{i}}{k} = DS \left( \frac{(B_r)^{j+1}_{i} + (B_r)^{j}_{i}}{2} \right) + \dfrac{\eta_T}{2} \: \left( \dfrac{(B_\phi)^{j+1}_{i+1} - 2(B_\phi)^{j+1}_{i} + (B_\phi)^{j+1}_{i-1}}{h^2} + \dfrac{(B_\phi)^{j}_{i+1} - 2(B_\phi)^{j}_{i} + (B_\phi)^{j}_{i-1}}{h^2} \right) \]</div>
+<p>Putting <span class="math notranslate nohighlight">\(\beta = \dfrac{k}{2 \: h}\)</span> and <span class="math notranslate nohighlight">\(\beta = \dfrac{\eta_T \: k}{2 \: h^2}\)</span>, we separate the present time-step <span class="math notranslate nohighlight">\((j+1)\)</span> and the past time-step <span class="math notranslate nohighlight">\((j)\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[ \left(1+2\beta \right) (B_r)^{j+1}_{i} - \beta  (B_r)^{j+1}_{i+1} - \beta (B_r)^{j+1}_{i-1} + \lambda \alpha_i (B_\phi)^{j+1}_{i+1} + \left( \dfrac{1}{2} \left. \dfrac{d \alpha}{h}\right \vert_i - \lambda \alpha_i \right) (B_\phi)^{j+1}_{i} = \left(1-2\beta \right) (B_r)^{j}_{i} + \beta  (B_r)^{j}_{i+1} + \beta (B_r)^{j}_{i-1} - \lambda \alpha_i (B_\phi)^{j}_{i+1} + \left( - \dfrac{1}{2} \left. \dfrac{d \alpha}{h}\right \vert_i + \lambda \alpha_i \right) (B_\phi)^{j}_{i} \]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ \left(1+2\beta \right) (B_\phi)^{j+1}_{i} - \beta  (B_\phi)^{j+1}_{i+1} - \beta (B_\phi)^{j+1}_{i-1} - \dfrac{k \: DS}{2} (B_r)^{j+1}_{i} = \left(1-2\beta \right) (B_\phi)^{j}_{i} + \beta  (B_r)^{j}_{i+1} + \beta (B_r)^{j}_{i-1} + \dfrac{k \: DS}{2} (B_r)^{j}_{i} \]</div>
+<p>Let <span class="math notranslate nohighlight">\(B = \left[ B_r \:\: B_\phi\right]^T\)</span>, This whole coupled equation can be simplified to single variable <span class="math notranslate nohighlight">\(B\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\left[\begin{array}{cc} (1+2 \beta) &amp; \left( \dfrac{1}{2} \left. \dfrac{d \alpha}{dz}\right \vert_i - \lambda \alpha_i \right) \\ \dfrac{k \: DS}{2} &amp; (1+2 \beta) \end{array}\right] 
+B^{j+1}_{i} + \left[\begin{array}{cc}-\beta &amp; \lambda \\ 0 &amp; -\beta \end{array}\right] B^{j+1}_{i+1} + \left[\begin{array}{cc}-\beta &amp; 0 \\ 0 &amp; -\beta \end{array}\right] B^{j+1}_{i-1} = \left[\begin{array}{cc}(1-2 \beta) &amp; \left( - \dfrac{1}{2} \left. \dfrac{d \alpha}{dz}\right \vert_i + \lambda \alpha_i \right) \\ -\dfrac{k \: DS}{2} &amp; (1-2 \beta) \end{array}\right] B^{j}_{i} + \left[\begin{array}{cc}\beta &amp; -\lambda \\ 0 &amp; \beta \end{array}\right] B^{j}_{i+1} + \left[\begin{array}{cc}\beta &amp; 0 \\ 0 &amp; \beta \end{array}\right] B^{j}_{i-1} 
+\end{split}\]</div>
 <p>Combining these two expressions as one <span class="math notranslate nohighlight">\(2N\)</span> vector transformation, i.e., <span class="math notranslate nohighlight">\(B_i^{j}\)</span> where <span class="math notranslate nohighlight">\(i = 1, 2, 3, \ldots, 2N\)</span> or <span class="math notranslate nohighlight">\(\mathbf{B} = (B_r, B_{\phi})^T\)</span>, we can represent the matrix equation as:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -4126,34 +4134,27 @@ T \mathbf{B}_{j+1} = S \mathbf{B}_{j} + \mathbf{b}_{j} + \mathbf{b}_{j+1}
 <span class="g g-Whitespace">    </span><span class="mi">670</span>     <span class="n">_write_single_frame</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">palette</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">672</span> <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>  <span class="c1"># end of file</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/GifImagePlugin.py:592,</span> in <span class="ni">_write_multiple_frames</span><span class="nt">(im, fp, palette)</span>
-<span class="g g-Whitespace">    </span><span class="mi">589</span> <span class="k">for</span> <span class="n">imSequence</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">([</span><span class="n">im</span><span class="p">],</span> <span class="n">im</span><span class="o">.</span><span class="n">encoderinfo</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;append_images&quot;</span><span class="p">,</span> <span class="p">[])):</span>
-<span class="g g-Whitespace">    </span><span class="mi">590</span>     <span class="k">for</span> <span class="n">im_frame</span> <span class="ow">in</span> <span class="n">ImageSequence</span><span class="o">.</span><span class="n">Iterator</span><span class="p">(</span><span class="n">imSequence</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">591</span>         <span class="c1"># a copy is required here since seek can still mutate the image</span>
-<span class="ne">--&gt; </span><span class="mi">592</span>         <span class="n">im_frame</span> <span class="o">=</span> <span class="n">_normalize_mode</span><span class="p">(</span><span class="n">im_frame</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">593</span>         <span class="k">if</span> <span class="n">frame_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">594</span>             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">im_frame</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/GifImagePlugin.py:614,</span> in <span class="ni">_write_multiple_frames</span><span class="nt">(im, fp, palette)</span>
+<span class="g g-Whitespace">    </span><span class="mi">611</span> <span class="k">if</span> <span class="n">im_frames</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">612</span>     <span class="c1"># delta frame</span>
+<span class="g g-Whitespace">    </span><span class="mi">613</span>     <span class="n">previous</span> <span class="o">=</span> <span class="n">im_frames</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="ne">--&gt; </span><span class="mi">614</span>     <span class="n">bbox</span> <span class="o">=</span> <span class="n">_getbbox</span><span class="p">(</span><span class="n">previous</span><span class="p">[</span><span class="s2">&quot;im&quot;</span><span class="p">],</span> <span class="n">im_frame</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">615</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">bbox</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">616</span>         <span class="c1"># This frame is identical to the previous frame</span>
+<span class="g g-Whitespace">    </span><span class="mi">617</span>         <span class="k">if</span> <span class="n">encoderinfo</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;duration&quot;</span><span class="p">):</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/GifImagePlugin.py:488,</span> in <span class="ni">_normalize_mode</span><span class="nt">(im)</span>
-<span class="g g-Whitespace">    </span><span class="mi">486</span>     <span class="k">return</span> <span class="n">im</span>
-<span class="g g-Whitespace">    </span><span class="mi">487</span> <span class="k">if</span> <span class="n">Image</span><span class="o">.</span><span class="n">getmodebase</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;RGB&quot;</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">488</span>     <span class="n">im</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">Image</span><span class="o">.</span><span class="n">Palette</span><span class="o">.</span><span class="n">ADAPTIVE</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">489</span>     <span class="k">if</span> <span class="n">im</span><span class="o">.</span><span class="n">palette</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;RGBA&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">490</span>         <span class="k">for</span> <span class="n">rgba</span> <span class="ow">in</span> <span class="n">im</span><span class="o">.</span><span class="n">palette</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/GifImagePlugin.py:575,</span> in <span class="ni">_getbbox</span><span class="nt">(base_im, im_frame)</span>
+<span class="g g-Whitespace">    </span><span class="mi">573</span>     <span class="n">delta</span> <span class="o">=</span> <span class="n">ImageChops</span><span class="o">.</span><span class="n">subtract_modulo</span><span class="p">(</span><span class="n">im_frame</span><span class="p">,</span> <span class="n">base_im</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">575</span>     <span class="n">delta</span> <span class="o">=</span> <span class="n">ImageChops</span><span class="o">.</span><span class="n">subtract_modulo</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">576</span>         <span class="n">im_frame</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">),</span> <span class="n">base_im</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span> <span class="k">return</span> <span class="n">delta</span><span class="o">.</span><span class="n">getbbox</span><span class="p">()</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/Image.py:976,</span> in <span class="ni">Image.convert</span><span class="nt">(self, mode, matrix, dither, palette, colors)</span>
-<span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="k">return</span> <span class="n">new</span>
-<span class="g g-Whitespace">    </span><span class="mi">975</span> <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;P&quot;</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;RGBA&quot;</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">976</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">978</span> <span class="n">trns</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">979</span> <span class="n">delete_trns</span> <span class="o">=</span> <span class="kc">False</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/Image.py:1187,</span> in <span class="ni">Image.quantize</span><span class="nt">(self, colors, method, kmeans, palette, dither)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1184</span>     <span class="n">new_im</span><span class="o">.</span><span class="n">palette</span> <span class="o">=</span> <span class="n">palette</span><span class="o">.</span><span class="n">palette</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1185</span>     <span class="k">return</span> <span class="n">new_im</span>
-<span class="ne">-&gt; </span><span class="mi">1187</span> <span class="n">im</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">im</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">kmeans</span><span class="p">))</span>
-<span class="g g-Whitespace">   </span><span class="mi">1189</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">ImagePalette</span>
-<span class="g g-Whitespace">   </span><span class="mi">1191</span> <span class="n">mode</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">im</span><span class="o">.</span><span class="n">getpalettemode</span><span class="p">()</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/ImageChops.py:237,</span> in <span class="ni">subtract_modulo</span><span class="nt">(image1, image2)</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span> <span class="n">image1</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span> <span class="n">image2</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">237</span> <span class="k">return</span> <span class="n">image1</span><span class="o">.</span><span class="n">_new</span><span class="p">(</span><span class="n">image1</span><span class="o">.</span><span class="n">im</span><span class="o">.</span><span class="n">chop_subtract_modulo</span><span class="p">(</span><span class="n">image2</span><span class="o">.</span><span class="n">im</span><span class="p">))</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -4162,7 +4163,7 @@ T \mathbf{B}_{j+1} = S \mathbf{B}_{j} + \mathbf{b}_{j} + \mathbf{b}_{j+1}
 </div>
 </div>
 <p>Here is how all the relevant values evolve with time.</p>
-<p><img alt="DgtDc" src="../../_images/Br_Bphi_Norm_Pitch_evolution_above_critical_D1.gif" /></p>
+<p><img alt="DgtDc" src="../../_images/Br_Bphi_Norm_Pitch_evolution_above_critical_D.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_Br</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Br</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
@@ -4520,7 +4521,7 @@ Thus at r = 2.2302 Kpc
 </div>
 </div>
 <p>Here is how all the relevant values evolve with time.</p>
-<p><img alt="DgtDc" src="../../_images/Br_Bphi_Norm_Pitch_evolution_below_critical_D1.gif" /></p>
+<p><img alt="DgtDc" src="../../_images/Br_Bphi_Norm_Pitch_evolution_below_critical_D.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_Br</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Br</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
