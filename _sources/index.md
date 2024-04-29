@@ -19,20 +19,23 @@ Supervised by: Dr. Luke R. Chamandy, SPS, NISER
 
 ### Task 1: Numerical Solutions to Diffusion Equations
 
-- Setting up the Diffusion Equation ([setup](/Diffusion_Equation_Simulations/Diffusion_Equation.md))
+- Setting up the Diffusion Equation ([setup](/diffusion_dquation_simulations/diffusion_equation.md))
   
-- Solving the Diffusion Equation using Crank-Nicholson Dirichlet Boundary Condition ([simulation](/Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Dirichlet.ipynb))
+- Solving the Diffusion Equation using Crank-Nicholson Dirichlet Boundary Condition ([simulation](/diffusion_equation_simulations/z_approximation/diffusion_equation_dirichlet.ipynb))
   
-- Solving the Diffusion Equation using Crank-Nicholson Neumann Boundary Condition ([simulation](/Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_Neumann.ipynb))
+- Solving the Diffusion Equation using Crank-Nicholson Neumann Boundary Condition ([simulation](/diffusion_equation_simulations/z_approximation/diffusion_equation_neumann.ipynb))
 
 ### Task 2: Numerical Solutions to $\alpha \Omega$ Dynamo Equation
 
-- Setting up the Dynamo Equation ([setup](/Alpha_Omega_Dynamos/alpha_omega_dynamo.md))
+- Setting up the Dynamo Equation ([setup](/alpha_omega_dynamos/alpha_omega_dynamo.md))
 
-- Solving the Dynamo Equation using Crank-Nicholson Dirichlet Boundary Condition ([simulation](/Alpha_Omega_Dynamos/z_approximation/Alpha_Omega_Dynamo.ipynb))
+- Solving the Dynamo Equation using Crank-Nicholson Dirichlet Boundary Condition ([simulation](/alpha_omega_dynamos/z_approximation/alpha_omega_dynamo.ipynb))
 
 
 ### Task 3: Sensetivity of Solution to order of finite difference
+
+- Setting up the Sensetivity of Solution to order of finite difference([setup](/senseitivity_to_finite_order/sensetivity_analysis.md))
+- Sensetivity of Solution to order of finite difference for dynamo equation([simulation](/senseitivity_to_finite_order/diffusion_equation.ipynb))
 
 ## References
 
