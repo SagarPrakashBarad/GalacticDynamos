@@ -41,6 +41,6 @@ Here is a preview of the cell contents:
 -------------------
 ['fig, axs = plt.subplots(5, figsize=(20, 25))', '', 'all_time_results = []', 'all_l2_norm_results = []', '']
 ...
-['    print(f"\\nL2 Norms for eta_t = {eta_t}:")', '    print(tabulate(l2_norm_results, headers=["Order", "L2 Norm Br", "L2 Norm Bphi"]))', '', 'plt.tight_layout()', 'plt.show()']
+['    print(tabulate(l2_norm_results, headers=["Order", "L2 Norm Br", "L2 Norm Bphi"]))', '', 'plt.tight_layout()', "plt.savefig('results/eta_t_comparison.png')", 'plt.show()']
 -------------------
 

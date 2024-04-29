@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -63,7 +63,7 @@
     <link rel="icon" href="../_static/logo.jpg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="\(\alpha \Omega\) Dynamo Equation using Crank Nicholson without Ghost Zones" href="../alpha_omega_dynamos/z_approximation/alpha_omega_dynamo.html" />
+    <link rel="prev" title="Abstract" href="sensetivity_analysis.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -373,7 +373,10 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cfl-condition">The CFL Condition:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-conditions">Initial Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-conditions">Initial Conditions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-times-and-l2-norms">Simulation Times and L2 Norms</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-conclusion">Discussion &amp; Conclusion</a></li>
 </ul>
@@ -3780,6 +3783,7 @@ Similarly, this equation describes how the azimuthal component of the magnetic f
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">Bphi_solution</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Bphi (Order </span><span class="si">{</span><span class="n">order</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;results/order_comparison.png&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -3811,14 +3815,42 @@ Similarly, this equation describes how the azimuthal component of the magnetic f
 +-------+--------------------+--------------------+-------------------+
 | Order |      Time (s)      |     L2 Norm Br     |   L2 Norm Bphi    |
 +-------+--------------------+--------------------+-------------------+
-|   2   | 1.8191003799438477 | 13.733984971830152 | 39.80352747733797 |
-|   4   | 2.827751874923706  | 12.301714047444344 | 36.65689737842187 |
-|   8   | 4.4642627239227295 | 11.866796403667742 | 35.70839970827103 |
+|   2   | 1.8154597282409668 | 13.733984971830152 | 39.80352747733797 |
+|   4   | 2.808957099914551  | 12.301714047444344 | 36.65689737842187 |
+|   8   | 4.539944171905518  | 11.866796403667742 | 35.70839970827103 |
 +-------+--------------------+--------------------+-------------------+
 </pre></div>
 </div>
 </div>
 </div>
+<section id="simulation-times-and-l2-norms">
+<h3>Simulation Times and L2 Norms<a class="headerlink" href="#simulation-times-and-l2-norms" title="Link to this heading">#</a></h3>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Order</p></th>
+<th class="head"><p>Time (s)</p></th>
+<th class="head"><p>L2 Norm Br</p></th>
+<th class="head"><p>L2 Norm Bphi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>2.0573041439056396</p></td>
+<td><p>13.733984971830152</p></td>
+<td><p>39.80352747733797</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>3.1603808403015137</p></td>
+<td><p>12.301714047444344</p></td>
+<td><p>36.65689737842187</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>5.144669055938721</p></td>
+<td><p>11.866796403667742</p></td>
+<td><p>35.70839970827103</p></td>
+</tr>
+</tbody>
+</table>
 <p>The results of the simulations reveal that as the order of the finite difference scheme increases, the computational time also increases. However, higher-order schemes tend to produce solutions with lower L2 norms, indicating better accuracy compared to lower-order schemes. This improvement in accuracy comes at the cost of increased computational time. In this particular case, the fourth-order scheme exhibits slightly lower L2 norms compared to the second-order scheme, suggesting better accuracy. However, the computational time for the fourth-order scheme is slightly higher. On the other hand, the eighth-order scheme further improves the accuracy but requires significantly more computational time compared to lower-order schemes.</p>
 <p><strong>Test 2</strong>: Simulation Results with Varying Magnetic Diffusivity <span class="math notranslate nohighlight">\(\eta_T\)</span></p>
 <p>Physically, the magnetic diffusivity parameter governs the rate at which magnetic fields diffuse through a medium, influencing the evolution of magnetic fields in dynamo equations. In the analysis above, we observed that it explicitly serves as one of the parameters regulating the CFL condition, ensuring the stability of the solution.</p>
@@ -3879,6 +3911,7 @@ Similarly, this equation describes how the azimuthal component of the magnetic f
     <span class="nb">print</span><span class="p">(</span><span class="n">tabulate</span><span class="p">(</span><span class="n">l2_norm_results</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Order&quot;</span><span class="p">,</span> <span class="s2">&quot;L2 Norm Br&quot;</span><span class="p">,</span> <span class="s2">&quot;L2 Norm Bphi&quot;</span><span class="p">]))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;results/eta_t_comparison.png&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -3887,9 +3920,9 @@ Similarly, this equation describes how the azimuthal component of the magnetic f
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulation Times for eta_t = 0.5:
   Order    Time (s)
 -------  ----------
-      2     1.83561
-      4     2.78872
-      8     4.40457
+      2     1.76828
+      4     2.74757
+      8     4.43259
 
 L2 Norms for eta_t = 0.5:
   Order    L2 Norm Br    L2 Norm Bphi
@@ -3902,9 +3935,9 @@ L2 Norms for eta_t = 0.5:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulation Times for eta_t = 1:
   Order    Time (s)
 -------  ----------
-      2     1.85553
-      4     2.85462
-      8     4.44987
+      2     1.82746
+      4     2.78751
+      8     4.50118
 
 L2 Norms for eta_t = 1:
   Order    L2 Norm Br    L2 Norm Bphi
@@ -3917,9 +3950,9 @@ L2 Norms for eta_t = 1:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulation Times for eta_t = 1.5:
   Order    Time (s)
 -------  ----------
-      2     1.77477
-      4     2.76651
-      8     4.42495
+      2     1.76421
+      4     2.75199
+      8     4.43031
 
 L2 Norms for eta_t = 1.5:
   Order    L2 Norm Br    L2 Norm Bphi
@@ -3953,6 +3986,7 @@ L2 Norms for eta_t = 1.5:
 <img alt="../_images/32ee5a0691325bb1baf331bddc7c81d5d811929d610230d21789fb23f27b9e50.png" src="../_images/32ee5a0691325bb1baf331bddc7c81d5d811929d610230d21789fb23f27b9e50.png" />
 </div>
 </div>
+</section>
 </section>
 <section id="results">
 <h2>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h2>
@@ -4098,12 +4132,12 @@ L2 Norms for eta_t = 1.5:
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../alpha_omega_dynamos/z_approximation/alpha_omega_dynamo.html"
+       href="sensetivity_analysis.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation using Crank Nicholson without Ghost Zones</p>
+        <p class="prev-next-title">Abstract</p>
       </div>
     </a>
 </div>
@@ -4126,7 +4160,10 @@ L2 Norms for eta_t = 1.5:
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-cfl-condition">The CFL Condition:</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-conditions">Initial Conditions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-conditions">Initial Conditions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-times-and-l2-norms">Simulation Times and L2 Norms</a></li>
+</ul>
+</li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-conclusion">Discussion &amp; Conclusion</a></li>
 </ul>

@@ -1,0 +1,897 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Abstract &#8212; Galactic Dynamo Simulations</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sensetivity_to_finite_order/sensetivity_analysis';</script>
+    <link rel="icon" href="../_static/logo.jpg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Sensetivity Analysis of Magnetic Diffusion Equation" href="diffusion_equation.html" />
+    <link rel="prev" title="\(\alpha \Omega\) Dynamo Equation using Crank Nicholson without Ghost Zones" href="../alpha_omega_dynamos/z_approximation/alpha_omega_dynamo.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.jpg" class="logo__image only-light" alt="Galactic Dynamo Simulations - Home"/>
+    <script>document.write(`<img src="../_static/logo.jpg" class="logo__image only-dark" alt="Galactic Dynamo Simulations - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Project Information
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Diffusion Equation Simulation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../diffusion_equation_simulations/diffusion_equation.html">Mean Field Dynamo Equation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../diffusion_equation_simulations/z_approximation/diffusion_equation_dirchilet.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/O Ghost Zones)</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../diffusion_equation_simulations/z_approximation/diffusion_equation_neumann.html">Solving Galactic Diffusion Equation using Crank Nicholson (W/ Ghost Zones)</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Alpha Omega Dynamos</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../alpha_omega_dynamos/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a></li>
+
+
+<li class="toctree-l1"><a class="reference internal" href="../alpha_omega_dynamos/z_approximation/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation using Crank Nicholson without Ghost Zones</a></li>
+
+
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sensetivity Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="diffusion_equation.html">Sensetivity Analysis of Magnetic Diffusion Equation</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+<a href="https://github.com/SagarPrakashBarad/GalacticDynamos" target="_blank"
+   class="btn btn-sm btn-source-repository-button"
+   title="Source repository"
+   data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+
+</a>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/sensetivity_to_finite_order/sensetivity_analysis.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Abstract</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Abstract</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-of-higher-order-finite-differences">Theory of Higher-Order Finite Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-coefficients-for-higher-order-finite-differences">Table of Coefficients for Higher-Order Finite Differences</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-1-evaluation-of-solution-accuracy-and-computational-cost-with-higher-order-discretization-schemes">Test 1: Evaluation of Solution Accuracy and Computational Cost with Higher Order Discretization Schemes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-2-simulation-results-with-varying-magnetic-diffusivity-eta-t">Test 2: Simulation Results with Varying Magnetic Diffusivity <span class="math notranslate nohighlight">\(\eta_T\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <div align="center">
+  <h1>Task 3</h1>
+</div>
+<p>Explore the sensitivity of the solutions to the order of the finite differencing algorithm (1D in <span class="math notranslate nohighlight">\(Z\)</span>)</p>
+<section id="abstract">
+<h1>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h1>
+<p>Understanding the dynamics of galactic mean-field dynamos is crucial for elucidating the mechanisms underlying magnetic field generation and evolution in galaxies. For this task, we specifically investigate the sensitivity of numerical solutions to the order of finite difference schemes employed in dynamo equations, motivated by the need to balance solution accuracy and computational efficiency. Our objective is to assess how different orders of finite difference schemes impact solution stability and accuracy, with a focus on the sensitivity of the solutions to variations in the magnetic diffusivity parameter. We employ numerical simulations to solve the 1D dynamo equation for magnetic field components Br and Bphi, using varying orders of finite difference schemes. Our findings reveal that higher-order schemes generally lead to improved solution accuracy, as indicated by lower <span class="math notranslate nohighlight">\(L_2\)</span> norms for <span class="math notranslate nohighlight">\(B_r\)</span> and <span class="math notranslate nohighlight">\(B_\phi\)</span>. However, we also observe a trade-off, with higher-order schemes becoming increasingly unstable with larger values of the magnetic diffusivity parameter. These results highlight the complex interplay between numerical scheme order, solution stability, and solution accuracy in dynamo simulations. Thus our report, underscores the importance of carefully selecting numerical methods and parameters to ensure reliable and accurate simulations of galactic mean-field dynamos, with implications for understanding magnetic field dynamics in diverse astrophysical contexts.</p>
+</section>
+<section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h1>
+<p>Galactic magnetic fields play a fundamental role in shaping the dynamics and evolution of galaxies, exerting influence on various astrophysical processes spanning from star formation to galactic structure. Among these, large-scale magnetic fields stand out as key components, exhibiting complex and intriguing behaviors that have captivated astronomers for decades. The genesis and evolution of these large-scale magnetic fields are governed by galactic dynamo theory, a cornerstone framework in astrophysics aimed at elucidating the mechanisms behind magnetic field amplification and maintenance in galaxies. Central to this theory is the concept of dynamo action, wherein the combined effects of differential rotation and turbulent motions within a galactic disk lead to the regeneration and amplification of magnetic fields through self-sustaining processes.</p>
+<p>Historically, galactic dynamo theory has undergone significant development, spurred by observational evidence of magnetic fields in galaxies and advancements in theoretical modeling and numerical simulations. Early theoretical frameworks, such as the mean-field dynamo theory proposed by Steenbeck, Krause, and Rädler in the 1960s, laid the groundwork for understanding the generation of large-scale magnetic fields in galaxies through the interplay between fluid motions and magnetic induction. Subsequent studies have delved deeper into the complexities of galactic dynamo processes, exploring the roles of various physical mechanisms, such as turbulence, shear flows, and magnetic helicity, in shaping magnetic field evolution. Numerical simulations have emerged as indispensable tools for probing the intricate dynamics of galactic dynamos, offering insights into the behavior of magnetic fields across different galactic environments and under varying conditions.</p>
+<div align="center">
+  <img src="../whirlpool_galaxy.jpg" alt="Galactic Dynamo" width="700"/>
+</div>
+<p><strong>Figure 1</strong>: illustrates the structure of a spiral galaxy, namely the Whirlpool, highlighting the presence of large-scale magnetic fields threading through its disk. Observational studies utilizing techniques such as polarimetry and Faraday rotation have provided valuable insights into the morphology and strength of galactic magnetic fields, revealing their complex and often ordered configurations. Reproduced from [4].</p>
+<p>While a vast body of literature exists on galactic magnetic fields and dynamo theory, few studies have specifically addressed the sensitivity of numerical solutions to the order of finite difference schemes in dynamo simulations. Nonetheless, the wealth of knowledge accumulated from previous research serves as a solid foundation for our investigation, guiding us in exploring the intricacies of galactic dynamo processes and their numerical modeling.</p>
+</section>
+<section id="methods">
+<h1>Methods<a class="headerlink" href="#methods" title="Link to this heading">#</a></h1>
+<p>We have used finite difference methods to obtain accurate numerical solutions of the governing dynamo equations. These methods are generally preferred as they provide a systematic approach to discretizing the spatial domain and approximating derivatives, allowing for efficient computation of magnetic field evolution. Moreover, these methods have the capacity to handle complex geometries and boundary conditions, making them versatile for modeling diverse dynamo systems. However, they need to be properly implemented to ensure numerical stability, preventing the amplification of errors during the simulation.</p>
+<p>Central to finite difference simulations is the Courant-Friedrichs-Lewy (CFL) condition, which governs the choice of time step (Δt) to ensure numerical stability. For diffusion-dominated problems like dynamo simulations, the CFL condition is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{CFL} = \frac{2 \cdot \Delta x^2}{\alpha \cdot \Delta t} \leq 0.5
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p>( \alpha ) is the magnetic diffusivity,</p></li>
+<li><p>( \Delta t ) is the time step, and</p></li>
+<li><p>( \Delta x ) is the spatial grid spacing.</p></li>
+</ul>
+<p>Ensuring that the CFL number remains below 0.5 guarantees stable time integration and accurate representation of the solution.</p>
+<p>For this project, we aim to investigate higher-order differences for solving dynamo equations. Higher-order finite difference schemes offer improved accuracy by capturing finer details in the solution compared to lower-order methods. However, even with higher accuracy, finite difference approximations inherently introduce errors due to truncation and discretization. The error in finite difference approximations arises primarily from two sources:</p>
+<ul class="simple">
+<li><p><strong>Truncation Error</strong>: This error stems from the truncation of the infinite Taylor series expansion used to derive finite difference formulas. Higher-order finite differences reduce truncation error by including more terms in the series expansion, resulting in improved accuracy.</p></li>
+<li><p><strong>Discretization Error</strong>: Discretization error arises from the approximation of continuous derivatives on a discrete grid. As the grid spacing decreases, discretization error decreases, leading to more accurate solutions. However, reducing the grid spacing increases computational cost.</p></li>
+</ul>
+<section id="theory-of-higher-order-finite-differences">
+<h2>Theory of Higher-Order Finite Differences<a class="headerlink" href="#theory-of-higher-order-finite-differences" title="Link to this heading">#</a></h2>
+<p>Finite difference approximations for derivatives are based on Taylor series expansions. The general form of a Taylor series expansion for a function ( f(x) ) about a point ( x_0 ) is given by:</p>
+<p>[
+f(x) = f(x_0) + f’(x_0)(x - x_0) + \frac{f’’(x_0)}{2!}(x - x_0)^2 + \cdots
+]</p>
+<p>To approximate derivatives, we truncate this series after a certain number of terms and solve for the derivative term. Higher-order finite difference methods involve including more terms in the Taylor series expansion, resulting in increased accuracy.</p>
+<p>The general form of a higher-order finite difference approximation for the first derivative ( f’(x_0) ) can be represented as:</p>
+<p>[
+f’(x_0) \approx \sum_{i=-m}^{n} c_i \cdot f(x_0 + ih)
+]</p>
+<p>where ( c_i ) are the coefficients of the finite difference scheme, ( m ) and ( n ) represent the number of points on the left and right sides of ( x_0 ), respectively, and ( h ) is the step size.</p>
+</section>
+<section id="table-of-coefficients-for-higher-order-finite-differences">
+<h2>Table of Coefficients for Higher-Order Finite Differences<a class="headerlink" href="#table-of-coefficients-for-higher-order-finite-differences" title="Link to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Derivative</p></th>
+<th class="head"><p>Accuracy</p></th>
+<th class="head"><p>-5</p></th>
+<th class="head"><p>-4</p></th>
+<th class="head"><p>-3</p></th>
+<th class="head"><p>-2</p></th>
+<th class="head"><p>-1</p></th>
+<th class="head"><p>0</p></th>
+<th class="head"><p>1</p></th>
+<th class="head"><p>2</p></th>
+<th class="head"><p>3</p></th>
+<th class="head"><p>4</p></th>
+<th class="head"><p>5</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>-1/2</p></td>
+<td><p>0</p></td>
+<td><p>1/2</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>4</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>1/12</p></td>
+<td><p>-2/3</p></td>
+<td><p>0</p></td>
+<td><p>2/3</p></td>
+<td><p>-1/12</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>6</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>-1/60</p></td>
+<td><p>3/20</p></td>
+<td><p>-3/4</p></td>
+<td><p>0</p></td>
+<td><p>3/4</p></td>
+<td><p>-3/20</p></td>
+<td><p>1/60</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>8</p></td>
+<td><p></p></td>
+<td><p>1/280</p></td>
+<td><p>-4/105</p></td>
+<td><p>1/5</p></td>
+<td><p>-4/5</p></td>
+<td><p>0</p></td>
+<td><p>4/5</p></td>
+<td><p>-1/5</p></td>
+<td><p>4/105</p></td>
+<td><p>-1/280</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>2</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>1</p></td>
+<td><p>-2</p></td>
+<td><p>1</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>4</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>-1/12</p></td>
+<td><p>4/3</p></td>
+<td><p>-5/2</p></td>
+<td><p>4/3</p></td>
+<td><p>-1/12</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>6</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p>1/90</p></td>
+<td><p>-3/20</p></td>
+<td><p>3/2</p></td>
+<td><p>-49/18</p></td>
+<td><p>3/2</p></td>
+<td><p>-3/20</p></td>
+<td><p>1/90</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>8</p></td>
+<td><p></p></td>
+<td><p>-1/560</p></td>
+<td><p>8/315</p></td>
+<td><p>-1/5</p></td>
+<td><p>8/5</p></td>
+<td><p>-205/72</p></td>
+<td><p>8/5</p></td>
+<td><p>-1/5</p></td>
+<td><p>8/315</p></td>
+<td><p>-1/560</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 1</strong>: The above table illustrates the coefficients for different orders of accuracy for both the first and second derivatives using higher-order finite difference schemes. These coefficients are used to calculate the approximations of derivatives at various grid points, contributing to the accuracy of the numerical solution.</p>
+<p>Higher-order finite difference schemes minimize error by incorporating additional points in the stencil, thereby capturing finer details of the solution. By including more grid points, these methods effectively reduce the discrepancy between the numerical approximation and the true solution. However, achieving high accuracy with higher-order schemes necessitates denser grids and finer discretization, which can escalate computational cost. The computational complexity of these methods grows rapidly with the order of the finite difference approximation, as higher orders require more grid points and additional computations per grid point. Consequently, higher-order schemes demand more computational resources and longer execution times compared to lower-order methods.</p>
+</section>
+</section>
+<section id="results">
+<h1>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h1>
+<p>For the simulation we have the following initial conditions for (B_r) and (B_\phi) and then use finite difference methods and time-stepping routines to numerically solve the dynamo equations, evolving the magnetic field solutions over time. :</p>
+<div class="math notranslate nohighlight">
+\[ B_r(z, t=0) = B_o \cos\left(\frac{3}{2} \pi z\right) \]</div>
+<div class="math notranslate nohighlight">
+\[ B_\phi(z, t=0) = B_o \cos\left(\frac{1}{2} \pi z\right)\]</div>
+<p>Further, we will compare the numerical solutions with the analytical solutions derived from the dynamo equations:</p>
+<div class="math notranslate nohighlight">
+\[ B_r(z, t) = B_o \cos\left(\frac{2m +1}{2} \pi z\right) \exp\left(- \left(\frac{2m +1}{2} \pi\right)^2 t\right) \]</div>
+<div class="math notranslate nohighlight">
+\[ B_\phi(z, t) = B_o \cos\left(\frac{2n + 1}{2} \pi z\right) \exp\left(- \left(\frac{2n +1}{2} \pi\right)^2 t\right) \]</div>
+<p>We evaluate the agreement between numerical and analytical solutions to assess the accuracy of our methods and analyze any discrepancies to understand the dynamo system’s behavior. To calculate the simulation time, one can record the start time ( t_{\text{start}} ) and the end time ( t_{\text{end}} ) using timing functions and then compute the elapsed time ( \Delta t = t_{\text{end}} - t_{\text{start}} ).</p>
+<p>For the L2 norm, the formula is given by:</p>
+<p>[
+\text{L2 Norm} = \sqrt{\sum_i^n \left| u_{\text{numerical}, i} - u_{\text{analytical}, i} \right|^2}
+]</p>
+<p>where ( u_{\text{numerical}} ) and ( u_{\text{analytical}} ) are the numerical and analytical solutions, respectively, and ( n ) is the total number of spatial points.</p>
+<section id="test-1-evaluation-of-solution-accuracy-and-computational-cost-with-higher-order-discretization-schemes">
+<h2>Test 1: Evaluation of Solution Accuracy and Computational Cost with Higher Order Discretization Schemes<a class="headerlink" href="#test-1-evaluation-of-solution-accuracy-and-computational-cost-with-higher-order-discretization-schemes" title="Link to this heading">#</a></h2>
+<p>The simulation results from Test 1 demonstrate the trade-off between solution accuracy and computational cost when employing higher-order finite difference schemes. As the order of the finite difference scheme increases, the computational time also increases, reflecting the increased complexity of the numerical calculations. However, higher-order schemes tend to produce solutions with lower L2 norms, indicating better accuracy compared to lower-order schemes.</p>
+<p><img alt="order_compare" src="../_images/order_comparison.png" /></p>
+<p><strong>Figure 2</strong>: This plot illustrates the solution of the dynamo equations using different orders of finite difference schemes. Each curve represents the magnetic field solution (both (B_r) and (B_\phi)) obtained with varying orders of finite differences.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Order</p></th>
+<th class="head"><p>Time (s)</p></th>
+<th class="head"><p>L2 Norm Br</p></th>
+<th class="head"><p>L2 Norm Bphi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>2.0573041439056396</p></td>
+<td><p>13.733984971830152</p></td>
+<td><p>39.80352747733797</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>3.1603808403015137</p></td>
+<td><p>12.301714047444344</p></td>
+<td><p>36.65689737842187</p></td>
+</tr>
+<tr class="row-even"><td><p>8</p></td>
+<td><p>5.144669055938721</p></td>
+<td><p>11.866796403667742</p></td>
+<td><p>35.70839970827103</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 2</strong>: Illustrates the variation of computational time and L2 norms for different orders of finite difference schemes. From the figure, it is evident that the computational time increases exponentially with the order of the scheme. For example, while the second-order scheme has a computational time of approximately 2.09 seconds, the eighth-order scheme requires around 4.52 seconds to compute the solution.</p>
+<p>However, despite the increase in computational time, higher-order schemes exhibit improved accuracy, as reflected by the decreasing trend in L2 norms. The L2 norms for both Br and Bphi decrease as the order of the scheme increases, indicating better agreement with the analytical solution. For instance, the L2 norm for Br decreases from approximately 13.73 for the second-order scheme to around 11.87 for the eighth-order scheme.</p>
+</section>
+<section id="test-2-simulation-results-with-varying-magnetic-diffusivity-eta-t">
+<h2>Test 2: Simulation Results with Varying Magnetic Diffusivity <span class="math notranslate nohighlight">\(\eta_T\)</span><a class="headerlink" href="#test-2-simulation-results-with-varying-magnetic-diffusivity-eta-t" title="Link to this heading">#</a></h2>
+<p>The simulation results for different values of magnetic diffusivity <span class="math notranslate nohighlight">\(\eta_T\)</span> provide insights into the influence of this parameter on the dynamo simulation. As the magnetic diffusivity increases, the rate at which magnetic fields diffuse through the medium also increases, affecting the evolution of magnetic fields in the dynamo equations.</p>
+<p><img alt="eta_t_compare" src="../_images/eta_t_comparison.png" />
+<strong>Figure 3</strong>: This plot demonstrates the sensitivity of the numerical solution to changes in magnetic diffusivity ((\eta_T)). As the value of (\eta_T) increases, the stability of the solution decreases, eventually leading to a divergent solution.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>eta_t</p></th>
+<th class="head"><p>Order</p></th>
+<th class="head"><p>Time (s)</p></th>
+<th class="head"><p>L2 Norm Br</p></th>
+<th class="head"><p>L2 Norm Bphi</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.5</p></td>
+<td><p>2</p></td>
+<td><p>2.03795</p></td>
+<td><p>26.1254</p></td>
+<td><p>39.8843</p></td>
+</tr>
+<tr class="row-odd"><td><p>0.5</p></td>
+<td><p>4</p></td>
+<td><p>2.77515</p></td>
+<td><p>24.0766</p></td>
+<td><p>36.9819</p></td>
+</tr>
+<tr class="row-even"><td><p>0.5</p></td>
+<td><p>8</p></td>
+<td><p>4.4053</p></td>
+<td><p>23.492</p></td>
+<td><p>36.0994</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>1.82199</p></td>
+<td><p>13.734</p></td>
+<td><p>39.8035</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>4</p></td>
+<td><p>2.83364</p></td>
+<td><p>12.3017</p></td>
+<td><p>36.6569</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>8</p></td>
+<td><p>4.44742</p></td>
+<td><p>11.8668</p></td>
+<td><p>35.7084</p></td>
+</tr>
+<tr class="row-even"><td><p>1.5</p></td>
+<td><p>2</p></td>
+<td><p>1.76688</p></td>
+<td><p>9.33019</p></td>
+<td><p>37.1146</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.5</p></td>
+<td><p>4</p></td>
+<td><p>2.80644</p></td>
+<td><p>8.05084</p></td>
+<td><p>33.7434</p></td>
+</tr>
+<tr class="row-even"><td><p>1.5</p></td>
+<td><p>8</p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>1.83046</p></td>
+<td><p>7.01351</p></td>
+<td><p>33.7372</p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>4</p></td>
+<td><p>2.86099</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>8</p></td>
+<td><p>4.60799</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2.5</p></td>
+<td><p>2</p></td>
+<td><p>1.77133</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-odd"><td><p>2.5</p></td>
+<td><p>4</p></td>
+<td><p>2.81081</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p>2.5</p></td>
+<td><p>8</p></td>
+<td><p>4.55267</p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 3</strong>: The above table presents the simulation results for different values of <span class="math notranslate nohighlight">\(\eta_T\)</span>, showing the variation of computational time and L2 norms for Br and Bphi. From the figure, it can be observed that as <span class="math notranslate nohighlight">\(\eta_T\)</span> increases, the computational time also increases for all orders of finite difference schemes. This is expected, as higher magnetic diffusivity requires more computational resources to accurately simulate the diffusion process.</p>
+<p>Additionally, the L2 norms for both Br and Bphi exhibit a decreasing trend with increasing values of <span class="math notranslate nohighlight">\(\eta_T\)</span>, indicating better agreement with the analytical solution. This suggests that higher magnetic diffusivity leads to more stable and accurate numerical solutions, as the CFL condition is better satisfied.</p>
+</section>
+</section>
+<section id="conclusions">
+<h1>Conclusions<a class="headerlink" href="#conclusions" title="Link to this heading">#</a></h1>
+<p>In our study of the dynamo equation, we explored the influence of the magnetic diffusivity parameter, denoted by <span class="math notranslate nohighlight">\(\eta_t\)</span>, on the stability and accuracy of numerical simulations. Specifically, we focused on how <span class="math notranslate nohighlight">\(\eta_t\)</span> controls the CFL condition, which determines the maximum allowable time step in numerical simulations to maintain stability.Our analysis revealed that the CFL condition is directly affected by the ratio of the time step <span class="math notranslate nohighlight">\(\Delta t\)</span> to the square of the spatial discretization <span class="math notranslate nohighlight">\(\Delta x\)</span> and the magnetic diffusivity parameter <span class="math notranslate nohighlight">\(\eta_t\)</span>. This relationship ensures that changes in the solution over time do not propagate too quickly relative to the spatial discretization. As we increased the order of the finite difference schemes used in our simulations, we observed improvements in solution accuracy, as evidenced by lower L2 norms for both Br and Bphi. However, we also encountered a trade-off: while higher-order schemes yield better accuracy, they become increasingly unstable with larger values of <span class="math notranslate nohighlight">\(\eta_t\)</span>. Interestingly, our results demonstrated that for certain values of <span class="math notranslate nohighlight">\(\eta_t\)</span>, lower-order schemes could perform comparably well to higher-order schemes in terms of our chosen metrics. This suggests that there is a critical balance between the accuracy gained from higher-order schemes and the stability required to prevent solution blow-up. Furthermore, as <span class="math notranslate nohighlight">\(\eta_t\)</span> increased beyond a certain threshold, even lower-order schemes struggled to maintain stability, leading to divergent solutions. This underscores the importance of carefully selecting both the numerical scheme and the value of <span class="math notranslate nohighlight">\(\eta_t\)</span> to ensure reliable and accurate simulations.</p>
+<p>By this work we aim to highlight the intricate interplay between the magnetic diffusivity parameter <span class="math notranslate nohighlight">\(\eta_t\)</span>, the order of finite difference schemes, and the stability of numerical solutions in dynamo equations. By understanding and appropriately controlling these factors, one can model and analyze magnetic field dynamics in various physical systems, from astrophysical phenomena to laboratory experiments. However, caution must be exercised to avoid instability issues associated with high values of <span class="math notranslate nohighlight">\(\eta_t\)</span> and excessively high-order schemes, emphasizing the need for careful consideration and validation in numerical simulations of dynamo processes.</p>
+</section>
+<section id="references">
+<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<p>[1] Shukurov, A., &amp; Subramanian, K. 2022, <em>Astrophysical Magnetic Fields: From Galaxies to the Early Universe</em>, Cambridge University Press</p>
+<p>[2] Strogatz, S. 2014, <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering (Studies in Nonlinearity)</em>, Westview Press, 2nd edn.</p>
+<p>[3] Bradie, B. <em>A Friendly Introduction to Numerical Analysis</em></p>
+<p>[4] Science Chatter (2019), “Once Upon a Dynamo in the Early Universe,” Science Chatter Blog, Available at: https://science-chatter.blogs.uni-hamburg.de/?p=340 (Accessed: April 28, 2024).</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./sensetivity_to_finite_order"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../alpha_omega_dynamos/z_approximation/alpha_omega_dynamo.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation using Crank Nicholson without Ghost Zones</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="diffusion_equation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Sensetivity Analysis of Magnetic Diffusion Equation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Abstract</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#methods">Methods</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#theory-of-higher-order-finite-differences">Theory of Higher-Order Finite Differences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-coefficients-for-higher-order-finite-differences">Table of Coefficients for Higher-Order Finite Differences</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#results">Results</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-1-evaluation-of-solution-accuracy-and-computational-cost-with-higher-order-discretization-schemes">Test 1: Evaluation of Solution Accuracy and Computational Cost with Higher Order Discretization Schemes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-2-simulation-results-with-varying-magnetic-diffusivity-eta-t">Test 2: Simulation Results with Varying Magnetic Diffusivity <span class="math notranslate nohighlight">\(\eta_T\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusions">Conclusions</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Sagar Prakash Barad
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
