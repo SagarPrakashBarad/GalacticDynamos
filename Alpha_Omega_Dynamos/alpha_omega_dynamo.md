@@ -127,7 +127,7 @@ We have solved the dynamo equation in z with the original eigenmodes of diffusio
 
 #### Initial Condition
 
-![init_condition](/Alpha_Omega_Dynamos/z_approximation/results/initial_conditions.png)
+![init_condition](/alpha_omega_dynamos/z_approximation/results/initial_conditions.png)
 
 We ran a routine to find the critical dynamo number $D_c$ where $D$ and other relevant parameters were varying with $r$. And we found that at $ r = 1.508$, B values start increasing with time for all time indices.
 
@@ -174,5 +174,3 @@ This plot shows that the log of magnetic field increases linearly implying expon
 The plots demonstrates a magnetic field decay characterized by a slope or rate akin to the specified (de)growth rate. 
 
 For detailed analysis of the results check the simulation file [here](/alpha_omega_dynamos/z_approximation/Alpha_Omega_Dynamo.ipynb).
-
-## Discussion & Conclusions
