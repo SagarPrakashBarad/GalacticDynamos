@@ -17,7 +17,7 @@ Galactic magnetic fields play a fundamental role in shaping the dynamics and evo
 Historically, galactic dynamo theory has undergone significant development, spurred by observational evidence of magnetic fields in galaxies and advancements in theoretical modeling and numerical simulations. Early theoretical frameworks, such as the mean-field dynamo theory proposed by Steenbeck, Krause, and Rädler in the 1960s, laid the groundwork for understanding the generation of large-scale magnetic fields in galaxies through the interplay between fluid motions and magnetic induction. Subsequent studies have delved deeper into the complexities of galactic dynamo processes, exploring the roles of various physical mechanisms, such as turbulence, shear flows, and magnetic helicity, in shaping magnetic field evolution. Numerical simulations have emerged as indispensable tools for probing the intricate dynamics of galactic dynamos, offering insights into the behavior of magnetic fields across different galactic environments and under varying conditions.
 
 <div align="center">
-  <img src="../whirlpool_galaxy.jpg" alt="Galactic Dynamo" width="700"/>
+  <img src="/whirlpool_galaxy.jpg" alt="Whirlpool Galaxy" width="700"/>
 </div>
 
 
