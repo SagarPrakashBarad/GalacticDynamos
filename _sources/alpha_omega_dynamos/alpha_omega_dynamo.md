@@ -166,7 +166,7 @@ Thus, critical dynamo number for the above system came out to be $D_c = 2.197$.
 *Variation of $B_r$, $B_\phi$, $B_\text{norm}$ and pitch angle $\theta$ with time.*
 
 
-![growth_rates](/alpha_omega_dynamos/z_approximation/plots/log_Br_Bphi_vs_time_above_Dc.png)
+![growth_rates](/alpha_omega_dynamos/z_approximation/plots/log_Br_Bphi_vs_time_at_above_Dc.png)
 
 This plot shows that the log of magnetic field increases linearly implying exponential increase. 
 
@@ -177,7 +177,7 @@ This plot shows that the log of magnetic field increases linearly implying expon
 *Variation of $B_r$, $B_\phi$, $B_\text{norm}$ and pitch angle $\theta$ with time.*
 
 
-![growth_rates](/alpha_omega_dynamos/z_approximation/plots/log_Br_Bphi_vs_time_below_Dc.png)
+![growth_rates](/alpha_omega_dynamos/z_approximation/plots/log_Br_Bphi_vs_time_at_below_Dc.png)
 
 The plots demonstrates a magnetic field decay characterized by a slope or rate akin to the specified (de)growth rate. 
 
