@@ -10,11 +10,8 @@ parts:
     chapters:  
     - file: alpha_omega_dynamos/alpha_omega_dynamo
     - file: alpha_omega_dynamos/z_approximation/alpha_omega_dynamo
+  - caption: Sensetivity Analysis
+    chapters:
+    - file: sensetivity_to_finite_order/sensetivity_analysis
+    - file: sensetivity_to_finite_order/diffusion_equation
 
-
-  
-
-
-      
-
-       

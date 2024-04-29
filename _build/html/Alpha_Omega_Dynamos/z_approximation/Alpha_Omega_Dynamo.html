@@ -63,6 +63,7 @@
     <link rel="icon" href="../../_static/logo.jpg"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Abstract" href="../../sensetivity_to_finite_order/sensetivity_analysis.html" />
     <link rel="prev" title="\(\alpha \Omega\) Dynamo Simulation" href="../alpha_omega_dynamo.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -196,13 +197,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a></li>
 
 
-
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation using Crank Nicholson without Ghost Zones</a></li>
 
 
 
 
 
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sensetivity Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../sensetivity_to_finite_order/sensetivity_analysis.html">Abstract</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../../sensetivity_to_finite_order/diffusion_equation.html">Sensetivity Analysis of Magnetic Diffusion Equation</a></li>
 </ul>
 
     </div>
@@ -3619,7 +3629,7 @@ is derived by discretising the following coupled equations</p>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;center left&#39;</span><span class="p">,</span> <span class="n">bbox_to_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Discrete Grid $M_h,$ $\Delta x= </span><span class="si">%s</span><span class="s1">,$ $\Delta t=</span><span class="si">%s</span><span class="s1">$&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">dz</span><span class="p">,</span> <span class="n">dt</span><span class="p">),</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mf">1.08</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;results/grid.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;results/grid.png&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -3713,7 +3723,7 @@ is derived by discretising the following coupled equations</p>
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;results/initial_conditions.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;results/initial_conditions.png&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -3942,7 +3952,7 @@ T \mathbf{B}_{j+1} = S \mathbf{B}_{j} + \mathbf{b}_{j} + \mathbf{b}_{j+1}
 <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;results/matrix_A_B_A_inv.pdf&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;results/matrix_A_B_A_inv.png&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -4125,21 +4135,18 @@ T \mathbf{B}_{j+1} = S \mathbf{B}_{j} + \mathbf{b}_{j} + \mathbf{b}_{j+1}
 <span class="g g-Whitespace">    </span><span class="mi">616</span>         <span class="c1"># This frame is identical to the previous frame</span>
 <span class="g g-Whitespace">    </span><span class="mi">617</span>         <span class="k">if</span> <span class="n">encoderinfo</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;duration&quot;</span><span class="p">):</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/GifImagePlugin.py:576,</span> in <span class="ni">_getbbox</span><span class="nt">(base_im, im_frame)</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/GifImagePlugin.py:575,</span> in <span class="ni">_getbbox</span><span class="nt">(base_im, im_frame)</span>
 <span class="g g-Whitespace">    </span><span class="mi">573</span>     <span class="n">delta</span> <span class="o">=</span> <span class="n">ImageChops</span><span class="o">.</span><span class="n">subtract_modulo</span><span class="p">(</span><span class="n">im_frame</span><span class="p">,</span> <span class="n">base_im</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">575</span>     <span class="n">delta</span> <span class="o">=</span> <span class="n">ImageChops</span><span class="o">.</span><span class="n">subtract_modulo</span><span class="p">(</span>
-<span class="ne">--&gt; </span><span class="mi">576</span>         <span class="n">im_frame</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">),</span> <span class="n">base_im</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">575</span>     <span class="n">delta</span> <span class="o">=</span> <span class="n">ImageChops</span><span class="o">.</span><span class="n">subtract_modulo</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">576</span>         <span class="n">im_frame</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">),</span> <span class="n">base_im</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">577</span>     <span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">578</span> <span class="k">return</span> <span class="n">delta</span><span class="o">.</span><span class="n">getbbox</span><span class="p">()</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/Image.py:1081,</span> in <span class="ni">Image.convert</span><span class="nt">(self, mode, matrix, dither, palette, colors)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1078</span>     <span class="n">dither</span> <span class="o">=</span> <span class="n">Dither</span><span class="o">.</span><span class="n">FLOYDSTEINBERG</span>
-<span class="g g-Whitespace">   </span><span class="mi">1080</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1081</span>     <span class="n">im</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">im</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">dither</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1082</span> <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1083</span>     <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1084</span>         <span class="c1"># normalize source image and try again</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/ImageChops.py:237,</span> in <span class="ni">subtract_modulo</span><span class="nt">(image1, image2)</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span> <span class="n">image1</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span> <span class="n">image2</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
+<span class="ne">--&gt; </span><span class="mi">237</span> <span class="k">return</span> <span class="n">image1</span><span class="o">.</span><span class="n">_new</span><span class="p">(</span><span class="n">image1</span><span class="o">.</span><span class="n">im</span><span class="o">.</span><span class="n">chop_subtract_modulo</span><span class="p">(</span><span class="n">image2</span><span class="o">.</span><span class="n">im</span><span class="p">))</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -4599,6 +4606,15 @@ Thus at r = 2.2302 Kpc
         <p class="prev-next-subtitle">previous</p>
         <p class="prev-next-title"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="../../sensetivity_to_finite_order/sensetivity_analysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Abstract</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>

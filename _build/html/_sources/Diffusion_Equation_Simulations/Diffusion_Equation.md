@@ -218,5 +218,4 @@ $$ B_r = B_o cos(\frac{1}{2} \pi z) $$
 For detailed analysis of the results check the simulation file [here](/Diffusion_Equation_Simulations/z_approximation/Diffusion_Equation_neumann.ipynb).
 
 
-## Discussion & Conclusions
 

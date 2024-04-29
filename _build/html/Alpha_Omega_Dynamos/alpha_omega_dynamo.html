@@ -197,13 +197,22 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Simulation</a></li>
 
 
-
 <li class="toctree-l1"><a class="reference internal" href="z_approximation/alpha_omega_dynamo.html"><span class="math notranslate nohighlight">\(\alpha \Omega\)</span> Dynamo Equation using Crank Nicholson without Ghost Zones</a></li>
 
 
 
 
 
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sensetivity Analysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sensetivity_to_finite_order/sensetivity_analysis.html">Abstract</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../sensetivity_to_finite_order/diffusion_equation.html">Sensetivity Analysis of Magnetic Diffusion Equation</a></li>
 </ul>
 
     </div>
@@ -379,7 +388,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-d-lt-d-c">Simulation @ <span class="math notranslate nohighlight">\(|D| \lt |D_c|\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-conclusions">Discussion &amp; Conclusions</a></li>
 </ul>
 
             </nav>
@@ -491,7 +499,7 @@ D = - \frac{\alpha \times 0.98 \times 110 \text{ km/s/kpc} \times (100 \text{ pc
 <p>We have solved the dynamo equation in z with the original eigenmodes of diffusion equation as the initial condition. We have have generated <span class="math notranslate nohighlight">\(B_r^o\)</span> and <span class="math notranslate nohighlight">\(B_\phi^o\)</span>.</p>
 <section id="initial-condition">
 <h2>Initial Condition<a class="headerlink" href="#initial-condition" title="Link to this heading">#</a></h2>
-<p><img alt="init_condition" src="Alpha_Omega_Dynamos/z_approximation/results/initial_conditions.png" /></p>
+<p><img alt="init_condition" src="../_images/initial_conditions.png" /></p>
 <p>We ran a routine to find the critical dynamo number <span class="math notranslate nohighlight">\(D_c\)</span> where <span class="math notranslate nohighlight">\(D\)</span> and other relevant parameters were varying with <span class="math notranslate nohighlight">\(r\)</span>. And we found that at <span class="math notranslate nohighlight">\( r = 1.508\)</span>, B values start increasing with time for all time indices.</p>
 <table class="table">
 <thead>
@@ -559,9 +567,6 @@ D = - \frac{\alpha \times 0.98 \times 110 \text{ km/s/kpc} \times (100 \text{ pc
 <p>The plots demonstrates a magnetic field decay characterized by a slope or rate akin to the specified (de)growth rate.</p>
 <p>For detailed analysis of the results check the simulation file <span class="xref myst">here</span>.</p>
 </section>
-</section>
-<section id="discussion-conclusions">
-<h1>Discussion &amp; Conclusions<a class="headerlink" href="#discussion-conclusions" title="Link to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -640,7 +645,6 @@ D = - \frac{\alpha \times 0.98 \times 110 \text{ km/s/kpc} \times (100 \text{ pc
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-d-lt-d-c">Simulation @ <span class="math notranslate nohighlight">\(|D| \lt |D_c|\)</span></a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-conclusions">Discussion &amp; Conclusions</a></li>
 </ul>
 
   </nav></div>
