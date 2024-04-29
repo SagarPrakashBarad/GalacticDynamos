@@ -127,7 +127,7 @@ We have solved the dynamo equation in z with the original eigenmodes of diffusio
 
 #### Initial Condition
 
-![init_condition](/alpha_omega_dynamos/z_approximation/results/initial_conditions.png)
+![init_condition](/alpha_omega_dynamos/z_approximation/plots/initial_conditions.png)
 
 We ran a routine to find the critical dynamo number $D_c$ where $D$ and other relevant parameters were varying with $r$. And we found that at $ r = 1.508$, B values start increasing with time for all time indices.
 
@@ -153,23 +153,23 @@ Thus, critical dynamo number for the above system came out to be $D_c = 2.197$.
 | Dynamo number | -20.029345430978612  |
 
 
-![results](/alpha_omega_dynamos/z_approximation/results/Br_Bphi_Norm_Pitch_evolution_above_critical_D.gif)
+![results](/alpha_omega_dynamos/z_approximation/plots/Br_Bphi_Norm_Pitch_evolution_above_critical_D.gif)
 
 *Variation of $B_r$, $B_\phi$, $B_\text{norm}$ and pitch angle $\theta$ with time.*
 
 
-![growth_rates](/alpha_omega_dynamos/z_approximation/results/log_Br_Bphi_vs_time_above_Dc.png)
+![growth_rates](/alpha_omega_dynamos/z_approximation/plots/log_Br_Bphi_vs_time_above_Dc.png)
 
 This plot shows that the log of magnetic field increases linearly implying exponential increase. 
 
 #### Simulation @ $|D| \lt |D_c|$ 
 
-![results](/alpha_omega_dynamos/z_approximation/results/Br_Bphi_Norm_Pitch_evolution_below_critical_D.gif)
+![results](/alpha_omega_dynamos/z_approximation/plots/Br_Bphi_Norm_Pitch_evolution_below_critical_D.gif)
 
 *Variation of $B_r$, $B_\phi$, $B_\text{norm}$ and pitch angle $\theta$ with time.*
 
 
-![growth_rates](/alpha_omega_dynamos/z_approximation/results/log_Br_Bphi_vs_time_below_Dc.png)
+![growth_rates](/alpha_omega_dynamos/z_approximation/plots/log_Br_Bphi_vs_time_below_Dc.png)
 
 The plots demonstrates a magnetic field decay characterized by a slope or rate akin to the specified (de)growth rate. 
 
