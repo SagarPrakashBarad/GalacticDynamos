@@ -35,7 +35,7 @@ Supervised by: Dr. Luke R. Chamandy, SPS, NISER
 
 ### Task 3: Sensetivity of Solution to order of finite difference
 
-- Setting up the Sensetivity of Solution to order of finite difference ([setup](/sensetivity_to_finite_order/sensetivity_analysis.md))
+- Setting up the Sensetivity of Solution to order of finite difference ([setup](/sensetivity_to_order_of_finite_diffusion/sensetivity_analysis.md)
 - Sensetivity of Solution to order of finite difference for dynamo equation ([simulation](/sensetivity_to_finite_order/diffusion_equation.ipynb))
 
 ## References

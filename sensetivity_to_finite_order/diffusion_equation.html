@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -202,6 +202,10 @@
 
 
 
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Sensetivity Analysis</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Sensetivity Analysis of Magnetic Diffusion Equation</a></li>
 </ul>
 
     </div>
@@ -3807,9 +3811,9 @@ Similarly, this equation describes how the azimuthal component of the magnetic f
 +-------+--------------------+--------------------+-------------------+
 | Order |      Time (s)      |     L2 Norm Br     |   L2 Norm Bphi    |
 +-------+--------------------+--------------------+-------------------+
-|   2   | 1.833225965499878  | 13.733984971830152 | 39.80352747733797 |
-|   4   | 3.2135560512542725 | 12.301714047444344 | 36.65689737842187 |
-|   8   | 4.549854040145874  | 11.866796403667742 | 35.70839970827103 |
+|   2   | 1.8191003799438477 | 13.733984971830152 | 39.80352747733797 |
+|   4   | 2.827751874923706  | 12.301714047444344 | 36.65689737842187 |
+|   8   | 4.4642627239227295 | 11.866796403667742 | 35.70839970827103 |
 +-------+--------------------+--------------------+-------------------+
 </pre></div>
 </div>
@@ -3883,9 +3887,9 @@ Similarly, this equation describes how the azimuthal component of the magnetic f
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulation Times for eta_t = 0.5:
   Order    Time (s)
 -------  ----------
-      2     2.0006
-      4     3.30513
-      8     4.52109
+      2     1.83561
+      4     2.78872
+      8     4.40457
 
 L2 Norms for eta_t = 0.5:
   Order    L2 Norm Br    L2 Norm Bphi
@@ -3898,9 +3902,9 @@ L2 Norms for eta_t = 0.5:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulation Times for eta_t = 1:
   Order    Time (s)
 -------  ----------
-      2     1.86305
-      4     2.89388
-      8     4.67385
+      2     1.85553
+      4     2.85462
+      8     4.44987
 
 L2 Norms for eta_t = 1:
   Order    L2 Norm Br    L2 Norm Bphi
@@ -3908,6 +3912,21 @@ L2 Norms for eta_t = 1:
       2       13.734          39.8035
       4       12.3017         36.6569
       8       11.8668         35.7084
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Simulation Times for eta_t = 1.5:
+  Order    Time (s)
+-------  ----------
+      2     1.77477
+      4     2.76651
+      8     4.42495
+
+L2 Norms for eta_t = 1.5:
+  Order    L2 Norm Br    L2 Norm Bphi
+-------  ------------  --------------
+      2       9.33019         37.1146
+      4       8.05084         33.7434
+      8     nan              nan
 </pre></div>
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
@@ -3920,17 +3939,18 @@ L2 Norms for eta_t = 1:
 <span class="g g-Whitespace">     </span><span class="mi">25</span>     <span class="c1"># Calculate L2 norms</span>
 <span class="g g-Whitespace">     </span><span class="mi">26</span>     <span class="n">l2_norm_br</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Br_solution</span><span class="p">[:,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">mag_br</span><span class="o">*</span><span class="n">Br_analytical</span><span class="p">))</span>
 
-<span class="nn">Cell In[9], line 48,</span> in <span class="ni">solve_dynamo_equation</span><span class="nt">(alpha, Nx, Nt, order)</span>
-<span class="g g-Whitespace">     </span><span class="mi">46</span>             <span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">k</span> <span class="o">/</span> <span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">560</span><span class="o">*</span><span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span><span class="mi">8</span><span class="o">/</span><span class="mi">315</span><span class="o">*</span><span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="o">*</span><span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span><span class="mi">8</span><span class="o">/</span><span class="mi">5</span><span class="o">*</span><span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span><span class="mi">205</span><span class="o">/</span><span class="mi">72</span><span class="o">*</span><span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span><span class="mi">8</span><span class="o">/</span><span class="mi">5</span><span class="o">*</span><span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="o">*</span><span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span><span class="mi">8</span><span class="o">/</span><span class="mi">315</span><span class="o">*</span><span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">560</span><span class="o">*</span><span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">47</span>             <span class="c1"># Update Bphi using eighth-order finite differences</span>
-<span class="ne">---&gt; </span><span class="mi">48</span>             <span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">k</span> <span class="o">/</span> <span class="p">(</span><span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">560</span><span class="o">*</span><span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">4</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">8</span><span class="o">/</span><span class="mi">315</span><span class="o">*</span><span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="o">*</span><span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">8</span><span class="o">/</span><span class="mi">5</span><span class="o">*</span><span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span><span class="mi">205</span><span class="o">/</span><span class="mi">72</span><span class="o">*</span><span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span><span class="mi">8</span><span class="o">/</span><span class="mi">5</span><span class="o">*</span><span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="o">*</span><span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">8</span><span class="o">/</span><span class="mi">315</span><span class="o">*</span><span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">560</span><span class="o">*</span><span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>
-<span class="g g-Whitespace">     </span><span class="mi">50</span> <span class="n">end_time</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>  
-<span class="g g-Whitespace">     </span><span class="mi">51</span> <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">end_time</span> <span class="o">-</span> <span class="n">start_time</span> 
+<span class="nn">Cell In[9], line 34,</span> in <span class="ni">solve_dynamo_equation</span><span class="nt">(alpha, Nx, Nt, order)</span>
+<span class="g g-Whitespace">     </span><span class="mi">32</span>             <span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">k</span> <span class="o">/</span> <span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span> <span class="o">*</span> <span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">Br_sol</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span>             <span class="c1"># Update Bphi using fourth-order finite differences</span>
+<span class="ne">---&gt; </span><span class="mi">34</span>             <span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">k</span> <span class="o">/</span> <span class="p">(</span><span class="mi">12</span> <span class="o">*</span> <span class="n">h</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="mi">30</span> <span class="o">*</span> <span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">+</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">-</span> <span class="n">Bphi_sol</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span> <span class="k">elif</span> <span class="n">order</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span>     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="n">Nx</span> <span class="o">+</span> <span class="mi">4</span><span class="p">):</span>                
+<span class="g g-Whitespace">     </span><span class="mi">38</span>         <span class="c1"># Update Br using sixth-order finite differences</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
-<img alt="../_images/f91a6015672a4c1c89a78fbd382d5e71192737192673948b9a0bec62f03ca041.png" src="../_images/f91a6015672a4c1c89a78fbd382d5e71192737192673948b9a0bec62f03ca041.png" />
+<img alt="../_images/32ee5a0691325bb1baf331bddc7c81d5d811929d610230d21789fb23f27b9e50.png" src="../_images/32ee5a0691325bb1baf331bddc7c81d5d811929d610230d21789fb23f27b9e50.png" />
 </div>
 </div>
 </section>
