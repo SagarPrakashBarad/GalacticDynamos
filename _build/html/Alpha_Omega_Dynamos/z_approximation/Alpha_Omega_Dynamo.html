@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -4126,27 +4126,34 @@ T \mathbf{B}_{j+1} = S \mathbf{B}_{j} + \mathbf{b}_{j} + \mathbf{b}_{j+1}
 <span class="g g-Whitespace">    </span><span class="mi">670</span>     <span class="n">_write_single_frame</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">palette</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">672</span> <span class="n">fp</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;;&quot;</span><span class="p">)</span>  <span class="c1"># end of file</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/GifImagePlugin.py:614,</span> in <span class="ni">_write_multiple_frames</span><span class="nt">(im, fp, palette)</span>
-<span class="g g-Whitespace">    </span><span class="mi">611</span> <span class="k">if</span> <span class="n">im_frames</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">612</span>     <span class="c1"># delta frame</span>
-<span class="g g-Whitespace">    </span><span class="mi">613</span>     <span class="n">previous</span> <span class="o">=</span> <span class="n">im_frames</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-<span class="ne">--&gt; </span><span class="mi">614</span>     <span class="n">bbox</span> <span class="o">=</span> <span class="n">_getbbox</span><span class="p">(</span><span class="n">previous</span><span class="p">[</span><span class="s2">&quot;im&quot;</span><span class="p">],</span> <span class="n">im_frame</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">615</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">bbox</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">616</span>         <span class="c1"># This frame is identical to the previous frame</span>
-<span class="g g-Whitespace">    </span><span class="mi">617</span>         <span class="k">if</span> <span class="n">encoderinfo</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;duration&quot;</span><span class="p">):</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/GifImagePlugin.py:592,</span> in <span class="ni">_write_multiple_frames</span><span class="nt">(im, fp, palette)</span>
+<span class="g g-Whitespace">    </span><span class="mi">589</span> <span class="k">for</span> <span class="n">imSequence</span> <span class="ow">in</span> <span class="n">itertools</span><span class="o">.</span><span class="n">chain</span><span class="p">([</span><span class="n">im</span><span class="p">],</span> <span class="n">im</span><span class="o">.</span><span class="n">encoderinfo</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;append_images&quot;</span><span class="p">,</span> <span class="p">[])):</span>
+<span class="g g-Whitespace">    </span><span class="mi">590</span>     <span class="k">for</span> <span class="n">im_frame</span> <span class="ow">in</span> <span class="n">ImageSequence</span><span class="o">.</span><span class="n">Iterator</span><span class="p">(</span><span class="n">imSequence</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">591</span>         <span class="c1"># a copy is required here since seek can still mutate the image</span>
+<span class="ne">--&gt; </span><span class="mi">592</span>         <span class="n">im_frame</span> <span class="o">=</span> <span class="n">_normalize_mode</span><span class="p">(</span><span class="n">im_frame</span><span class="o">.</span><span class="n">copy</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">593</span>         <span class="k">if</span> <span class="n">frame_count</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">594</span>             <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">im_frame</span><span class="o">.</span><span class="n">info</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/GifImagePlugin.py:575,</span> in <span class="ni">_getbbox</span><span class="nt">(base_im, im_frame)</span>
-<span class="g g-Whitespace">    </span><span class="mi">573</span>     <span class="n">delta</span> <span class="o">=</span> <span class="n">ImageChops</span><span class="o">.</span><span class="n">subtract_modulo</span><span class="p">(</span><span class="n">im_frame</span><span class="p">,</span> <span class="n">base_im</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">575</span>     <span class="n">delta</span> <span class="o">=</span> <span class="n">ImageChops</span><span class="o">.</span><span class="n">subtract_modulo</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">576</span>         <span class="n">im_frame</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">),</span> <span class="n">base_im</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">577</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">578</span> <span class="k">return</span> <span class="n">delta</span><span class="o">.</span><span class="n">getbbox</span><span class="p">()</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/GifImagePlugin.py:488,</span> in <span class="ni">_normalize_mode</span><span class="nt">(im)</span>
+<span class="g g-Whitespace">    </span><span class="mi">486</span>     <span class="k">return</span> <span class="n">im</span>
+<span class="g g-Whitespace">    </span><span class="mi">487</span> <span class="k">if</span> <span class="n">Image</span><span class="o">.</span><span class="n">getmodebase</span><span class="p">(</span><span class="n">im</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;RGB&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">488</span>     <span class="n">im</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;P&quot;</span><span class="p">,</span> <span class="n">palette</span><span class="o">=</span><span class="n">Image</span><span class="o">.</span><span class="n">Palette</span><span class="o">.</span><span class="n">ADAPTIVE</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">489</span>     <span class="k">if</span> <span class="n">im</span><span class="o">.</span><span class="n">palette</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;RGBA&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">490</span>         <span class="k">for</span> <span class="n">rgba</span> <span class="ow">in</span> <span class="n">im</span><span class="o">.</span><span class="n">palette</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/ImageChops.py:237,</span> in <span class="ni">subtract_modulo</span><span class="nt">(image1, image2)</span>
-<span class="g g-Whitespace">    </span><span class="mi">235</span> <span class="n">image1</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">236</span> <span class="n">image2</span><span class="o">.</span><span class="n">load</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">237</span> <span class="k">return</span> <span class="n">image1</span><span class="o">.</span><span class="n">_new</span><span class="p">(</span><span class="n">image1</span><span class="o">.</span><span class="n">im</span><span class="o">.</span><span class="n">chop_subtract_modulo</span><span class="p">(</span><span class="n">image2</span><span class="o">.</span><span class="n">im</span><span class="p">))</span>
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/Image.py:976,</span> in <span class="ni">Image.convert</span><span class="nt">(self, mode, matrix, dither, palette, colors)</span>
+<span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="k">return</span> <span class="n">new</span>
+<span class="g g-Whitespace">    </span><span class="mi">975</span> <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;P&quot;</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;RGBA&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">976</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">978</span> <span class="n">trns</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">979</span> <span class="n">delete_trns</span> <span class="o">=</span> <span class="kc">False</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.11/site-packages/PIL/Image.py:1187,</span> in <span class="ni">Image.quantize</span><span class="nt">(self, colors, method, kmeans, palette, dither)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1184</span>     <span class="n">new_im</span><span class="o">.</span><span class="n">palette</span> <span class="o">=</span> <span class="n">palette</span><span class="o">.</span><span class="n">palette</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1185</span>     <span class="k">return</span> <span class="n">new_im</span>
+<span class="ne">-&gt; </span><span class="mi">1187</span> <span class="n">im</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_new</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">im</span><span class="o">.</span><span class="n">quantize</span><span class="p">(</span><span class="n">colors</span><span class="p">,</span> <span class="n">method</span><span class="p">,</span> <span class="n">kmeans</span><span class="p">))</span>
+<span class="g g-Whitespace">   </span><span class="mi">1189</span> <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">ImagePalette</span>
+<span class="g g-Whitespace">   </span><span class="mi">1191</span> <span class="n">mode</span> <span class="o">=</span> <span class="n">im</span><span class="o">.</span><span class="n">im</span><span class="o">.</span><span class="n">getpalettemode</span><span class="p">()</span>
 
 <span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
@@ -4155,7 +4162,7 @@ T \mathbf{B}_{j+1} = S \mathbf{B}_{j} + \mathbf{b}_{j} + \mathbf{b}_{j+1}
 </div>
 </div>
 <p>Here is how all the relevant values evolve with time.</p>
-<p><img alt="DgtDc" src="../../_images/Br_Bphi_Norm_Pitch_evolution_above_critical_D.gif" /></p>
+<p><img alt="DgtDc" src="../../_images/Br_Bphi_Norm_Pitch_evolution_above_critical_D1.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_Br</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Br</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
@@ -4513,7 +4520,7 @@ Thus at r = 2.2302 Kpc
 </div>
 </div>
 <p>Here is how all the relevant values evolve with time.</p>
-<p><img alt="DgtDc" src="../../_images/Br_Bphi_Norm_Pitch_evolution_below_critical_D.gif" /></p>
+<p><img alt="DgtDc" src="../../_images/Br_Bphi_Norm_Pitch_evolution_below_critical_D1.gif" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">log_Br</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Br</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
