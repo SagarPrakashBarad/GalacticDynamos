@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
   
@@ -415,7 +415,7 @@ document.write(`
 <p>Galactic magnetic fields play a fundamental role in shaping the dynamics and evolution of galaxies, exerting influence on various astrophysical processes spanning from star formation to galactic structure. Among these, large-scale magnetic fields stand out as key components, exhibiting complex and intriguing behaviors that have captivated astronomers for decades. The genesis and evolution of these large-scale magnetic fields are governed by galactic dynamo theory, a cornerstone framework in astrophysics aimed at elucidating the mechanisms behind magnetic field amplification and maintenance in galaxies. Central to this theory is the concept of dynamo action, wherein the combined effects of differential rotation and turbulent motions within a galactic disk lead to the regeneration and amplification of magnetic fields through self-sustaining processes.</p>
 <p>Historically, galactic dynamo theory has undergone significant development, spurred by observational evidence of magnetic fields in galaxies and advancements in theoretical modeling and numerical simulations. Early theoretical frameworks, such as the mean-field dynamo theory proposed by Steenbeck, Krause, and Rädler in the 1960s, laid the groundwork for understanding the generation of large-scale magnetic fields in galaxies through the interplay between fluid motions and magnetic induction. Subsequent studies have delved deeper into the complexities of galactic dynamo processes, exploring the roles of various physical mechanisms, such as turbulence, shear flows, and magnetic helicity, in shaping magnetic field evolution. Numerical simulations have emerged as indispensable tools for probing the intricate dynamics of galactic dynamos, offering insights into the behavior of magnetic fields across different galactic environments and under varying conditions.</p>
 <div align="center">
-  <img src="whirlpool_galaxy.jpg" alt="Whirlpool Galaxy" width="700"/>
+<p><img alt="whirlpool_galaxy" src="../_images/whirlpool_galaxy.jpg" /></p>
 </div>
 <p><strong>Figure 1</strong>: illustrates the structure of a spiral galaxy, namely the Whirlpool, highlighting the presence of large-scale magnetic fields threading through its disk. Observational studies utilizing techniques such as polarimetry and Faraday rotation have provided valuable insights into the morphology and strength of galactic magnetic fields, revealing their complex and often ordered configurations. Reproduced from [4].</p>
 <p>While a vast body of literature exists on galactic magnetic fields and dynamo theory, few studies have specifically addressed the sensitivity of numerical solutions to the order of finite difference schemes in dynamo simulations. Nonetheless, the wealth of knowledge accumulated from previous research serves as a solid foundation for our investigation, guiding us in exploring the intricacies of galactic dynamo processes and their numerical modeling.</p>
@@ -430,9 +430,9 @@ document.write(`
 \]</div>
 <p>where:</p>
 <ul class="simple">
-<li><p>( \alpha ) is the magnetic diffusivity,</p></li>
-<li><p>( \Delta t ) is the time step, and</p></li>
-<li><p>( \Delta x ) is the spatial grid spacing.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha\)</span> is the magnetic diffusivity,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta t\)</span> is the time step, and</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta x\)</span> is the spatial grid spacing.</p></li>
 </ul>
 <p>Ensuring that the CFL number remains below 0.5 guarantees stable time integration and accurate representation of the solution.</p>
 <p>For this project, we aim to investigate higher-order differences for solving dynamo equations. Higher-order finite difference schemes offer improved accuracy by capturing finer details in the solution compared to lower-order methods. However, even with higher accuracy, finite difference approximations inherently introduce errors due to truncation and discretization. The error in finite difference approximations arises primarily from two sources:</p>
@@ -442,16 +442,18 @@ document.write(`
 </ul>
 <section id="theory-of-higher-order-finite-differences">
 <h2>Theory of Higher-Order Finite Differences<a class="headerlink" href="#theory-of-higher-order-finite-differences" title="Link to this heading">#</a></h2>
-<p>Finite difference approximations for derivatives are based on Taylor series expansions. The general form of a Taylor series expansion for a function ( f(x) ) about a point ( x_0 ) is given by:</p>
-<p>[
-f(x) = f(x_0) + f’(x_0)(x - x_0) + \frac{f’’(x_0)}{2!}(x - x_0)^2 + \cdots
-]</p>
+<p>Finite difference approximations for derivatives are based on Taylor series expansions. The general form of a Taylor series expansion for a function <span class="math notranslate nohighlight">\(f(x)\)</span> about a point <span class="math notranslate nohighlight">\(x_0\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+f(x) = f(x_0) + f'(x_0)(x - x_0) + \frac{f''(x_0)}{2!}(x - x_0)^2 + \cdots
+\]</div>
 <p>To approximate derivatives, we truncate this series after a certain number of terms and solve for the derivative term. Higher-order finite difference methods involve including more terms in the Taylor series expansion, resulting in increased accuracy.</p>
-<p>The general form of a higher-order finite difference approximation for the first derivative ( f’(x_0) ) can be represented as:</p>
-<p>[
-f’(x_0) \approx \sum_{i=-m}^{n} c_i \cdot f(x_0 + ih)
-]</p>
-<p>where ( c_i ) are the coefficients of the finite difference scheme, ( m ) and ( n ) represent the number of points on the left and right sides of ( x_0 ), respectively, and ( h ) is the step size.</p>
+<p>The general form of a higher-order finite difference approximation for the first derivative <span class="math notranslate nohighlight">\(f'(x_0)\)</span> can be represented as:</p>
+<div class="math notranslate nohighlight">
+\[
+f'(x_0) \approx \sum_{i=-m}^{n} c_i \cdot f(x_0 + ih)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(c_i\)</span> are the coefficients of the finite difference scheme, <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(n\)</span> represent the number of points on the left and right sides of <span class="math notranslate nohighlight">\(x_0\)</span>, respectively, and <span class="math notranslate nohighlight">\(\Delta x\)</span> is the step size.</p>
 </section>
 <section id="table-of-coefficients-for-higher-order-finite-differences">
 <h2>Table of Coefficients for Higher-Order Finite Differences<a class="headerlink" href="#table-of-coefficients-for-higher-order-finite-differences" title="Link to this heading">#</a></h2>
@@ -593,7 +595,7 @@ f’(x_0) \approx \sum_{i=-m}^{n} c_i \cdot f(x_0 + ih)
 </section>
 <section id="results">
 <h1>Results<a class="headerlink" href="#results" title="Link to this heading">#</a></h1>
-<p>For the simulation we have the following initial conditions for (B_r) and (B_\phi) and then use finite difference methods and time-stepping routines to numerically solve the dynamo equations, evolving the magnetic field solutions over time. :</p>
+<p>For the simulation we have the following initial conditions for <span class="math notranslate nohighlight">\(B_r\)</span> and <span class="math notranslate nohighlight">\(B_\phi\)</span> and then use finite difference methods and time-stepping routines to numerically solve the dynamo equations, evolving the magnetic field solutions over time. :</p>
 <div class="math notranslate nohighlight">
 \[ B_r(z, t=0) = B_o \cos\left(\frac{3}{2} \pi z\right) \]</div>
 <div class="math notranslate nohighlight">
@@ -603,17 +605,18 @@ f’(x_0) \approx \sum_{i=-m}^{n} c_i \cdot f(x_0 + ih)
 \[ B_r(z, t) = B_o \cos\left(\frac{2m +1}{2} \pi z\right) \exp\left(- \left(\frac{2m +1}{2} \pi\right)^2 t\right) \]</div>
 <div class="math notranslate nohighlight">
 \[ B_\phi(z, t) = B_o \cos\left(\frac{2n + 1}{2} \pi z\right) \exp\left(- \left(\frac{2n +1}{2} \pi\right)^2 t\right) \]</div>
-<p>We evaluate the agreement between numerical and analytical solutions to assess the accuracy of our methods and analyze any discrepancies to understand the dynamo system’s behavior. To calculate the simulation time, one can record the start time ( t_{\text{start}} ) and the end time ( t_{\text{end}} ) using timing functions and then compute the elapsed time ( \Delta t = t_{\text{end}} - t_{\text{start}} ).</p>
+<p>We evaluate the agreement between numerical and analytical solutions to assess the accuracy of our methods and analyze any discrepancies to understand the dynamo system’s behavior. To calculate the simulation time, one can record the start time <span class="math notranslate nohighlight">\(t_{\text{start}}\)</span> and the end time <span class="math notranslate nohighlight">\(t_{\text{end}}\)</span> using timing functions and then compute the elapsed time <span class="math notranslate nohighlight">\(\Delta t = t_{\text{end}} - t_{\text{start}}\)</span>.</p>
 <p>For the L2 norm, the formula is given by:</p>
-<p>[
+<div class="math notranslate nohighlight">
+\[
 \text{L2 Norm} = \sqrt{\sum_i^n \left| u_{\text{numerical}, i} - u_{\text{analytical}, i} \right|^2}
-]</p>
-<p>where ( u_{\text{numerical}} ) and ( u_{\text{analytical}} ) are the numerical and analytical solutions, respectively, and ( n ) is the total number of spatial points.</p>
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(u_{\text{numerical}}\)</span> and <span class="math notranslate nohighlight">\(u_{\text{analytical}}\)</span> are the numerical and analytical solutions, respectively, and <span class="math notranslate nohighlight">\(n\)</span> is the total number of spatial points.</p>
 <section id="test-1-evaluation-of-solution-accuracy-and-computational-cost-with-higher-order-discretization-schemes">
 <h2>Test 1: Evaluation of Solution Accuracy and Computational Cost with Higher Order Discretization Schemes<a class="headerlink" href="#test-1-evaluation-of-solution-accuracy-and-computational-cost-with-higher-order-discretization-schemes" title="Link to this heading">#</a></h2>
 <p>The simulation results from Test 1 demonstrate the trade-off between solution accuracy and computational cost when employing higher-order finite difference schemes. As the order of the finite difference scheme increases, the computational time also increases, reflecting the increased complexity of the numerical calculations. However, higher-order schemes tend to produce solutions with lower L2 norms, indicating better accuracy compared to lower-order schemes.</p>
 <p><img alt="order_compare" src="../_images/order_comparison.png" /></p>
-<p><strong>Figure 2</strong>: This plot illustrates the solution of the dynamo equations using different orders of finite difference schemes. Each curve represents the magnetic field solution (both (B_r) and (B_\phi)) obtained with varying orders of finite differences.</p>
+<p><strong>Figure 2</strong>: This plot illustrates the solution of the dynamo equations using different orders of finite difference schemes. Each curve represents the magnetic field solution (both <span class="math notranslate nohighlight">\(B_r\)</span> and <span class="math notranslate nohighlight">\(B_\phi\)</span>) obtained with varying orders of finite differences.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Order</p></th>
@@ -650,7 +653,7 @@ f’(x_0) \approx \sum_{i=-m}^{n} c_i \cdot f(x_0 + ih)
 <strong>Figure 3</strong>: This plot demonstrates the sensitivity of the numerical solution to changes in magnetic diffusivity ((\eta_T)). As the value of (\eta_T) increases, the stability of the solution decreases, eventually leading to a divergent solution.</p>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>eta_t</p></th>
+<tr class="row-odd"><th class="head"><p><span class="math notranslate nohighlight">\(eta_Y\)</span></p></th>
 <th class="head"><p>Order</p></th>
 <th class="head"><p>Time (s)</p></th>
 <th class="head"><p>L2 Norm Br</p></th>
@@ -764,7 +767,7 @@ f’(x_0) \approx \sum_{i=-m}^{n} c_i \cdot f(x_0 + ih)
 <p>[1] Shukurov, A., &amp; Subramanian, K. 2022, <em>Astrophysical Magnetic Fields: From Galaxies to the Early Universe</em>, Cambridge University Press</p>
 <p>[2] Strogatz, S. 2014, <em>Nonlinear Dynamics and Chaos: With Applications to Physics, Biology, Chemistry, and Engineering (Studies in Nonlinearity)</em>, Westview Press, 2nd edn.</p>
 <p>[3] Bradie, B. <em>A Friendly Introduction to Numerical Analysis</em></p>
-<p>[4] Science Chatter (2019), “Once Upon a Dynamo in the Early Universe,” Science Chatter Blog, Available at: https://science-chatter.blogs.uni-hamburg.de/?p=340 (Accessed: April 28, 2024).</p>
+<p>[4] Science Chatter (2019), “Once Upon a Dynamo in the Early Universe,” Science Chatter Blog, Available at: <a class="reference external" href="https://science-chatter.blogs.uni-hamburg.de/?p=340">here</a> (Accessed: April 28, 2024).</p>
 </section>
 
     <script type="text/x-thebe-config">

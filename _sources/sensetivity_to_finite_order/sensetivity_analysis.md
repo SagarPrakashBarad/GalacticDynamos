@@ -16,10 +16,12 @@ Galactic magnetic fields play a fundamental role in shaping the dynamics and evo
 
 Historically, galactic dynamo theory has undergone significant development, spurred by observational evidence of magnetic fields in galaxies and advancements in theoretical modeling and numerical simulations. Early theoretical frameworks, such as the mean-field dynamo theory proposed by Steenbeck, Krause, and Rädler in the 1960s, laid the groundwork for understanding the generation of large-scale magnetic fields in galaxies through the interplay between fluid motions and magnetic induction. Subsequent studies have delved deeper into the complexities of galactic dynamo processes, exploring the roles of various physical mechanisms, such as turbulence, shear flows, and magnetic helicity, in shaping magnetic field evolution. Numerical simulations have emerged as indispensable tools for probing the intricate dynamics of galactic dynamos, offering insights into the behavior of magnetic fields across different galactic environments and under varying conditions.
 
-<div align="center">
-  <img src="whirlpool_galaxy.jpg" alt="Whirlpool Galaxy" width="700"/>
-</div>
 
+<div align="center">
+
+![whirlpool_galaxy](whirlpool_galaxy.jpg)
+
+</div>
 
 **Figure 1**: illustrates the structure of a spiral galaxy, namely the Whirlpool, highlighting the presence of large-scale magnetic fields threading through its disk. Observational studies utilizing techniques such as polarimetry and Faraday rotation have provided valuable insights into the morphology and strength of galactic magnetic fields, revealing their complex and often ordered configurations. Reproduced from [4].
 
@@ -36,9 +38,9 @@ $$
 
 where:
 
-- \( \alpha \) is the magnetic diffusivity,
-- \( \Delta t \) is the time step, and
-- \( \Delta x \) is the spatial grid spacing.
+- $\alpha$ is the magnetic diffusivity,
+- $\Delta t$ is the time step, and
+- $\Delta x$ is the spatial grid spacing.
 
 Ensuring that the CFL number remains below 0.5 guarantees stable time integration and accurate representation of the solution.
 
@@ -50,21 +52,21 @@ For this project, we aim to investigate higher-order differences for solving dyn
 
 ### Theory of Higher-Order Finite Differences
 
- Finite difference approximations for derivatives are based on Taylor series expansions. The general form of a Taylor series expansion for a function \( f(x) \) about a point \( x_0 \) is given by:
+ Finite difference approximations for derivatives are based on Taylor series expansions. The general form of a Taylor series expansion for a function $f(x)$ about a point $x_0$ is given by:
 
-\[
+$$
 f(x) = f(x_0) + f'(x_0)(x - x_0) + \frac{f''(x_0)}{2!}(x - x_0)^2 + \cdots
-\]
+$$
 
 To approximate derivatives, we truncate this series after a certain number of terms and solve for the derivative term. Higher-order finite difference methods involve including more terms in the Taylor series expansion, resulting in increased accuracy.
 
-The general form of a higher-order finite difference approximation for the first derivative \( f'(x_0) \) can be represented as:
+The general form of a higher-order finite difference approximation for the first derivative $f'(x_0)$ can be represented as:
 
-\[
+$$
 f'(x_0) \approx \sum_{i=-m}^{n} c_i \cdot f(x_0 + ih)
-\]
+$$
 
-where \( c_i \) are the coefficients of the finite difference scheme, \( m \) and \( n \) represent the number of points on the left and right sides of \( x_0 \), respectively, and \( h \) is the step size.
+where $c_i$ are the coefficients of the finite difference scheme, $m$ and $n$ represent the number of points on the left and right sides of $x_0$, respectively, and $\Delta x$ is the step size.
 
 ### Table of Coefficients for Higher-Order Finite Differences
 
@@ -87,7 +89,7 @@ Higher-order finite difference schemes minimize error by incorporating additiona
 
 ## Results
 
-For the simulation we have the following initial conditions for \(B_r\) and \(B_\phi\) and then use finite difference methods and time-stepping routines to numerically solve the dynamo equations, evolving the magnetic field solutions over time. :
+For the simulation we have the following initial conditions for $B_r$ and $B_\phi$ and then use finite difference methods and time-stepping routines to numerically solve the dynamo equations, evolving the magnetic field solutions over time. :
 
 $$ B_r(z, t=0) = B_o \cos\left(\frac{3}{2} \pi z\right) $$
 $$ B_\phi(z, t=0) = B_o \cos\left(\frac{1}{2} \pi z\right)$$
@@ -97,15 +99,15 @@ Further, we will compare the numerical solutions with the analytical solutions d
 $$ B_r(z, t) = B_o \cos\left(\frac{2m +1}{2} \pi z\right) \exp\left(- \left(\frac{2m +1}{2} \pi\right)^2 t\right) $$
 $$ B_\phi(z, t) = B_o \cos\left(\frac{2n + 1}{2} \pi z\right) \exp\left(- \left(\frac{2n +1}{2} \pi\right)^2 t\right) $$
 
-We evaluate the agreement between numerical and analytical solutions to assess the accuracy of our methods and analyze any discrepancies to understand the dynamo system's behavior. To calculate the simulation time, one can record the start time \( t_{\text{start}} \) and the end time \( t_{\text{end}} \) using timing functions and then compute the elapsed time \( \Delta t = t_{\text{end}} - t_{\text{start}} \).
+We evaluate the agreement between numerical and analytical solutions to assess the accuracy of our methods and analyze any discrepancies to understand the dynamo system's behavior. To calculate the simulation time, one can record the start time $t_{\text{start}}$ and the end time $t_{\text{end}}$ using timing functions and then compute the elapsed time $\Delta t = t_{\text{end}} - t_{\text{start}}$.
 
 For the L2 norm, the formula is given by:
 
-\[
+$$
 \text{L2 Norm} = \sqrt{\sum_i^n \left| u_{\text{numerical}, i} - u_{\text{analytical}, i} \right|^2}
-\]
+$$
 
-where \( u_{\text{numerical}} \) and \( u_{\text{analytical}} \) are the numerical and analytical solutions, respectively, and \( n \) is the total number of spatial points.
+where $u_{\text{numerical}}$ and $u_{\text{analytical}}$ are the numerical and analytical solutions, respectively, and $n$ is the total number of spatial points.
 
 
 ### Test 1: Evaluation of Solution Accuracy and Computational Cost with Higher Order Discretization Schemes
@@ -114,7 +116,7 @@ The simulation results from Test 1 demonstrate the trade-off between solution ac
 
 ![order_compare](results/order_comparison.png)
 
-**Figure 2**: This plot illustrates the solution of the dynamo equations using different orders of finite difference schemes. Each curve represents the magnetic field solution (both \(B_r\) and \(B_\phi\)) obtained with varying orders of finite differences. 
+**Figure 2**: This plot illustrates the solution of the dynamo equations using different orders of finite difference schemes. Each curve represents the magnetic field solution (both $B_r$ and $B_\phi$) obtained with varying orders of finite differences. 
 
 | Order |      Time (s)      |     L2 Norm Br     |   L2 Norm Bphi    |
 |-------|--------------------|--------------------|-------------------|
@@ -133,7 +135,7 @@ The simulation results for different values of magnetic diffusivity $\eta_T$ pro
 ![eta_t_compare](results/eta_t_comparison.png)
 **Figure 3**: This plot demonstrates the sensitivity of the numerical solution to changes in magnetic diffusivity (\(\eta_T\)). As the value of \(\eta_T\) increases, the stability of the solution decreases, eventually leading to a divergent solution. 
 
-| eta_t | Order | Time (s) | L2 Norm Br | L2 Norm Bphi |
+| $eta_Y$ | Order | Time (s) | L2 Norm Br | L2 Norm Bphi |
 |-------|-------|----------|------------|--------------|
 | 0.5   |   2   |  2.03795 |   26.1254  |    39.8843   |
 | 0.5   |   4   |  2.77515 |   24.0766  |    36.9819   |
@@ -169,4 +171,4 @@ By this work we aim to highlight the intricate interplay between the magnetic di
 
 [3] Bradie, B. *A Friendly Introduction to Numerical Analysis*
 
-[4] Science Chatter (2019), "Once Upon a Dynamo in the Early Universe," Science Chatter Blog, Available at: https://science-chatter.blogs.uni-hamburg.de/?p=340 (Accessed: April 28, 2024).
+[4] Science Chatter (2019), "Once Upon a Dynamo in the Early Universe," Science Chatter Blog, Available at: [here](https://science-chatter.blogs.uni-hamburg.de/?p=340) (Accessed: April 28, 2024).
